@@ -7,7 +7,7 @@
     <title>Learning Basic PHP</title>
 </head>
 <body>
-    <header class="container-fluid" style="background-color: black;height:100px;display:flex;align-items:center;flex-direction:column;justify-content:center;">
+    <header class="container-fluid" style="background-color: black;height:100px;display:flex;align-items:center;flex-direction:column;justify-content:center;margin-bottom:25px;">
         <h1 style="color:green;font-size:calc(10px+2vmin);">Learning Basic PHP</h1>
     </header>
     <?php
