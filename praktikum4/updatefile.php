@@ -4,6 +4,8 @@
     $namaFile = "myfile.txt";
     $myfile = fopen($namaFile, "a") or die("Tidak bisa buka file!");
     fwrite($myfile, "DOS = Disk Operating System\n");
+    fclose($myfile);
+    $myfile = fopen($namaFile, 'r') or die("Failed on reading file!");
     while (!feof($myfile)) {
         echo fgets($myfile);
     }
