@@ -11,12 +11,18 @@
     }
     fclose($myfile);
 
+    echo(
+    "<div>
+        <br>
+        <h4>
+            3.	Apa kegunaan dari function fwrite()?
+            <br>
+            Jawab : <strong>Menuliskan sesuatu pada file</strong>
+            <br>
+            4.	Apa yang terjadi jika perintah fopen(\$namaFile, 'a') diganti dengan fopen(\$namaFile, 'w')?
+            <br>
+            Jawab : <strong>Maka isi file sebelumnya akan ter-overwrite jika kita menjalankan function fwrite()</strong>
 
-    /*
-    3.	Apa kegunaan dari function fwrite()?
-    Jawab : Menuliskan sesuatu pada file
-    4.	Apa yang terjadi jika perintah fopen($namaFile, "a") diganti dengan fopen($namaFile, "w")?
-    Jawab : Maka isi file sebelumnya akan ter-overwrite jika kita menjalankan function fwrite()
-
-
-    */
+        
+        </h4>
+    </div>");
