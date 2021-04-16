@@ -12,7 +12,7 @@
     	$hasil = $bil1 + $bil2;
     } else if ($op == "-"){
     	$hasil = $bil1 - $bil2;
-    } else if ($op == "x    "){
+    } else if ($op == "x"){
     	$hasil = $bil1 * $bil2;
     } else if ($op == "/"){
     	$hasil = $bil1 / $bil2;
