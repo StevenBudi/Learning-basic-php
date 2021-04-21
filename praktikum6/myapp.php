@@ -1,11 +1,12 @@
 <?php
 
+    date_default_timezone_set("Asia/Jakarta");
     // bagian yang dieksekusi ketika pengunjung submit nama
     if (isset($_POST['submit'])){
         // mengeset cookie username dari namanya, lama cookie 3 bulan
         setcookie("username", $_POST['username'], time()+3*30*24*3600,"/");
         // mengeset cookie jumlah kunjungan -> 0 (mula-mula)
-        setcookie("visits", 0, time()+3*30*24*3600,"/");
+        setcookie("visits", 0, time()+3*30*24*3600+5,"/");
         // mengeset cookie kunjungan terakhir
         setcookie("lastvisit", date("d-m-Y H:i:s"), time()+3*30*24*3600,"/");
         // setelah mengeset cookie awal di atas, redirect ke halaman depan myapp.php
@@ -17,7 +18,7 @@
         // tampilkan nama user, baca dari cookie
         echo "<p>Hallo selamat datang ".$_COOKIE['username']."</p>";
         // tampilkan jumlah kunjungan saat ini = jumlah visit sebelumnya + 1
-        echo "<p>Ini kunjungan Anda yang ke-".($_COOKIE['visits']+1)."</p>";
+        echo "<p>Ini kunjungan Anda yang ke-".($_COOKIE['visits']+=1)."</p>";
         // tampilkan datetime kunjungan sebelumnya, baca dari cookie
         echo "<p>Kunjungan Anda sebelumnya adalah pada tanggal ".$_COOKIE['lastvisit']."</p>";
 
