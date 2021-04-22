@@ -5,7 +5,6 @@
     if(isset($_POST['submit'])){
         setcookie("username", $_POST["username"], $expire);
         $_COOKIE["username"] = $_POST["username"];
-        // setcookie("high-score", 0, $expire);
         setcookie("random", rand(0, 100), $expire); 
           
     }
