@@ -2,17 +2,17 @@
     include ("./header.php");
     headerDecor();
     $expire = time()+24*3600;
-
     if(isset($_POST['submit'])){
         setcookie("username", $_POST["username"], $expire);
+        $_COOKIE["username"] = $_POST["username"];
         // setcookie("high-score", 0, $expire);
-        setcookie("random", rand(0, 100), $expire);
-
-        
+        setcookie("random", rand(0, 100), $expire); 
+          
     }
-    if(isset($_COOKIE['username'])){
-        header("Location: game.php");
+    if(isset($_COOKIE["username"])){
+        echo("<script>window.location.href=('game.php')</script>");
     }
+    
     else{
 ?>    
     <h1>Game Tebak Angka</h1>
