@@ -19,10 +19,9 @@
         foreach ($users as $profile) {
             if(isset($profile[2])){
                 // Remove whitespace on password
-                $user_pass = trim($profile[2]);
-                if ($profile[0] == $_POST['username'] && $user_pass == $_POST['password']){
-                    setcookie("active", $profile[1], $expire);
-                    $_COOKIE["active"] = $profile[1];
+                if (trim($profile[0]) == $_POST['username'] && trim($profile[2]) == $_POST['password']){
+                    setcookie("active", trim($profile[1]), $expire);
+                    $_COOKIE["active"] =trim($profile[1]);
                     setcookie("random", encryption(strval(rand(0, 100))), $expire); 
                 }
                 if (isset($_COOKIE["active"])){
