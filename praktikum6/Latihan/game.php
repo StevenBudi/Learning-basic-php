@@ -1,5 +1,5 @@
 <?php
-if (isset($_COOKIE['username'])) {
+if (isset($_COOKIE['active'])) {
 
     include("./header.php");
     require("./safe.php");
