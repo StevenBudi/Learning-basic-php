@@ -4,10 +4,9 @@ if (isset($_COOKIE['active'])) {
     include("./header.php");
     require("./safe.php");
     headerDecor();
+    // set timezone to Jakarta time zone
     date_default_timezone_set("Asia/Jakarta");
-    // $bil = rand(0, 100);
-    
-    $score = 0;
+    // decrypt cookie value
     $bil = intval(decryption($_COOKIE['random']));
     echo ('
         <p>
@@ -33,10 +32,12 @@ if (isset($_COOKIE['active'])) {
                 Waaah… masih salah ya, bilangan tebakan Anda terlalu rendah.
                     ");
         } else {
+            // force cookie to expire
             setcookie('random', "", time() - 24 * 3600);
             echo "Selamat ya… Anda benar, saya telah memilih bilangan $bil.";
 
             echo '<a href="game.php">Restart</a>';
+            // set new cookie value
             setcookie('random', encryption(strval(rand(0, 100))), time() + 24 * 3600);
         }
     }
