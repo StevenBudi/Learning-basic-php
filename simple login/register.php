@@ -88,4 +88,5 @@
 	}
 	
 	mysqli_close($conn);
+	header("Location:form.html");
 ?>
