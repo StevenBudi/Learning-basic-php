@@ -16,10 +16,10 @@
 
     $query = "SELECT * FROM mahasiswa WHERE username = '$username' AND password = '$password'";
     $search = mysqli_query($conn, $query);
-    var_dump($search);
 
     if (mysqli_num_rows($search) > 0){
         $row = mysqli_fetch_assoc($search);
+        var_dump($row);
         $_SESSION["status"] = "login";
         $_SESSION["nim"] = $row["nim"];
         $_SESSION["username"] = $row["username"];
