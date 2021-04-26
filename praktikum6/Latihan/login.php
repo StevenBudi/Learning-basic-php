@@ -6,28 +6,28 @@
 
     $namafile = "db.txt";
     $myfile = fopen($namafile, "r") or die("Error Occured");
-    $users = [];
+    $users = array();
     while(!feof($myfile)){
         $user = explode("|", fgets($myfile));
         array_push($users, $user);
         
     }
-
-    fclose($myfile);    
+    fclose($myfile); 
+       
 
     if(isset($_POST['submit'])){
         foreach ($users as $profile) {
-            if(isset($profile[0])){
-                if (strval( $profile[0]) == $_POST['username'] && strval($profile[2]) == $_POST['password']){
-                    setcookie("active", strval($profile[1]), $expire);
-                    $_COOKIE["active"] = strval($profile[1]);
+            if(isset($profile[2])){
+                echo($profile[2].$_POST["password"]);
+                if ($profile[0] == $_POST['username'] && $profile[2] == $_POST['password']){
+                    setcookie("active", $profile[1], $expire);
+                    $_COOKIE["active"] = $profile[1];
                     setcookie("random", encryption(strval(rand(0, 100))), $expire); 
                 }
                 if (isset($_COOKIE["active"])){
                     echo("<script>window.location.href=('game.php')</script>");
                 }
             }
-            
         }
         echo("<script>alert('Login Gagal, check kembali password dan email anda')</script>");
         
