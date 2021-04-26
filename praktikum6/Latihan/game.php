@@ -2,14 +2,13 @@
 if (isset($_COOKIE['username'])) {
 
     include("./header.php");
+    require("./safe.php");
     headerDecor();
     date_default_timezone_set("Asia/Jakarta");
     // $bil = rand(0, 100);
+    
     $score = 0;
-    $bil = $_COOKIE['random'];
-    echo "
-            <script>console.log('$bil');</script>
-        ";
+    $bil = intval(decryption($_COOKIE['random']));
     echo ('
         <p>
             <strong>
@@ -35,10 +34,10 @@ if (isset($_COOKIE['username'])) {
                     ");
         } else {
             setcookie('random', "", time() - 24 * 3600);
-            setcookie('random', rand(0, 100), time() + 24 * 3600);
             echo "Selamat ya… Anda benar, saya telah memilih bilangan $bil.";
 
             echo '<a href="game.php">Restart</a>';
+            setcookie('random', encryption(strval(rand(0, 100))), time() + 24 * 3600);
         }
     }
 } else {

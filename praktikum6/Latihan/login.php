@@ -1,11 +1,12 @@
 <?php
     include ("./header.php");
+    require("./safe.php");
     headerDecor();
     $expire = time()+24*3600;
     if(isset($_POST['submit'])){
         setcookie("username", $_POST["username"], $expire);
         $_COOKIE["username"] = $_POST["username"];
-        setcookie("random", rand(0, 100), $expire); 
+        setcookie("random", encryption(strval(rand(0, 100))), $expire); 
           
     }
     if(isset($_COOKIE["username"])){
