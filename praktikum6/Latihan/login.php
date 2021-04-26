@@ -18,7 +18,7 @@
     if(isset($_POST['submit'])){
         foreach ($users as $profile) {
             if(isset($profile[2])){
-                echo($profile[2].$_POST["password"]);
+                var_dump($profile);
                 if ($profile[0] == $_POST['username'] && $profile[2] == $_POST['password']){
                     setcookie("active", $profile[1], $expire);
                     $_COOKIE["active"] = $profile[1];
@@ -29,7 +29,7 @@
                 }
             }
         }
-        echo("<script>alert('Login Gagal, check kembali password dan email anda')</script>");
+        echo("<script>alert('Login Gagal, check kembali password dan nama anda')</script>");
         
         
     }
@@ -43,7 +43,7 @@
     <div class="container container-fluid">
         <h1>Game Tebak Angka</h1>
         <hr>
-        <p>Silahkan masukkan nama anda terlebih dahulu</p>
+        <p>Silahkan masukkan nama dan password anda terlebih dahulu</p>
         <form action="login.php" method="POST">
             <table>
                 <tr class="mb-3 pb-5">
