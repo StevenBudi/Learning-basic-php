@@ -13,42 +13,44 @@
 		/>
 	</head>
 	<body>
-		<form method="POST" action="auth.php"> 
-			<div class="mb-3">
-				<label for="exampleInputEmail1" class="form-label"
-					>Email address</label
-				>
-				<input
-					type="email"
-					class="form-control"
-					id="exampleInputEmail1"
-					aria-describedby="emailHelp"
-				/>
-				<div id="emailHelp" class="form-text">
-					We'll never share your email with anyone else.
+		<div class="container container-fluid">
+			<h1 class="text-xxl-center">Login Page Mahasiswa</h1>
+			<form method="POST" action="auth.php" class="toast-body">
+				<div class="mb-3">
+					<label class="form-label"
+						>Username</label
+					>
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Your username..."
+						name = "username"
+					/>
 				</div>
-			</div>
-			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label"
-					>Password</label
-				>
-				<input
-					type="password"
-					class="form-control"
-					id="exampleInputPassword1"
-				/>
-			</div>
-			<div class="mb-3 form-check">
-				<input
-					type="checkbox"
-					class="form-check-input"
-					id="exampleCheck1"
-				/>
-				<label class="form-check-label" for="exampleCheck1"
-					>Check me out</label
-				>
-			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
-		</form>
+				<div class="mb-3">
+					<label class="form-label"
+						>Password</label
+					>
+					<input
+						type="password"
+						class="form-control"
+						placeholder="Your Password..."
+						name = "password"
+					/>
+				</div>
+				<div class="mb-3 form-check">
+					<input
+						type="checkbox"
+						class="form-check-input"
+						id="exampleCheck1"
+					/>
+					<label class="form-check-label" for="exampleCheck1"
+						>Check me out</label
+					>
+				</div>
+				<button type="submit" class="btn btn-primary">Sign In</button>
+				<a href="register.php" class="btn btn-secondary">Sign Up</a>
+			</form>
+		</div>
 	</body>
 </html>
