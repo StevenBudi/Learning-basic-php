@@ -15,7 +15,7 @@
 	<body>
 		<div class="container container-fluid">
 			<h1 class="text-xxl-center">Login Page Mahasiswa</h1>
-			<form method="POST" action="auth.php" class="toast-body">
+			<form method="POST" class="toast-body">
 				<div class="mb-3">
 					<label class="form-label"
 						>Username</label
@@ -59,34 +59,36 @@
 						>Check me out</label
 					>
 				</div>
-				<button type="submit">Register</button>
+				<button type="submit" name="submit">Register</button>
 			</form>
 		</div>
 	</body>
 </html>
 <?php
-    include("./dbconfig.php");
-    $nama = $_POST["username"];
-    $password = md5($_POST["password"]);
-    $nim = $_POST["nim"];
+    if(isset($_POST['submit'])){
+		include("./dbconfig.php");
+		$nama = $_POST["username"];
+		$password = md5($_POST["password"]);
+		$nim = $_POST["nim"];
 
-    $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
+		$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 
-    if($conn){
-        echo"<script>console.log('Koneksi Sukses');</script>";
-    }
-    else{
-        die("Koneksi Gagal : ".mysqli_connect_errno());
-    }
-	
-	$query = "INSERT INTO mahasiswa (username, password, nim)
-	VALUES ('$nama', '$password', '$nim')";
-	if (mysqli_query($conn, $query)){
-		echo"<script>console.log('Input Data Berhasil');</script>";
-	}else{
-		die("<script>console.log('Input Data Gagal : ' + mysqli_error())</script>");
+		if($conn){
+			echo"<script>console.log('Koneksi Sukses');</script>";
+		}
+		else{
+			die("Koneksi Gagal : ".mysqli_connect_errno());
+		}
+		
+		$query = "INSERT INTO mahasiswa (username, password, nim)
+		VALUES ('$nama', '$password', '$nim')";
+		if (mysqli_query($conn, $query)){
+			echo"<script>console.log('Input Data Berhasil');</script>";
+		}else{
+			die("<script>console.log('Input Data Gagal : ' + mysqli_error())</script>");
+		}
+		
+		mysqli_close($conn);
+		header("Location:form.html");
 	}
-	
-	mysqli_close($conn);
-	header("Location:form.html");
 ?>
