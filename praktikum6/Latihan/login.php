@@ -4,9 +4,16 @@
     headerDecor();
     $expire = time()+24*3600;
 
-    $users = array(
-        array("jono", "Jono Maryono" ,"1234")
-    );
+    $namafile = "db.txt";
+    $myfile = fopen($namafile, "r") or die("Error Occured");
+    $users = array();
+    while(!feof($myfile)){
+        $user =array(explode("|", fgets($myfile)));
+        array_push($users, $user);
+    }
+
+    fclose($myfile);
+
     if(isset($_POST['submit'])){
         foreach ($users as $profile) {
             if ($profile[0] == $_POST['username'] && $profile[2] == $_POST['password']){
@@ -20,8 +27,11 @@
         }
         echo("<script>alert('Login Gagal, check kembali password dan email anda')</script>");
         
+        
     }
-
+    if (isset($_COOKIE["active"])){
+        echo("<script>window.location.href=('game.php')</script>");
+    }
     
     else{
 ?>    
