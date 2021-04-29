@@ -22,27 +22,8 @@ if (isset($_COOKIE['login'])) {
         $_SESSION['nyawa'] = 5;
         $_SESSION['score'] = 0;
     } else {
-    ?>
+?>
         <div class="container container-fluid">
-            <?php
-            echo ("<h4>
-                    Hello {$_COOKIE['player']}, tetap semangat ya… you can do the best!!
-                    <br/>
-                    Lives: {$_SESSION['nyawa']} | Score: {$_SESSION['score']}
-                    </h4>
-                    <hr/>
-                    ");
-
-            echo ("<span>Berapakah ");
-            echo ("{$_SESSION['bil1']} + {$_SESSION['bil2']} = ");
-            echo ("</span>");
-            ?>
-            <form method="post" class="">
-                <input type="number" name='jawaban' class="form-control">
-                <br>
-                <button type="submit" name='jawab' class="btn btn-primary">Jawab</button>
-            </form>
-
             <?php
             if (isset($_POST['jawab'])) {
                 if (intval($_POST['jawaban']) == $jml) {
@@ -63,6 +44,25 @@ if (isset($_COOKIE['login'])) {
                 $_SESSION['bil2'] = rand(0, 20);
             ?>
                 <a href="dashboard.php">Soal Selanjutnya</a>
+            <?php
+            } else {
+                echo ("<h4>
+                        Hello {$_COOKIE['player']}, tetap semangat ya… you can do the best!!
+                        <br/>
+                        Lives: {$_SESSION['nyawa']} | Score: {$_SESSION['score']}
+                        </h4>
+                        <hr/>
+                        ");
+
+                echo ("<span>Berapakah ");
+                echo ("{$_SESSION['bil1']} + {$_SESSION['bil2']} = ");
+                echo ("</span>");
+            ?>
+                <form method="post" class="">
+                    <input type="number" name='jawaban' class="form-control">
+                    <br>
+                    <button type="submit" name='jawab' class="btn btn-primary">Jawab</button>
+                </form>
         </div>
 <?php
             }
