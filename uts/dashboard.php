@@ -6,10 +6,14 @@ if (isset($_COOKIE['login'])) {
     $jml = $_SESSION['bil1'] + $_SESSION['bil2'];
     if ($_SESSION['nyawa']  == 0) {
         echo
-        "Hello, {$_COOKIE['player']} Sayang permainan sudah selesai. Semoga kali lain bisa lebih baik.
-            Score Anda : {$_SESSION['score']}";
+        "<div class='container container-fluid'>
+            <h1>
+                Hello, {$_COOKIE['player']} Sayang permainan sudah selesai. Semoga kali lain bisa lebih baik.
+                Score Anda : {$_SESSION['score']}
+            </h1>";
 ?>
-        <a href="dashboard.php">Main Lagi</a>
+            <a href="dashboard.php">Main Lagi</a>
+        </div>
     <?php
         $_SESSION['bil1'] = rand(0, 20);
         $_SESSION['bil2'] = rand(0, 20);
@@ -31,9 +35,10 @@ if (isset($_COOKIE['login'])) {
             echo ("{$_SESSION['bil1']} + {$_SESSION['bil2']} = ");
             echo ("</span>");
             ?>
-            <form method="post">
-                <input type="text" name='jawaban'>
-                <button type="submit" name='jawab'>Jawab</button>
+            <form method="post" class="">
+                <input type="number" name='jawaban' class="form-control">
+                <br>
+                <button type="submit" name='jawab' class="btn btn-primary">Jawab</button>
             </form>
 
             <?php
