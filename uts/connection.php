@@ -7,12 +7,13 @@
             $err_msg = mysqli_connect_error();
             die("<script>console.log('Koneksi Gagal : '.$err_msg);</script>");
         }
-        $query = "INSERT INTO game (Player, Score)
+        $query = "INSERT INTO highscore (Player, Score)
             VALUES ('$NAMA', '$SCORE')";
         if (mysqli_query($conn, $query)){
             echo"<script>console.log('Input Data Berhasil');</script>";
         }else{
-            die("<script>console.log('Input Data Gagal : ' + mysqli_error())</script>");
+            $err = mysqli_error($conn);
+            die("<script>console.log('Input Data Gagal : '.{$err});</script>");
         }
     
         mysqli_close($conn);
@@ -27,11 +28,12 @@
             die("<script>console.log('Koneksi Gagal : '.$err_msg);</script>");
         }
 
-        $query = "SELECT * FROM game ORDER BY Score LIMIT 10";
+        $query = "SELECT * FROM highscore ORDER BY Score LIMIT 10";
         $search = mysqli_query($conn, $query);
         if (mysqli_num_rows($search) > 0) {
             while ($row = mysqli_fetch_assoc($search)) {
-                var_dump($row);
+                echo($row['Player']);
+                echo($row['Score']);
             }
         }else{
             echo("Data tidak ditemukan");

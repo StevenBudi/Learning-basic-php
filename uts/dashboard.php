@@ -1,23 +1,24 @@
 <?php
 session_start();
 include('./header.php');
+include('./dbconfig.php');
+include('./connection.php');
 headerDecor();
 if (isset($_COOKIE['login'])) {
     $jml = $_SESSION['bil1'] + $_SESSION['bil2'];
-    if ($_SESSION['nyawa']  == 0) {
+    if ($_SESSION['nyawa'] < 1) {
         echo
         "<div class='container container-fluid'>
             <h1>
                 Hello, {$_COOKIE['player']} Sayang permainan sudah selesai. Semoga kali lain bisa lebih baik.
                 Score Anda : {$_SESSION['score']}
-            </h1>";
-?>
-            <a href="dashboard.php">Main Lagi</a>
-        </div>
-    <?php
+            </h1>
+            <a href='dashboard.php'>Main Lagi</a>
+            </div>";
+        insertScore($dbhost, $dbuser, $dbpass, $dbname, $port, $_COOKIE['player'], $_SESSION['score']);
         $_SESSION['bil1'] = rand(0, 20);
         $_SESSION['bil2'] = rand(0, 20);
-        $_SESSION['nyawa'] = 3;
+        $_SESSION['nyawa'] = 5;
         $_SESSION['score'] = 0;
     } else {
     ?>
@@ -44,12 +45,13 @@ if (isset($_COOKIE['login'])) {
             <?php
             if (isset($_POST['jawab'])) {
                 if (intval($_POST['jawaban']) == $jml) {
-                    $_SESSION['score'] += 1;
+                    $_SESSION['score'] += 10;
                     echo ("<strong>
                         Hello {$_COOKIE['player']}, Selamat jawaban Anda benar…
                         <br/>Lives: {$_SESSION['nyawa']} | Score: {$_SESSION['score']}
                         </strong>");
                 } else {
+                    $_SESSION['score'] -= 2;
                     $_SESSION['nyawa'] -= 1;
                     echo ("<strong>
                         Hello {$_COOKIE['player']}, sayang jawaban Anda salah… tetap semangat ya !!!
