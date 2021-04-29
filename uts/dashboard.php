@@ -2,7 +2,7 @@
     if(isset($_COOKIE['login'])){
 
     }else{
-        header("Location:login.html");
+        header("Location:login.php");
     }
 
 ?>
