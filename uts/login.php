@@ -2,9 +2,8 @@
     include('./header.php');
     headerDecor();
     if(isset($_COOKIE['login'])){
-        $name = $_COOKIE['player'];
         echo("<div class='container container-fluid'>
-            <h1>Hallo $name , selamat datang kembali di permainan ini!!!</h1>
+            <h1>Hallo {$_COOKIE['player']} , selamat datang kembali di permainan ini!!!</h1>
             <a href='dashboard.php' class='btn btn-primary'>Start Game</a>
             <p>Bukan Anda ? <a href='reset.php'>Klik Disini</a></p>
         </div>");

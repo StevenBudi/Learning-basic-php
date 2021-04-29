@@ -4,13 +4,10 @@
     headerDecor();
     if(isset($_COOKIE['login'])){
         $jml = $_SESSION['bil1'] + $_SESSION['bil2'];
-        $player = $_COOKIE['username'];
-        $score = $_SESSION['score'];
-        $nyawa = $_SESSION['nyawa'];
         if ($_SESSION['nyawa']  == 0){
             echo
-            "Hello, $player… Sayang permainan sudah selesai. Semoga kali lain bisa lebih baik.
-            Score Anda : $score";
+            "Hello, {$_COOKIE['player']} Sayang permainan sudah selesai. Semoga kali lain bisa lebih baik.
+            Score Anda : {$_SESSION['score']}";
 ?>
             <a href="dashboard.php">Main Lagi</a>
 <?php
@@ -22,32 +19,38 @@
 ?>    
             <div class="container container-fluid">
 <?php   
-                echo('<h1>"Hello $player, tetap semangat ya… you can do the best!!
-                Lives: $nyawa | Score: $score"</h1>');
+                echo("<h2>
+                    Hello {$_COOKIE['player']}, tetap semangat ya… you can do the best!!
+                    <br/>
+                    Lives: {$_SESSION['nyawa']} | Score: {$_SESSION['score']}
+                    </h2>
+                    ");
+
                 echo("<span>Berapakah ");
-                echo($_SESSION['bil1']. "+".$_SESSION['bil2']." = ");
+                echo("{$_SESSION['bil1']} + {$_SESSION['bil2']} = ");
                 echo("</span>");
 ?>
                 <form method="post">
                     <input type="text" name='jawaban'>
                     <button type="submit" name='jawab'>Jawab</button>
                 </form>
-            </div>
+            
 <?php
             if(isset($_POST['jawab'])){
                 if(intval($_POST['jawaban']) == $jml){
                     $_SESSION['score'] += 1;
-                    echo("Hello $player, Selamat jawaban Anda benar…
-                    Lives: $nyawa | Score: $score");
+                    echo("Hello {$_COOKIE['player']}, Selamat jawaban Anda benar…
+                    <br/>Lives: {$_SESSION['nyawa']} | Score: {$_SESSION['score']}");
                 }else{
                     $_SESSION['nyawa'] -= 1;
-                    echo("Hello $player, sayang jawaban Anda salah… tetap semangat ya !!!
-                    Lives: $nyawa | Score: $score");
+                    echo("Hello {$_COOKIE['player']}, sayang jawaban Anda salah… tetap semangat ya !!!
+                    <br/>Lives: {$_SESSION['nyawa']} | Score: {$_SESSION['score']}");
                 }
                 $_SESSION['bil1'] = rand(0, 20);
                 $_SESSION['bil2'] = rand(0, 20);
 ?>
                 <a href="dashboard.php">Soal Selanjutnya</a>
+                </div>
 <?php
             }  
         }
