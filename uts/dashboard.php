@@ -43,7 +43,7 @@ if (isset($_COOKIE['login'])) {
                 $_SESSION['bil1'] = rand(0, 20);
                 $_SESSION['bil2'] = rand(0, 20);
             ?>
-                <a href="dashboard.php">Soal Selanjutnya</a>
+                <a href="dashboard.php" class="btn btn-primary">Soal Selanjutnya</a>
             <?php
             } else {
                 echo ("<h4>
