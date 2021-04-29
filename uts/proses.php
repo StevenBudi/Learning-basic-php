@@ -5,7 +5,7 @@
         setcookie('player', $_POST['username'], time() + 3600*24*365.25*1000);
         $_SESSION['bil1'] = rand(0, 20);
         $_SESSION['bil2'] = rand(0, 20);
-        $_SESSION['nyawa'] = 0;
+        $_SESSION['nyawa'] = 3;
         $_SESSION['score'] = 0;
         header('Location:dashboard.php');
     }else{
