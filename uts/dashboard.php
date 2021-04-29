@@ -13,7 +13,8 @@ if (isset($_COOKIE['login'])) {
                 Hello, {$_COOKIE['player']} Sayang permainan sudah selesai. Semoga kali lain bisa lebih baik.
                 Score Anda : {$_SESSION['score']}
             </h1>
-            <a href='dashboard.php'>Main Lagi</a>
+            <a href='dashboard.php' class='btn btn-warning'>Main Lagi</a>
+            <a href='ranking.php' target='_blank' rel='noopener noreferrer' class='btn btn-secondary'>Hall of Fame</a>
             </div>";
         insertScore($dbhost, $dbuser, $dbpass, $dbname, $port, $_COOKIE['player'], $_SESSION['score']);
         $_SESSION['bil1'] = rand(0, 20);
