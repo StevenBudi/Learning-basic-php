@@ -26,7 +26,7 @@
                     <td><input type="email" name="email" class="form-control form-control-lg" placeholder="Masukkan nama email anda ...."></td>
                 </tr>
             </table>
-            <button type="submit" class="btn btn-primary" style="position: relative; left:93%">Submit</button>
+            <button type="submit" class="btn btn-primary" style="position: relative; left:93%" name="submit">Submit</button>
         
         </form>
     </div>

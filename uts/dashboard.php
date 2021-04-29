@@ -2,7 +2,9 @@
     if(isset($_COOKIE['login'])){
 
     }else{
-        header("Location:login.php");
+        echo ('<script>alert("Silahkan Login Terlebih Dahulu");
+            window.location.href=(\'login.php\')
+        </script>');
     }
 
 ?>
