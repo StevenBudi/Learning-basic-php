@@ -26,3 +26,16 @@ Website ini akan memberikan pertanyaan kepada pemain mengenai penjumlahan. Sebel
 ## Link Website : http://crosner.infinityfreeapp.com/.
 
 *Terkandang ketika website diklik url akan berubah menjadi http://crosner.infinityfreeapp.com/i=1? silahkan hapus i=1? dan refresh halaman.*
+
+# Table of Contents Guide
+|Filename|Summary|
+|--------|-------|
+|[img](img)|Website's Images|
+|[login.php](login.php)|Login form for player or Welcome page if player already logged in|
+|[proses.php](proses.php)|Proccess Cookies and Sessions for player|
+|[header.php](header.php)|Website's header for every page|
+|[reset.php](reset.php)|Reset player's cookies|
+|[dashboard.php](dashboard.php)|Game/Quiz Page|
+|[dbconfig.php](dbconfig.php)|Database connection|
+|[connection.php](connection.php)|Function for fetching data from database|
+|[rangking.php](ranking.php)|Hall of Fame|
