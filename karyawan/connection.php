@@ -15,7 +15,7 @@
         $search = mysqli_query($conn, $query);
         if (mysqli_num_rows($search) > 0){
 ?>
-            <table>
+            <table class="table table-bordered table-striped">
                 <tr>
                     <th>Id Pegawai</th>
                     <th>Nama</th>
@@ -35,6 +35,8 @@
             
             </table>
 <?php        
+        }else{
+                echo("Data Not Found");
         }
     }
 
