@@ -15,14 +15,13 @@
         $search = mysqli_query($conn, $query);
         if (mysqli_num_rows($search) > 0){
 ?>
-            <div>
-                <table>
-                    <tr>
-                        <th>Id Pegawai</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Jenis Kelamin</th>  
-                    </tr>
+            <table>
+                <tr>
+                    <th>Id Pegawai</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Jenis Kelamin</th>  
+                </tr>
 <?php
             while($row = mysqli_fetch_assoc($search)){
                 echo("<tr>
@@ -34,8 +33,7 @@
             }
 ?>
             
-                </table>
-            </div>
+            </table>
 <?php        
         }
     }
