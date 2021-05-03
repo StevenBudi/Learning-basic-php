@@ -3,18 +3,18 @@
         $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 
         if (!$conn){
-?>
+        ?>
         <script>console.log('Connection Error');</script>
-<?php
+        <?php
         }else{
-?>
+        ?>
         <script>console.log('Connection Success')</script>
-<?php
+        <?php
         }
         $query = "SELECT * FROM $dbtable ORDER BY `id_karyawan` DESC";
         $search = mysqli_query($conn, $query);
         if (mysqli_num_rows($search) > 0){
-?>
+        ?>
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>Id Pegawai</th>
@@ -22,7 +22,7 @@
                     <th>Email</th>
                     <th>Jenis Kelamin</th>  
                 </tr>
-<?php
+        <?php
             while($row = mysqli_fetch_assoc($search)){
                 echo("<tr>
                         <td>{$row['id_karyawan']}</td>
@@ -31,10 +31,10 @@
                         <td>{$row['jenis_kelamin']}</td>
                     </tr>");
             }
-?>
+        ?>
             
             </table>
-<?php        
+        <?php        
         }else{
                 echo("Data Not Found");
         }
