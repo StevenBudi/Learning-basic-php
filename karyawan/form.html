@@ -26,6 +26,10 @@
         input:focus::placeholder, textarea:focus::placeholder{
             color: rgb(100, 100, 100) !important;
         }
+        a{
+            text-shadow: none !important;
+            float: right;
+        }
     </style>
 </head>
 <body style="background-image: url(./asset//bg.jpg);background-position: center;background-repeat: no-repeat;background-size: cover;margin: 0;padding: 0;width: 100%;height: 100%;box-sizing: border-box;">
@@ -64,7 +68,11 @@
                     <td><textarea name="alamat" cols="50" rows="5" class="form-control" placeholder="Alamat Anda"></textarea></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" name="daftar" class="btn btn-primary">Daftar</button></td>
+                    <td></td>
+                    <td>
+                        <button type="submit" name="daftar" class="btn btn-primary">Daftar</button>
+                        <a href="./index.php" class="btn btn-danger">Cancel</a>
+                    </td>
                 </tr>
             </table>
         </form>

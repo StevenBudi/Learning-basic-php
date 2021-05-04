@@ -12,7 +12,7 @@
         <script>console.log('Connection Success')</script>
         <?php
         }
-        $query = "SELECT * FROM $dbtable ORDER BY `id_karyawan` DESC";
+        $query = "SELECT * FROM $dbtable ORDER BY `id_karyawan` ASC";
         $search = mysqli_query($conn, $query);
         if (mysqli_num_rows($search) > 0){
         ?>
@@ -88,7 +88,7 @@
         ?>
             <script>console.log("Insert Data Failed")</script>
         <?php
-            die("Insert Failed ".mysqli_error($conn));
+            die("Insert Failed ".mysqli_error($conn).mysqli_errno($conn));
         }
         mysqli_close($conn);
     }
