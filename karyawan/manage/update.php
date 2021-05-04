@@ -12,10 +12,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Update Data Pegawai <?php echo $update?></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <style>
+            td{
+                font-weight: bolder;
+                font-size: larger;
+                color: rgb(255, 255, 255);
+                text-shadow: 2px 2px black;
+            }
+            input, textarea{
+                background-color: white;
+                color: black;
+                
+            }
+            input:focus, textarea:focus{
+                background-color: rgb(46, 46, 46) !important;
+                color: white !important;
+                
+            }
+            input:focus::placeholder, textarea:focus::placeholder{
+                color: rgb(100, 100, 100) !important;
+            }
+            a{
+                text-shadow: none !important;
+                float: right;
+            }
+            body{
+                background-color: black;
+            }
+            h1{
+                display: flex;
+                color: white;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 3%;
+            }
+        </style>
     </head>
     <body>
         <div class="container container-fluid">
-            <form method="post">
+            <h1>Update Data Karyawan</h1>
+            <form method="post" class="form">
                 <table class="table table-borderless">
                     <tr>
                         <td>Nama</td>
@@ -51,8 +88,8 @@
                     <tr>
                         <td></td>
                         <td>
-                            <button type="submit" name="daftar" class="btn btn-primary">Daftar</button>
-                            <a href="./index.php" class="btn btn-danger">Cancel</a>
+                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                            <a href=".." class="btn btn-warning">Cancel</a>
                         </td>
                     </tr>
                 </table>
@@ -60,8 +97,10 @@
         </div>
 
     <?php
-    $update_data = [];
-    updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $update_data);
+    if(isset($_POST['update'])){
+        $update_data = [];
+        updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $update_data);
+    }
     ?>
     </body>
     </html>
