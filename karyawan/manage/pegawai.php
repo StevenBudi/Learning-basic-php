@@ -10,8 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Data Pegawai <?php echo $_GET['id'];?></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <style>
+            .bg-dark{
+                background-color: #212529;
+                opacity: 70%;
+            }
+        </style>
     </head>
-    <body>
+    <body style="background-image: url(./asset/pgw.jpg);background-position: center;background-repeat: no-repeat;">
         
     
     <?php
