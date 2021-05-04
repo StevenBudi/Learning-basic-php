@@ -152,6 +152,14 @@
         <script>console.log('Connection Success')</script>
         <?php
         }
+        $query = "DELETE FROM $dbtable WHERE {$dbtable}.id_karyawan = '$data'";
+        if(mysqli_query($conn, $query)){
+            echo("delete".$data);
+            header("Location: ..");
+        }
+        else{
+            echo("Error : ".mysqli_error($conn));
+        }
         mysqli_close($conn);
     }
 
