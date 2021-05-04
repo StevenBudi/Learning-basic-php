@@ -66,46 +66,10 @@
         $query = "SELECT * FROM $dbtable WHERE id_karyawan = $data";
         $search = mysqli_query($conn, $query);
         if(mysqli_num_rows($search) > 0){
-            $karyawan = mysqli_fetch_assoc($search);
-        ?>
-            <div class="container container-fluid" style="display: flex;justify-content: center;align-items: center;">
-                <div class="card text-white bg-dark mb-3 mt-5" style="width:75%; height: 50%;">
-                    <div class="card-body">
-                        <h1 class="card-title">Data Karyawan - <?php echo $karyawan['id_karyawan'];?></h1>
-                        <div class="card-text">
-                            <table style="color: white;" class="table table-borderless">
-                                <tr>
-                                    <td>Nama</td>
-                                    <td><?php echo $karyawan['nama'];  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td><?php echo $karyawan['email'];  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>No. Telepon</td>
-                                    <td><?php echo $karyawan['telepon'];  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td><?php echo $karyawan['alamat'];  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis Kelamin</td>
-                                    <td><?php echo $karyawan['jenis_kelamin'];  ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Tempat, Tanggal Lahir</td>
-                                    <td><?php echo $karyawan['tempat_lahir'].", ".$karyawan['tanggal_lahir'];  ?></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php
+            return mysqli_fetch_assoc($search);
+        
         }else{
-            echo("Data Not Found");
+            return "Data Not Found";
         }
         mysqli_close($conn);
     }
