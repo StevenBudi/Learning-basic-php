@@ -29,12 +29,12 @@
             while($row = mysqli_fetch_assoc($search)){
                 echo("<tr>
                         <td>{$row['id_karyawan']}</td>
-                        <td><a href='./backdoor/pegawai.php?id={$row['id_karyawan']}'>{$row['nama']}</a></td>
+                        <td><a href='./manage/pegawai.php?id={$row['id_karyawan']}'>{$row['nama']}</a></td>
                         <td>{$row['email']}</td>
                         <td>{$row['jenis_kelamin']}</td>
                         <td>
-                            <a href='./backdoor/update.php?id={$row['id_karyawan']}' class='btn btn-success'>Update</a>
-                            <a href='./backdoor/delete.php?id={$row['id_karyawan']}' class='btn btn-danger'>Delete</a>
+                            <a href='./manage/update.php?id={$row['id_karyawan']}' class='btn btn-success'>Update</a>
+                            <a href='./manage/delete.php?id={$row['id_karyawan']}' class='btn btn-danger'>Delete</a>
                         </td>
                     </tr>");
             }

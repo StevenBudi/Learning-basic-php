@@ -1,6 +1,6 @@
 <?php
-    include_once("./backdoor/dbconfig.php");
-    include_once("./backdoor/connection.php");
+    include_once("./manage/connection.php");
+    include_once("./manage/connection.php");
 ?>
 
 <!DOCTYPE html>
