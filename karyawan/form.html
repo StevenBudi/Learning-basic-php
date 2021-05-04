@@ -13,17 +13,17 @@
             color: rgb(255, 255, 255);
             text-shadow: 2px 2px black;
         }
-        input{
+        input, textarea{
             background-color: white;
             color: black;
             
         }
-        input:focus{
+        input:focus, textarea:focus{
             background-color: rgb(46, 46, 46) !important;
             color: white !important;
             
         }
-        input:focus::placeholder{
+        input:focus::placeholder, textarea:focus::placeholder{
             color: rgb(100, 100, 100) !important;
         }
     </style>
@@ -58,6 +58,10 @@
                 <tr>
                     <td>Tanggal Lahir</td>
                     <td><input type="date" name="tanggal" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td><textarea name="alamat" cols="50" rows="5" class="form-control" placeholder="Alamat Anda"></textarea></td>
                 </tr>
                 <tr>
                     <td><button type="submit" name="daftar" class="btn btn-primary">Daftar</button></td>
