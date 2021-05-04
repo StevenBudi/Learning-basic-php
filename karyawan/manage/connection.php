@@ -67,7 +67,6 @@
         $search = mysqli_query($conn, $query);
         if(mysqli_num_rows($search) > 0){
             $karyawan = mysqli_fetch_assoc($search);
-            var_dump($karyawan);
         ?>
             <div class="container container-fluid" style="display: flex;justify-content: center;align-items: center;">
                 <div class="card text-white bg-dark mb-3 mt-5" style="width:75%; height: 50%;">

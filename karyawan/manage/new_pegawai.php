@@ -6,7 +6,7 @@
         $data = [
             "nama" => $_POST['nama'],
             "email" => $_POST['email'],
-            "telp" => $_POST['telepon'] || "",
+            "telp" => $_POST['telepon'],
             "gender" => $_POST['gender'],
             "tempat" => $_POST['tempat'],
             "tanggal" => $_POST['tanggal'],
