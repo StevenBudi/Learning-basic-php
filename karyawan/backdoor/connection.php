@@ -30,10 +30,14 @@
                         <td><a href='pegawai.php?id={$row['id_karyawan']}'>{$row['nama']}</a></td>
                         <td>{$row['email']}</td>
                         <td>{$row['jenis_kelamin']}</td>
+                        <td>
+                            <a href='./update.php' class='btn btn-success'>Update</a>
+                            <a href='./delete.php' class='btn btn-danger'>Delete</a>
+                        <td>
                     </tr>");
             }
-        ?>
-            
+        ?>  
+
             </table>
         <?php        
         }else{
@@ -63,13 +67,26 @@
 
         if (!$conn){
             die("Connection Error".mysqli_connect_error());
-        ?>
+        ?>  
         <script>console.log('Connection Error');</script>
         <?php
         }else{
         ?>
         <script>console.log('Connection Success')</script>
         <?php
+        }
+        $query = "INSERT INTO $dbtable (nama, email, telepon, alamat, jenis_kelamin, tempat_lahir, tanggal_lahir) 
+        VALUES ('{$data['nama']}','{$data['email']}', '{$data['telp']}', '{$data['alamat']}', '{$data['gender']}', '{$data['tempat']}', '{$data['tanggal']}')";
+        if(mysqli_query($conn, $query)){
+        ?>
+            <script>console.log("Insert Data Success")</script>
+        <?php
+        
+        }else{
+        ?>
+            <script>console.log("Insert Data Failed")</script>
+        <?php
+            die("Insert Failed ".mysqli_error($conn));
         }
         mysqli_close($conn);
     }
