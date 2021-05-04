@@ -16,12 +16,14 @@
         $search = mysqli_query($conn, $query);
         if (mysqli_num_rows($search) > 0){
         ?>
+            <h1 style="display: flex;text-align:center;justify-content:center;" class="mb-3">Data Pegawai</h1>
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>Id Pegawai</th>
                     <th>Nama</th>
                     <th>Email</th>
-                    <th>Jenis Kelamin</th>  
+                    <th>Jenis Kelamin</th>
+                    <th>Change</th>  
                 </tr>
         <?php
             while($row = mysqli_fetch_assoc($search)){
@@ -31,9 +33,9 @@
                         <td>{$row['email']}</td>
                         <td>{$row['jenis_kelamin']}</td>
                         <td>
-                            <a href='./update.php' class='btn btn-success'>Update</a>
-                            <a href='./delete.php' class='btn btn-danger'>Delete</a>
-                        <td>
+                            <a href='./backdoor/update.php' class='btn btn-success'>Update</a>
+                            <a href='./backdoor/delete.php' class='btn btn-danger'>Delete</a>
+                        </td>
                     </tr>");
             }
         ?>  
