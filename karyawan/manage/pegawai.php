@@ -16,7 +16,7 @@
             }
         </style>
     </head>
-    <body style="background-image: url(../asset//pgw.jpg);background-position: center;background-repeat: no-repeat;background-size: cover;">
+    <body style="background-image: url(../asset//pgw.jpg);background-position: center;background-repeat: no-repeat;background-size: cover;width:100%;height: 100%;box-sizing: border-box;">
         
     
     <?php
