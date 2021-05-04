@@ -1,6 +1,6 @@
 <?php
     include_once("./manage/connection.php");
-    include_once("./manage/connection.php");
+    include_once("./manage/dbconfig.php");
 ?>
 
 <!DOCTYPE html>
