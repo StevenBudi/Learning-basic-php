@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     include_once('./connection.php');
     include_once('./dbconfig.php');
     $update = $_GET['id'];
@@ -95,13 +96,19 @@
                 </table>
             </form>
         </div>
-
     <?php
     if(isset($_POST['update'])){
-        $update_data = [];
-        updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $update_data);
+        $update_data = [
+            "nama" => $_POST['nama'],
+            "email" => $_POST['email'],
+            "telepon" => $_POST['telepon'],
+            "gender" => $_POST['gender'],
+            "tempat" => $_POST['tempat'],
+            "lahir" => $_POST['tanggal'],
+            "alamat" => $_POST['alamat']
+        ];
+        updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $update_data, $update);
     }
     ?>
     </body>
     </html>
-?>

@@ -127,7 +127,7 @@
         mysqli_close($conn);
     }
 
-    function updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
+    function updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data, $id){
         $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 
         if (!$conn){
@@ -139,6 +139,18 @@
         ?>
         <script>console.log('Connection Success')</script>
         <?php
+        }
+        $query = "UPDATE $dbtable SET nama='{$data['nama']}', 
+        email='{$data['email']}', 
+        telepon='{$data['telepon']}', 
+        alamat='{$data['alamat']}', 
+        jenis_kelamin='{$data['gender']}',
+        tempat_lahir='{$data['tempat']}',
+        tanggal_lahir='{$data['lahir']}' WHERE {$dbtable}.id_karyawan=$id";
+        if(!mysqli_query($conn, $query)){
+            die("Update Data Error  : ".mysqli_error($conn));
+        }else{
+            header("Location: ..");
         }
         mysqli_close($conn);
     }
