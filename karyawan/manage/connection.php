@@ -19,16 +19,17 @@
             <h1 style="display: flex;text-align:center;justify-content:center;" class="mb-3">Data Pegawai</h1>
             <table class="table table-bordered table-striped">
                 <tr>
-                    <th>Id Pegawai</th>
+                    <th>No</th>
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Jenis Kelamin</th>
                     <th>Change</th>  
                 </tr>
         <?php
+            $index = 1;
             while($row = mysqli_fetch_assoc($search)){
                 echo("<tr>
-                        <td>{$row['id_karyawan']}</td>
+                        <td>{$index}</td>
                         <td><a href='./manage/pegawai.php?id={$row['id_karyawan']}'>{$row['nama']}</a></td>
                         <td>{$row['email']}</td>
                         <td>{$row['jenis_kelamin']}</td>
@@ -37,6 +38,7 @@
                             <a href='./manage/delete.php?id={$row['id_karyawan']}' class='btn btn-danger'>Delete</a>
                         </td>
                     </tr>");
+                $index++;
             }
         ?>  
 
