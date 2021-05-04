@@ -39,6 +39,7 @@
         }else{
                 echo("Data Not Found");
         }
+        mysqli_close($conn);
     }
 
     function getData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
@@ -54,6 +55,7 @@
         <script>console.log('Connection Success')</script>
         <?php
         }
+        mysqli_close($conn);
     }
 
     function postData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
@@ -69,6 +71,7 @@
         <script>console.log('Connection Success')</script>
         <?php
         }
+        mysqli_close($conn);
     }
 
     function deleteData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
@@ -84,6 +87,7 @@
         <script>console.log('Connection Success')</script>
         <?php
         }
+        mysqli_close($conn);
     }
 
     function updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
@@ -99,6 +103,7 @@
         <script>console.log('Connection Success')</script>
         <?php
         }
+        mysqli_close($conn);
     }
 
 ?>
