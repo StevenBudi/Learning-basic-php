@@ -3,6 +3,7 @@
         $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 
         if (!$conn){
+            die("Connection Error".mysqli_connect_error());
         ?>
         <script>console.log('Connection Error');</script>
         <?php
@@ -37,6 +38,66 @@
         <?php        
         }else{
                 echo("Data Not Found");
+        }
+    }
+
+    function getData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
+        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
+
+        if (!$conn){
+            die("Connection Error".mysqli_connect_error());
+        ?>
+        <script>console.log('Connection Error');</script>
+        <?php
+        }else{
+        ?>
+        <script>console.log('Connection Success')</script>
+        <?php
+        }
+    }
+
+    function postData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
+        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
+
+        if (!$conn){
+            die("Connection Error".mysqli_connect_error());
+        ?>
+        <script>console.log('Connection Error');</script>
+        <?php
+        }else{
+        ?>
+        <script>console.log('Connection Success')</script>
+        <?php
+        }
+    }
+
+    function deleteData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
+        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
+
+        if (!$conn){
+            die("Connection Error".mysqli_connect_error());
+        ?>
+        <script>console.log('Connection Error');</script>
+        <?php
+        }else{
+        ?>
+        <script>console.log('Connection Success')</script>
+        <?php
+        }
+    }
+
+    function updateData($dbhost, $dbuser, $dbpass, $dbname, $port, $dbtable, $data){
+        $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
+
+        if (!$conn){
+            die("Connection Error".mysqli_connect_error());
+        ?>
+        <script>console.log('Connection Error');</script>
+        <?php
+        }else{
+        ?>
+        <script>console.log('Connection Success')</script>
+        <?php
         }
     }
 
