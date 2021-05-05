@@ -13,6 +13,7 @@ const includeHTML = () => {
                     if(xhttp.status === 400){element.innerHTML = "Not Working"}
                     else{console.log(xhttp.status + xhttp.statusText + xhttp.responseText)}
                     element.removeAttribute("include")
+                    element.parentNode.replaceChild
                     includeHTML()
                 }
             }
