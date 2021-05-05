@@ -1,12 +1,11 @@
 const includeHTML = () => {
-    const elements = document.getElementsByTagName("*")
+    const elements = document.getElementsByTagName("div")
     for (let index = 0; index < elements.length; index++) {
         const element = elements[index];
         const file = element.getAttribute("include")
         
 
         if (file){
-            console.log("Element Found : " + file)
             const xhttp = new XMLHttpRequest()
             xhttp.onreadystatechange = () => {
                 if (xhttp.readyState === 4){
