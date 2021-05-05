@@ -1,8 +1,8 @@
-const includeHTML = (className : string) => {
+const includeHTML = () => {
     const elements = document.getElementsByTagName("*")
     for (let index = 0; index < elements.length; index++) {
         const element = elements[index];
-        const file = element.getAttribute(className)
+        const file = element.getAttribute("include")
 
         if (file){
             const xhttp = new XMLHttpRequest()
@@ -11,8 +11,8 @@ const includeHTML = (className : string) => {
                     if(this.status === "200" ){element.innerHTML = this.responseText}
                     if(this.status === "400") {element.innerHTML = "Element Not Found"}
                     else{console.log(this.status)}
-                    element.removeAttribute(className)
-                    includeHTML(className)
+                    element.removeAttribute("include")
+                    includeHTML()
                 }
             }
             xhttp.open("GET", file, true)
@@ -21,3 +21,5 @@ const includeHTML = (className : string) => {
         }
     }
 }
+
+includeHTML()

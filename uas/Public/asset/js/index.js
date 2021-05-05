@@ -1,9 +1,9 @@
 var _this = this;
-var includeHTML = function (className) {
+var includeHTML = function () {
     var elements = document.getElementsByTagName("*");
     var _loop_1 = function (index) {
         var element = elements[index];
-        var file = element.getAttribute(className);
+        var file = element.getAttribute("include");
         if (file) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -17,8 +17,8 @@ var includeHTML = function (className) {
                     else {
                         console.log(_this.status);
                     }
-                    element.removeAttribute(className);
-                    includeHTML(className);
+                    element.removeAttribute("include");
+                    includeHTML();
                 }
             };
             xhttp.open("GET", file, true);
@@ -32,4 +32,4 @@ var includeHTML = function (className) {
             return state_1.value;
     }
 };
-
+includeHTML();
