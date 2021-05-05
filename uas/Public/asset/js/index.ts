@@ -3,14 +3,16 @@ const includeHTML = () => {
     for (let index = 0; index < elements.length; index++) {
         const element = elements[index];
         const file = element.getAttribute("include")
+        
 
         if (file){
+            console.log("Element Found : " + file)
             const xhttp = new XMLHttpRequest()
             xhttp.onreadystatechange = () => {
-                if (this.readyState === 4){
-                    if(this.status === "200" ){element.innerHTML = this.responseText}
-                    if(this.status === "400") {element.innerHTML = "Element Not Found"}
-                    else{console.log(this.status)}
+                if (xhttp.readyState === 4){
+                    if(xhttp.statusText == "OK"){element.innerHTML = xhttp.responseText}
+                    if(xhttp.status === 400){element.innerHTML = "Not Working"}
+                    else{console.log(xhttp.status + xhttp.statusText + xhttp.responseText)}
                     element.removeAttribute("include")
                     includeHTML()
                 }
@@ -18,6 +20,8 @@ const includeHTML = () => {
             xhttp.open("GET", file, true)
             xhttp.send()
             return
+        }else{
+            console.log("File Not Found")
         }
     }
 }

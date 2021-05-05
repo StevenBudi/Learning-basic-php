@@ -1,29 +1,32 @@
-var _this = this;
 var includeHTML = function () {
     var elements = document.getElementsByTagName("*");
     var _loop_1 = function (index) {
         var element = elements[index];
         var file = element.getAttribute("include");
         if (file) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (_this.readyState === 4) {
-                    if (_this.status === "200") {
-                        element.innerHTML = _this.responseText;
+            console.log("Element Found : " + file);
+            var xhttp_1 = new XMLHttpRequest();
+            xhttp_1.onreadystatechange = function () {
+                if (xhttp_1.readyState === 4) {
+                    if (xhttp_1.statusText == "OK") {
+                        element.innerHTML = xhttp_1.responseText;
                     }
-                    if (_this.status === "400") {
-                        element.innerHTML = "Element Not Found";
+                    if (xhttp_1.status === 400) {
+                        element.innerHTML = "Not Working";
                     }
                     else {
-                        console.log(_this.status);
+                        console.log(xhttp_1.status + xhttp_1.statusText + xhttp_1.responseText);
                     }
                     element.removeAttribute("include");
                     includeHTML();
                 }
             };
-            xhttp.open("GET", file, true);
-            xhttp.send();
+            xhttp_1.open("GET", file, true);
+            xhttp_1.send();
             return { value: void 0 };
+        }
+        else {
+            console.log("File Not Found");
         }
     };
     for (var index = 0; index < elements.length; index++) {
