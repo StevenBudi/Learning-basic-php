@@ -6,17 +6,6 @@
           box-sizing: border-box;
 }
 
-/*
-Screen Template
-
-        For tablet
-        @media screen and (max-width: 1024px) {
-        }
-        
-        For mobile
-        @media (max-width : 896px) {
-        }
-*/
 .navbar .navigation {
   padding: 0px 4rem;
 }
@@ -37,6 +26,18 @@ Screen Template
   padding-right: 2rem;
 }
 
+.footer {
+  background-color: #274763;
+  color: white;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+}
+
+.footer .footer-container {
+  padding: 0.5rem 0px;
+}
+
 @media screen and (max-width: 1024px) {
   .navbar .navigation {
     padding: 0px 2.5rem;
@@ -46,6 +47,9 @@ Screen Template
 @media (max-width: 896px) {
   .navbar .navigation {
     padding: 0px 1.5rem;
+  }
+  .footer .footer-container {
+    padding: 0.75rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

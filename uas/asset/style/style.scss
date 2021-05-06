@@ -5,18 +5,6 @@
     box-sizing: border-box;
 }
 
-/*
-Screen Template
-
-        For tablet
-        @media screen and (max-width: 1024px) {
-        }
-        
-        For mobile
-        @media (max-width : 896px) {
-        }
-*/
-
 .navbar{
     .navigation{
         padding: 0px 4rem;
@@ -42,6 +30,15 @@ Screen Template
     }
 }
 
+.footer{
+    background-color: rgb(39, 71, 99);
+    color: white;
+    min-height: max-content;
+    .footer-container{
+        padding: 0.5rem 0px;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .navbar{
         .navigation{
@@ -54,6 +51,12 @@ Screen Template
     .navbar{
         .navigation{
             padding: 0px 1.5rem;
+        }
+    }
+    
+    .footer{
+        .footer-container{
+            padding: 0.75rem;
         }
     }
 }
