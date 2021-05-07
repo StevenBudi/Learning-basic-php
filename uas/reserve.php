@@ -45,8 +45,7 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 						<option value="6">6</option>
-						<option value="7">7 - 10</option>
-						<option value="8">11 - 20</option>
+						<option value="10">More than 6 (Max. 20)</option>
 					</select>
 				</td>
 				<td>
@@ -68,10 +67,10 @@
 			<tr>
 				<td><label for="required_field" class="required_field">Time</label></td>
 				<td>
-					<a class="btn btn-warning" href="#" id="toggle-lunch">Lunch</a>
+					<a class="btn btn-warning" href="javascript:void(0);" id="toggle-lunch">Lunch</a>
 				</td>
 				<td>
-					<a class="btn btn-dark" href="#" id="toggle-dinner">Dinner</a>
+					<a class="btn btn-dark" href="javascript:void(0);" id="toggle-dinner">Dinner</a>
 				</td>
 			</tr>
 

@@ -47,7 +47,7 @@ const lunchDisplay = () => {
 const dinnerDisplay = () => {
     document.getElementById("toggle-dinner").addEventListener("click", () => {
         const block = document.getElementById("dinner-block")
-        if(block.getAttribute("style")){
+                if(block.getAttribute("style")){
             block.removeAttribute("style")
             document.getElementById("lunch-block").setAttribute("style", "display:none;")
         }else{
