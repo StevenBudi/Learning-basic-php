@@ -14,3 +14,22 @@ const activeLink = () => {
     }
 }
 activeLink()
+
+
+const expandCol = () => {
+    const expand = document.getElementsByClassName("expand")
+    console.log(window.screen.width)
+    const phoneWidth = 414
+    for (let index = 0; index < expand.length; index++) {
+        if (window.screen.width <= phoneWidth){
+            expand[index].setAttribute("colspan", "2")
+        }else{
+            expand[index].removeAttribute("colspan")
+        }
+        
+    }
+}
+
+expandCol()
+
+window.addEventListener("resize", expandCol)
