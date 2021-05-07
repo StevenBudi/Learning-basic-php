@@ -6,6 +6,7 @@
 }
 
 .navbar{
+    position:sticky;
     .navigation{
         padding: 0px 4rem;
         .navbar-brand{
@@ -27,6 +28,48 @@
             }
         }
     
+    }
+}
+
+.home-container{
+    .reserve-container{
+        margin: 2rem 0;
+        position: relative;
+        background-image: url(./asset/img/dining.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 0 !important;
+        border-radius: .25rem;
+        .reserve-promotion{
+            border-radius: inherit;
+            padding: 4em;
+            background-color: rgba(0, 0, 0, 0.425);
+            background-size: cover;
+            h1{
+                color: white;
+                margin: 2rem 0.5rem;
+            }
+            .reserve-button-container{
+                display: flex;
+                justify-content: center;
+                align-items: center ;
+                .reserve-button{
+                    font-size: 1.5rem;
+                    font-weight: bolder;
+                    padding: 1.5vh 1vw;
+    
+                    &:hover{
+                        color: rgb(54, 54, 54);
+                    }
+    
+                    &:active{
+                        color: black;
+                    }
+                }
+            }
+        }
+        
     }
 }
 

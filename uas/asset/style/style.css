@@ -6,6 +6,11 @@
           box-sizing: border-box;
 }
 
+.navbar {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
 .navbar .navigation {
   padding: 0px 4rem;
 }
@@ -24,6 +29,55 @@
 
 .navbar .navigation .navbar-collapse .navbar-nav .nav-item .nav-link {
   padding-right: 2rem;
+}
+
+.home-container .reserve-container {
+  margin: 2rem 0;
+  position: relative;
+  background-image: url(./asset/img/dining.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 !important;
+  border-radius: .25rem;
+}
+
+.home-container .reserve-container .reserve-promotion {
+  border-radius: inherit;
+  padding: 4em;
+  background-color: rgba(0, 0, 0, 0.425);
+  background-size: cover;
+}
+
+.home-container .reserve-container .reserve-promotion h1 {
+  color: white;
+  margin: 2rem 0.5rem;
+}
+
+.home-container .reserve-container .reserve-promotion .reserve-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-container .reserve-container .reserve-promotion .reserve-button-container .reserve-button {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  padding: 1.5vh 1vw;
+}
+
+.home-container .reserve-container .reserve-promotion .reserve-button-container .reserve-button:hover {
+  color: #363636;
+}
+
+.home-container .reserve-container .reserve-promotion .reserve-button-container .reserve-button:active {
+  color: black;
 }
 
 .footer {

@@ -17,8 +17,13 @@
         
         <h1>Hello World</h1>
 
-        <div class="toReserve">
-            <a href="./reserve.php" class="btn btn-primary reserve-button">Reserve Now</a>
+        <div class="reserve-container container container-fluid">
+            <div class="reserve-promotion">
+                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quis soluta dolores vitae numquam excepturi amet voluptas, reprehenderit quae assumenda. Unde dignissimos praesentium magnam dolores, aperiam totam ab perferendis facilis?</h1>
+                <div class="reserve-button-container">
+                    <a href="./reserve.php" class="btn btn-warning reserve-button">Reserve Now</a>
+                </div>
+            </div>
         </div>
     </div>
     
