@@ -2,9 +2,9 @@
     $dbhost = 'localhost';
     $dbuser = 'root';
     $dbpass = '';
-    $dbname = "";
+    $dbname = "restaurant";
     $port   = 3310;
-    $table  = "";
+    $table_customer  = "reservation_customer";
 
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port, $table)
 ?>
