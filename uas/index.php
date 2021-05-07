@@ -13,9 +13,13 @@
 </head>
 <body>
     <?php include('./asset/template/navbar.php') ?> 
-    <div class="container container-fluid">
+    <div class="container container-fluid home-container">
         
         <h1>Hello World</h1>
+
+        <div class="toReserve">
+            <a href="./reserve.php" class="btn btn-primary reserve-button">Reserve Now</a>
+        </div>
     </div>
     
     <?php include('./asset/template/footer.php')?> 
