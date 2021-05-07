@@ -6,5 +6,5 @@
     $port   = 3310;
     $table_customer  = "reservation_customer";
 
-    $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port, $table)
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port, $table_customer)
 ?>

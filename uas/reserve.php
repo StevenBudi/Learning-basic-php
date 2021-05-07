@@ -40,11 +40,13 @@
 				<td>
 					<select name="people" id="peole" class="form-select">
 						<option selected>Choose People Number</option>
-						<option value="">2</option>
-						<option value="">3</option>
-						<option value="">4</option>
-						<option value="">5</option>
-						<option value="">6</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7 - 10</option>
+						<option value="8">11 - 20</option>
 					</select>
 				</td>
 				<td>
@@ -57,10 +59,38 @@
 				<td><input type="date" name="reser_date" id="reser_date" class="form-control"></td>
 			</tr>
 
-			<tr>
+			<!-- <tr>
 				<td><label for="required_field" class="required_field">Time</label></td>
 				<td><input type="time" name="early_in" id="early_in" class="form-control"></td>
 				<td><input type="time" name="checkout" id="checkout" class="form-control"></td>
+			</tr> -->
+
+			<tr>
+				<td><label for="required_field" class="required_field">Time</label></td>
+				<td>
+					<a class="btn btn-warning" href="#" id="toggle-lunch">Lunch</a>
+				</td>
+				<td>
+					<a class="btn btn-dark" href="#" id="toggle-dinner">Dinner</a>
+				</td>
+			</tr>
+
+			<tr class="lunch-block" id="lunch-block" style="display: none;">
+				<td></td>
+				<td colspan="2">
+					<div>
+						<h1>Awan</h1>
+					</div>
+				</td>
+			</tr>
+			
+			<tr class="dinner-block" id="dinner-block" style="display: none;">
+				<td></td>
+				<td colspan="2">
+					<div>
+						<h1>Bengi</h1>
+					</div>
+				</td>
 			</tr>
 
 			<tr>
@@ -71,7 +101,7 @@
 			<tr>
 				<td></td>
 				<td>
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" class="btn btn-primary" name="submit">Submit</button>
 				</td>
 				<td>
 					<a href="./index.php" class="btn btn-danger">Cancel</a>
