@@ -82,18 +82,62 @@
     }
 }
 
+// Ipad
 @media screen and (max-width: 1024px) {
     .navbar{
         .navigation{
             padding: 0px 2.5rem;
         }
     }
+    .home-container{
+        .reserve-container{
+            .reserve-promotion{
+                padding: 1.5rem;
+                background-color: rgba(0, 0, 0, 0.425);
+                background-size: cover;
+                h1{
+                    color: white;
+                    margin: 1rem 0.5rem;
+                }
+                .reserve-button-container{
+                    .reserve-button{
+                        font-size: 1.25rem;
+                        font-weight: bolder;
+                        padding: 1.5vh 1vw;
+                    }
+                }
+            }
+        }
+    }
 }
 
-@media (max-width : 896px) {
+// Iphone XS Max
+@media screen and (max-width : 896px) {
     .navbar{
         .navigation{
             padding: 0px 1.5rem;
+        }
+    }
+    .home-container{
+        .reserve-container{
+            .reserve-promotion{
+                padding: 0.5rem;
+                background-color: rgba(0, 0, 0, 0.425);
+                background-size: cover;
+                h1{
+                    color: white;
+                    margin: 0.5rem 0.5rem;
+                    font-size: 1.25rem;
+                }
+                .reserve-button-container{
+                    margin-bottom: 0.5rem;
+                    .reserve-button{
+                        font-size: 1.25rem;
+                        font-weight: bolder;
+                        padding: 1.5vh 1vw;
+                    }
+                }
+            }
         }
     }
     
