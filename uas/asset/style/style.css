@@ -80,6 +80,36 @@
   color: #666666;
 }
 
+.reservation-container {
+  margin-top: 2rem;
+}
+
+.reservation-container .reservation-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.reservation-container .reservation-text {
+  font-size: larger;
+}
+
+.reservation-container .reservation-form {
+  margin: 2rem;
+}
+
+.reservation-container .reservation-form .reservation-table tbody tr td .required_field::after {
+  content: " * ";
+  color: red;
+}
+
 .footer {
   background-color: #274763;
   color: white;

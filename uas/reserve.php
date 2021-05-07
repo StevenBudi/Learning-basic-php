@@ -12,56 +12,60 @@
     </style>
 </head>
 <body>
-    <div class="container container-fluid">
-	<h1>Reservation Table</h1>
-	<p class="text-muted">Please Fill the form below accurately to enable us serve you better</p>
+    <div class="container container-fluid reservation-container">
+	<h1 class="reservation-header">Reservation Table</h1>
+	<p class="text-muted reservation-text">Please Fill the form below accurately to enable us serve you better</p>
 	<hr>
-    <form action="./Modules//insert.php" method="post" class="form-control form-control-lg">
-		<table class="table table-borderless">
-		
+    <form action="./Modules//insert.php" method="post" class="form-control form-control-lg reservation-form">
+		<table class="table table-borderless reservation-table">
+
 			<tr>
-				<td><label for="required_field" class="required_field">Fullname</label> : </td>
-				<td><input type="text" name="first_name" id="first_name"></td>
-				<td><input type="text" name="last_name" id="last_name"></td>
+				<td><label for="required_field" class="required_field">Fullname</label></td>
+				<td><input type="text" name="first_name" id="first_name" class="form-control" placeholder="John"><label for="first_name" class="text-muted form-label">First Name</label></td>
+				<td><input type="text" name="last_name" id="last_name" class="form-control" placeholder="Doe"><label for="last_name" class="text-muted form-label">Last Name</label></td>
 			</tr>
 
 			<tr>
-				<td><label for="required_field" class="required_field">Email</label> : </td>
-				<td colspan="2"><input type="email" name="email" id="email"></td>
+				<td><label for="required_field" class="required_field">Email</label></td>
+				<td><input type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
 			</tr>
 
 			<tr>
 				<td>Phone Number</td>
-				<td colspan="2"><input type="text" name="phone" id="phone"></td>
+				<td><input type="text" name="phone" id="phone" class="form-control"></td>
 			</tr>
 
 			<tr>
-				<td>Table for </td>
+				<td><label for="required_field" class="required_field">Table For</label> </td>
 				<td>
-					<select name="" id="">
+					<select name="people" id="peole" class="form-select">
+						<option selected>Choose People Number</option>
 						<option value="">2</option>
 						<option value="">3</option>
 						<option value="">4</option>
 						<option value="">5</option>
 						<option value="">6</option>
-					</select> <label for="">People</label>
+					</select>
+				</td>
+				<td>
+					People
 				</td>
 			</tr>
 
 			<tr>
-				<td>Date</td>
-				<td><input type="date" name="reser_date" id="reser_date"></td>
+				<td><label for="required_field" class="required_field">Date</label></td>
+				<td><input type="date" name="reser_date" id="reser_date" class="form-control"></td>
 			</tr>
 
 			<tr>
-				<td>Time</td>
-				<td><input type="time" name="early_in" id="early_in"></td>
-				<td><input type="time" name="checkout" id="checkout"></td>
+				<td><label for="required_field" class="required_field">Time</label></td>
+				<td><input type="time" name="early_in" id="early_in" class="form-control"></td>
+				<td><input type="time" name="checkout" id="checkout" class="form-control"></td>
 			</tr>
 
 			<tr>
 				<td>Notes</td>
-				<td colspan="2"><textarea name="reser_notes" id="reser_notes" cols="130" rows="3"></textarea></td>
+				<td colspan="2"><textarea name="reser_notes" id="reser_notes" cols="130" rows="3" class="form-control"></textarea></td>
 			</tr>
 
 			<tr>

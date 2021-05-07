@@ -73,6 +73,36 @@
     }
 }
 
+.reservation-container{
+    margin-top: 2rem;
+    .reservation-header{
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .reservation-text{
+        font-size: larger;
+    }
+    .reservation-form{
+        margin : 2rem;
+        .reservation-table{
+            tbody{
+                tr{
+                    td{
+                        .required_field{
+                            &::after{
+                                content: " * ";
+                                color: red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 .footer{
     background-color: rgb(39, 71, 99);
     color: white;
