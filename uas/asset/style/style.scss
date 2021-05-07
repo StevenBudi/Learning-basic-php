@@ -85,8 +85,9 @@
         font-size: larger;
     }
     .reservation-form{
-        margin : 2rem;
+        margin : 1.5rem 0;
         .reservation-table{
+            table-layout: fixed;
             tbody{
                 tr{
                     td{
@@ -94,6 +95,15 @@
                             &::after{
                                 content: " * ";
                                 color: red;
+                            }
+                        }
+                        .btn-danger{
+                            float: right;
+                        }
+
+                        input{
+                            &::placeholder{
+                                font-size: large;
                             }
                         }
                     }
@@ -119,6 +129,7 @@
             padding: 0px 2.5rem;
         }
     }
+
     .home-container{
         .reserve-container{
             .reserve-promotion{
@@ -137,6 +148,37 @@
                     }
                 }
             }
+        }
+    }
+
+    .reservation-container{
+        .reservation-header{
+            padding: 0;
+        }
+        .reservation-text{
+            font-size: medium;
+        }
+        .reservation-form{
+            margin : 1rem 0;
+            .reservation-table{
+                tbody{
+                    tr{
+                        td{
+                            font-size: medium;
+                            vertical-align:auto;
+                            .required_field{
+                                font-size: inherit;
+                            }
+
+                            input{
+                                &::placeholder{
+                                    font-size: medium;
+                                }
+                            }
+                        }
+                    }
+                }
+            }    
         }
     }
 }
@@ -168,6 +210,41 @@
                     }
                 }
             }
+        }
+    }
+
+    .reservation-container{
+        .reservation-header{
+            padding: 0;
+        }
+        .reservation-text{
+            font-size: medium;
+        }
+        .reservation-form{
+            margin : 1rem 0;
+            padding: 0;
+            .reservation-table{
+                tbody{
+                    tr{
+                        td{
+                            font-size: medium;
+                            width: 50%;
+                            .required_field{
+                                font-size: inherit; 
+                            }
+
+                            input{
+                                &::placeholder{
+                                    font-size: smaller;
+                                }
+                            }
+                        }
+                        .expand{
+                            column-span: all;
+                        }
+                    }
+                }
+            }    
         }
     }
     

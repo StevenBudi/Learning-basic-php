@@ -27,12 +27,12 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Email</label></td>
-				<td><input type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
+				<td class="expand"><input type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
 			</tr>
 
 			<tr>
 				<td>Phone Number</td>
-				<td><input type="text" name="phone" id="phone" class="form-control"></td>
+				<td class="expand"><input type="text" name="phone" id="phone" class="form-control"></td>
 			</tr>
 
 			<tr>

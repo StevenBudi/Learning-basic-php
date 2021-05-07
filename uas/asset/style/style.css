@@ -102,12 +102,36 @@
 }
 
 .reservation-container .reservation-form {
-  margin: 2rem;
+  margin: 1.5rem 0;
+}
+
+.reservation-container .reservation-form .reservation-table {
+  table-layout: fixed;
 }
 
 .reservation-container .reservation-form .reservation-table tbody tr td .required_field::after {
   content: " * ";
   color: red;
+}
+
+.reservation-container .reservation-form .reservation-table tbody tr td .btn-danger {
+  float: right;
+}
+
+.reservation-container .reservation-form .reservation-table tbody tr td input::-webkit-input-placeholder {
+  font-size: large;
+}
+
+.reservation-container .reservation-form .reservation-table tbody tr td input:-ms-input-placeholder {
+  font-size: large;
+}
+
+.reservation-container .reservation-form .reservation-table tbody tr td input::-ms-input-placeholder {
+  font-size: large;
+}
+
+.reservation-container .reservation-form .reservation-table tbody tr td input::placeholder {
+  font-size: large;
 }
 
 .footer {
@@ -140,6 +164,34 @@
     font-weight: bolder;
     padding: 1.5vh 1vw;
   }
+  .reservation-container .reservation-header {
+    padding: 0;
+  }
+  .reservation-container .reservation-text {
+    font-size: medium;
+  }
+  .reservation-container .reservation-form {
+    margin: 1rem 0;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td {
+    font-size: medium;
+    vertical-align: auto;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td .required_field {
+    font-size: inherit;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input::-webkit-input-placeholder {
+    font-size: medium;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input:-ms-input-placeholder {
+    font-size: medium;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input::-ms-input-placeholder {
+    font-size: medium;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input::placeholder {
+    font-size: medium;
+  }
 }
 
 @media screen and (max-width: 896px) {
@@ -163,6 +215,39 @@
     font-size: 1.25rem;
     font-weight: bolder;
     padding: 1.5vh 1vw;
+  }
+  .reservation-container .reservation-header {
+    padding: 0;
+  }
+  .reservation-container .reservation-text {
+    font-size: medium;
+  }
+  .reservation-container .reservation-form {
+    margin: 1rem 0;
+    padding: 0;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td {
+    font-size: medium;
+    width: 50%;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td .required_field {
+    font-size: inherit;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input::-webkit-input-placeholder {
+    font-size: smaller;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input:-ms-input-placeholder {
+    font-size: smaller;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input::-ms-input-placeholder {
+    font-size: smaller;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr td input::placeholder {
+    font-size: smaller;
+  }
+  .reservation-container .reservation-form .reservation-table tbody tr .expand {
+    -webkit-column-span: all;
+            column-span: all;
   }
   .footer .footer-container {
     padding: 0.75rem;
