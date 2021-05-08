@@ -13,52 +13,19 @@ const activeLink = () => {
         
     }
 }
-activeLink()
 
-
-const expandCol = () => {
-    const expand = document.getElementsByClassName("expand")
-    console.log(window.screen.width)
-    const phoneWidth = 414
-    for (let index = 0; index < expand.length; index++) {
-        if (window.screen.width <= phoneWidth){
-            expand[index].setAttribute("colspan", "2")
-        }else{
-            expand[index].removeAttribute("colspan")
-        }
-        
+const hidNavbar = () => {
+    const element = document.getElementById("navbar")
+    let pos = 0
+    let currentPos = window.pageYOffset
+    if(currentPos > pos/1.25){
+        element.style.transition = "top 0.5s ease-in-out 0.1s"
+        element.style.top = "-100px"
+    }else{
+        pos = currentPos
+        element.style.top = "0px"
     }
 }
 
-const lunchDisplay = () => {
-    document.getElementById("toggle-lunch").addEventListener("click", () => {
-        // document.getElementById("lunch-block").removeAttribute("style")
-        // document.getElementById("dinner-block").setAttribute("style", "display:none;")
-        const block = document.getElementById("lunch-block")
-        if(block.getAttribute("style")){
-            block.removeAttribute("style")
-            document.getElementById("dinner-block").setAttribute("style", "display:none;")
-        }else{
-            block.setAttribute("style", "display:none;")
-        }
-    })
-}
-
-const dinnerDisplay = () => {
-    document.getElementById("toggle-dinner").addEventListener("click", () => {
-        const block = document.getElementById("dinner-block")
-                if(block.getAttribute("style")){
-            block.removeAttribute("style")
-            document.getElementById("lunch-block").setAttribute("style", "display:none;")
-        }else{
-            block.setAttribute("style", "display:none;")
-        }
-    })
-}
-
-dinnerDisplay()
-lunchDisplay()
-
-expandCol()
-
-window.addEventListener("resize", expandCol)
+activeLink()
+window.addEventListener("scroll", hidNavbar)
