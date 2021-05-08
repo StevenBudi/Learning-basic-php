@@ -2,6 +2,7 @@
 	<div class="container-fluid navigation">
 		<a class="navbar-brand" href="#"><h1>Navbar</h1></a>
 		<button
+			id="navbar-toggler"
 			class="navbar-toggler"
 			type="button"
 			data-bs-toggle="collapse"
