@@ -21,13 +21,13 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Fullname</label></td>
-				<td><input type="text" name="first_name" id="first_name" class="form-control" placeholder="John"><label for="first_name" class="text-muted form-label">First Name</label></td>
-				<td><input type="text" name="last_name" id="last_name" class="form-control" placeholder="Doe"><label for="last_name" class="text-muted form-label">Last Name</label></td>
+				<td><input type="text" required name="first_name" id="first_name" class="form-control" placeholder="John"><label for="first_name" class="text-muted form-label">First Name</label></td>
+				<td><input type="text" required name="last_name" id="last_name" class="form-control" placeholder="Doe"><label for="last_name" class="text-muted form-label">Last Name</label></td>
 			</tr>
 
 			<tr>
 				<td><label for="required_field" class="required_field">Email</label></td>
-				<td class="expand"><input type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
+				<td class="expand"><input required type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
 			</tr>
 
 			<tr>
@@ -38,7 +38,7 @@
 			<tr>
 				<td><label for="required_field" class="required_field">Table For</label> </td>
 				<td>
-					<select name="people" id="peole" class="form-select">
+					<select required name="people" id="peole" class="form-select">
 						<option selected>Choose People Number</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -55,7 +55,7 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Date</label></td>
-				<td><input type="date" name="reser_date" id="reser_date" class="form-control"></td>
+				<td><input required type="date" name="reser_date" id="reser_date" class="form-control"></td>
 			</tr>
 
 			<!-- <tr>
