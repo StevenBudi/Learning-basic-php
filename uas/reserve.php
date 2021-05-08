@@ -96,6 +96,12 @@
 				<td>Notes</td>
 				<td colspan="2"><textarea name="reser_notes" id="reser_notes" cols="130" rows="3" class="form-control"></textarea></td>
 			</tr>
+			<!-- Todo 
+			- Generate Radio Button with css button class for time reservation
+			- Limit Calendar
+			- Disable Radio Button by comparing server and user time (if user tried to reserve with time that already passed disabled that radio button)
+			- Fixing div display so they match ther toggler button
+			-->
 
 			<tr>
 				<td></td>
