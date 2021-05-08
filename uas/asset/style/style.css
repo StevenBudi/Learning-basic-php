@@ -135,6 +135,10 @@
   font-size: large;
 }
 
+.reservation-container .reservation-form .reservation-table tbody tr td input:invalid {
+  border: 1px red solid;
+}
+
 .footer {
   background-color: #274763;
   color: white;

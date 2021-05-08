@@ -38,8 +38,8 @@
 			<tr>
 				<td><label for="required_field" class="required_field">Table For</label> </td>
 				<td>
-					<select required name="people" id="peole" class="form-select">
-						<option selected>Choose People Number</option>
+					<select name="people" id="peole" class="form-select" required>
+						<option value="">Choose People Number</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>

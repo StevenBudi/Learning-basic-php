@@ -107,6 +107,9 @@
                             &::placeholder{
                                 font-size: large;
                             }
+                            &:invalid{
+                                border: 1px red solid;
+                            }
                         }
                     }
                 }
