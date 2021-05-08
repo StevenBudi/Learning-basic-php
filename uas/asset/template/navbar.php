@@ -1,4 +1,4 @@
-<?php echo(' <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+<?php echo(' <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2" id="navbar">
 	<div class="container-fluid navigation">
 		<a class="navbar-brand" href="#"><h1>Navbar</h1></a>
 		<button

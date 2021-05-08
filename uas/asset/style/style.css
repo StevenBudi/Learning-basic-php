@@ -7,8 +7,16 @@
 }
 
 .navbar {
-  position: -webkit-sticky;
-  position: sticky;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  opacity: 0.8;
+  -webkit-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+}
+
+.navbar:hover {
+  opacity: 1;
 }
 
 .navbar .navigation {
