@@ -45,7 +45,7 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 						<option value="6">6</option>
-						<option value="10">6 - 10</option>
+						<option value="10">7 - 10</option>
 					</select>
 				</td>
 				<td class="people_label">
