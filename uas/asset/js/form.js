@@ -52,7 +52,6 @@ const expandCol = () => {
 };
 const limitDate = () => {
     const date = new Date();
-    const month = (date.getMonth() < 10 ? "0" + (date.getMonth() + 1).toString() : (date.getMonth() + 1).toString());
     const minDate = `${date.getFullYear()}-${date.getMonth() < 10 ? "0" + (date.getMonth() + 1).toString() : (date.getMonth() + 1)}-${date.getDate() < 10 ? "0" + date.getDate().toString() : date.getDate()}`;
     const maxDate = () => {
         const result = new Date();
@@ -67,8 +66,11 @@ const limitDate = () => {
         console.error();
     }
 };
-expandCol();
-dinnerDisplay();
-lunchDisplay();
-limitDate();
+window.onload = () => {
+    dinnerDisplay();
+    lunchDisplay();
+    limitDate();
+    expandCol();
+};
+window.addEventListener("resize", expandCol);
 //# sourceMappingURL=form.js.map

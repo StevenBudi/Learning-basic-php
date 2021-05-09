@@ -10,7 +10,7 @@ const activeLink = () => {
             current[0].className = current[0].className.replace(" active", "")
             elements[index].className += " active"
         })
-
+        
     }
 }
 
@@ -21,15 +21,15 @@ const hidNavbar = () => {
         let currentPos = window.pageYOffset
         const toggler = document.getElementById("navbar-toggler")
         const collapsedUl = document.getElementById("navbarTogglerDemo02")
-        if (currentPos > pos / 1.25) {
+        if(currentPos > pos/1.25){
             element.style.transition = "top 0.5s ease-in-out 0.1s"
             element.style.top = "-100px"
-            if (toggler && collapsedUl && window.screen.width < 1280) {
+            if(toggler && collapsedUl && window.screen.width < 1280){
                 toggler.className = "navbar-toggler collapsed"
-                collapsedUl.className = "navbar-collapse collapse"
+                collapsedUl.className = "navbar-collapse collapse" 
             }
-
-        } else {
+            
+        }else{
             pos = currentPos
             element.style.top = "0px"
         }
@@ -38,5 +38,7 @@ const hidNavbar = () => {
     }
 }
 
-activeLink()
+window.onload = () => {
+    activeLink()
+}
 window.addEventListener("scroll", hidNavbar)

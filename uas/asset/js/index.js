@@ -35,6 +35,8 @@ const hidNavbar = () => {
         console.error();
     }
 };
-activeLink();
+window.onload = () => {
+    activeLink();
+};
 window.addEventListener("scroll", hidNavbar);
 //# sourceMappingURL=index.js.map
