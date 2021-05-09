@@ -48,14 +48,14 @@
 						<option value="10">6 - 10</option>
 					</select>
 				</td>
-				<td>
+				<td class="people_label">
 					People
 				</td>
 			</tr>
 
 			<tr>
 				<td><label for="required_field" class="required_field">Date</label></td>
-				<td><input required type="date" name="reser_date" id="reser_date" class="form-control" max="" min=""></td>
+				<td class="expand"><input required type="date" name="reser_date" id="reser_date" class="form-control" max="" min=""></td>
 			</tr>
 
 			<tr>

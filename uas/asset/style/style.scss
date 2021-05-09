@@ -148,7 +148,7 @@
 }
 
 // Ipad
-@media screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     .navbar{
         .navigation{
             padding: 0px 2.5rem;
@@ -195,11 +195,26 @@
                                 font-size: inherit;
                             }
 
+                            .block{
+                                .reser_time{
+                                    width: 1rem;
+                                    height: 1rem;
+                                }
+                                .radio_label{
+                                    margin: 0 2rem 1rem 0;
+                                    font-size: medium;
+                                    font-weight: bolder;
+                                }
+                            }
+
                             input{
                                 &::placeholder{
                                     font-size: medium;
                                 }
                             }
+                        }
+                        .people_label{
+                            vertical-align: middle;
                         }
                     }
                 }
@@ -209,7 +224,7 @@
 }
 
 // Iphone XS Max
-@media screen and (max-width : 896px) {
+@media only screen and (max-width : 414px) {
     .navbar{
         .navigation{
             padding: 0px 1.5rem;
@@ -256,6 +271,19 @@
                             width: 50%;
                             .required_field{
                                 font-size: inherit; 
+                            }
+
+                            .block{
+                                .reser_time{
+                                    width: .5rem;
+                                    height: .5rem;
+                                }
+                                .radio_label{
+                                    display: flex;
+                                }
+                                br{
+                                    display: none;
+                                }
                             }
 
                             input{
