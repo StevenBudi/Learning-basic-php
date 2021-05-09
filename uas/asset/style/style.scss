@@ -103,6 +103,10 @@
                             float: right;
                         }
 
+                        .block{
+                            
+                        }
+
                         input{
                             &::placeholder{
                                 font-size: large;
@@ -111,6 +115,7 @@
                                 border: 1px red solid;
                             }
                         }
+
                     }
                 }
             }

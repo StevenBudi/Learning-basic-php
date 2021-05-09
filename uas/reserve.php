@@ -58,12 +58,6 @@
 				<td><input required type="date" name="reser_date" id="reser_date" class="form-control" max="" min=""></td>
 			</tr>
 
-			<!-- <tr>
-				<td><label for="required_field" class="required_field">Time</label></td>
-				<td><input type="time" name="early_in" id="early_in" class="form-control"></td>
-				<td><input type="time" name="checkout" id="checkout" class="form-control"></td>
-			</tr> -->
-
 			<tr>
 				<td><label for="required_field" class="required_field">Time</label></td>
 				<td>
@@ -74,21 +68,37 @@
 				</td>
 			</tr>
 
-			<tr class="lunch-block" id="lunch-block" style="display: none;">
+			<tr>
 				<td></td>
-				<td colspan="2">
-					<div>
-						<h1>Awan</h1>
+				<td>
+					<div class="lunch-block block" id="lunch-block" style="display: none;">
+						<input type="radio" name="reser_time" class="reser_time" value="10" required>
+						<label for="radio_10">10:00</label>
+
+						<input type="radio" name="reser_time" class="reser_time" value="11">
+						<label for="radio_11">11:00</label>
+						<br>
+						<input type="radio" name="reser_time" class="reser_time" value="12">
+						<label for="radio_12">12:00</label>
+
+						<input type="radio" name="reser_time" class="reser_time" value="13">
+						<label for="radio_13">13:00</label>
 					</div>
 				</td>
-			</tr>
-			
-			<tr class="dinner-block" id="dinner-block" style="display: none;">
-				<td></td>
-				<td colspan="2">
-					<div>
-						<h1>Bengi</h1>
-					</div>
+				<td>
+					<div class="dinner-block block" id="dinner-block" style="display: none;">
+							<input type="radio" name="reser_time" class="reser_time" value="18">
+							<label for="radio_18">18:00</label>
+
+							<input type="radio" name="reser_time" class="reser_time" value="19">
+							<label for="radio_19">19:00</label>
+							<br>
+							<input type="radio" name="reser_time" class="reser_time" value="20">
+							<label for="radio_20">20:00</label>
+
+							<input type="radio" name="reser_time" class="reser_time" value="21">
+							<label for="radio_21">21:00</label>
+						</div>
 				</td>
 			</tr>
 
@@ -97,10 +107,10 @@
 				<td colspan="2"><textarea name="reser_notes" id="reser_notes" cols="130" rows="3" class="form-control"></textarea></td>
 			</tr>
 			<!-- Todo 
-			- Generate Radio Button with css button class for time reservation
-			- Limit Calendar
+			- Generate Radio Button with css button class for time reservation (Kinda Failed)
+			- Limit Calendar (Done)
 			- Disable Radio Button by comparing server and user time (if user tried to reserve with time that already passed disabled that radio button)
-			- Fixing div display so they match ther toggler button
+			- Fixing div display so they match ther toggler button 
 			-->
 
 			<tr>
