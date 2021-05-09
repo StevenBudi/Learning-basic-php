@@ -27,7 +27,7 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Email</label></td>
-				<td class="expand"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
+				<td class="expand"><input required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
 			</tr>
 
 			<tr>
@@ -55,7 +55,7 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Date</label></td>
-				<td><input required type="date" name="reser_date" id="reser_date" class="form-control"></td>
+				<td><input required type="date" name="reser_date" id="reser_date" class="form-control" max="" min=""></td>
 			</tr>
 
 			<!-- <tr>
