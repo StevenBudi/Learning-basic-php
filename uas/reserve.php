@@ -16,7 +16,7 @@
 	<h1 class="reservation-header">Reservation Table</h1>
 	<p class="text-muted reservation-text">Please Fill the form below accurately to enable us serve you better</p>
 	<hr>
-    <form action="./Modules//insert.php" method="post" class="form-control form-control-lg reservation-form">
+    <form action="./Modules//process.php" method="post" class="form-control form-control-lg reservation-form">
 		<table class="table table-borderless reservation-table">
 
 			<tr>
@@ -109,8 +109,8 @@
 			<!-- Todo 
 			- Generate Radio Button with css button class for time reservation (Kinda Failed)
 			- Limit Calendar (Done)
-			- Disable Radio Button by comparing server and user time (if user tried to reserve with time that already passed disabled that radio button)
-			- Fixing div display so they match ther toggler button 
+			- Disable Radio Button by comparing server and user time (if user tried to reserve with time that already passed disabled that radio button) (Not Yet)
+			- Fixing div display so they match ther toggler button (Done)
 			-->
 
 			<tr>
