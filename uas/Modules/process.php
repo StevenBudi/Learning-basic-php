@@ -16,3 +16,23 @@
     
 
 */
+    if(isset($_POST['submit'])){
+        $reserveData = new stdClass();
+        $reserveData -> name    = $_POST['first_name']." {$_POST['last_name']}";
+        $reserveData -> email   = $_POST['email'];
+        $reserveData -> phone   = $_POST['phone'];
+        $reserveData -> people  = $_POST['people'];
+        $reserveData -> datetime    = date_format(date_create($_POST['reser_date']." ".$_POST['reser_time'].":00:00"), "Y-m-d H:i:s");
+        $reserveData -> notes   = $_POST['reser_notes'];
+        
+        $reserJson = json_encode($reserveData);
+        echo $reserJson;
+    }else{
+        ?>
+        <script>
+            alert("Please Fill out reservation form first !");
+            window.location.href ="../reserve.php";
+        </script>
+        <?php
+    }
+?>
