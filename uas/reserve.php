@@ -27,7 +27,7 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Email</label></td>
-				<td class="expand"><input required type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
+				<td class="expand"><input required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
 			</tr>
 
 			<tr>
