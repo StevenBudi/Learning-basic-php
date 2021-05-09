@@ -104,7 +104,22 @@
                         }
 
                         .block{
-                            
+                            .reser_time{
+                                width: 1.5rem;
+                                height: 1.5rem;
+                                &:checked{
+                                    background-color:rgb(31, 122, 202) !important;
+                                }
+                                &:checked + label{
+                                    color: rgb(31, 122, 202);
+                                    transform: scaleZ(1);
+                                }
+                            }
+                            .radio_label{
+                                margin: 0 4rem 2rem 0;
+                                font-size: larger;
+                                font-weight: bolder;
+                            }
                         }
 
                         input{

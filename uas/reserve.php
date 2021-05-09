@@ -72,32 +72,32 @@
 				<td></td>
 				<td>
 					<div class="lunch-block block" id="lunch-block" style="display: none;">
-						<input type="radio" name="reser_time" class="reser_time" value="10" required>
-						<label for="radio_10">10:00</label>
+						<input type="radio" name="reser_time" class="reser_time form-check-input" value="10" required>
+						<label for="radio_10" class="radio_label form-check-label">10:00</label>
 
-						<input type="radio" name="reser_time" class="reser_time" value="11">
-						<label for="radio_11">11:00</label>
+						<input type="radio" name="reser_time" class="reser_time form-check-input" value="11">
+						<label for="radio_11" class="radio_label form-check-label">11:00</label>
 						<br>
-						<input type="radio" name="reser_time" class="reser_time" value="12">
-						<label for="radio_12">12:00</label>
+						<input type="radio" name="reser_time" class="reser_time form-check-input" value="12">
+						<label for="radio_12" class="radio_label form-check-label">12:00</label>
 
-						<input type="radio" name="reser_time" class="reser_time" value="13">
-						<label for="radio_13">13:00</label>
+						<input type="radio" name="reser_time" class="reser_time form-check-input" value="13">
+						<label for="radio_13" class="radio_label form-check-label">13:00</label>
 					</div>
 				</td>
 				<td>
 					<div class="dinner-block block" id="dinner-block" style="display: none;">
-							<input type="radio" name="reser_time" class="reser_time" value="18">
-							<label for="radio_18">18:00</label>
+							<input type="radio" name="reser_time" class="reser_time form-check-input" value="18">
+							<label for="radio_18" class="radio_label form-check-label">18:00</label>
 
-							<input type="radio" name="reser_time" class="reser_time" value="19">
-							<label for="radio_19">19:00</label>
+							<input type="radio" name="reser_time" class="reser_time form-check-input" value="19">
+							<label for="radio_19" class="radio_label form-check-label">19:00</label>
 							<br>
-							<input type="radio" name="reser_time" class="reser_time" value="20">
-							<label for="radio_20">20:00</label>
+							<input type="radio" name="reser_time" class="reser_time form-check-input" value="20">
+							<label for="radio_20" class="radio_label form-check-label">20:00</label>
 
-							<input type="radio" name="reser_time" class="reser_time" value="21">
-							<label for="radio_21">21:00</label>
+							<input type="radio" name="reser_time" class="reser_time form-check-input" value="21">
+							<label for="radio_21" class="radio_label form-check-label">21:00</label>
 						</div>
 				</td>
 			</tr>
