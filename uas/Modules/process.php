@@ -32,16 +32,13 @@
         $reserveData -> people  = $_POST['people'];
         $reserveData -> datetime = date_format(date_create($_POST['reser_date']." ".$_POST['reser_time'].":00:00"), "Y-m-d H:i:s");
         $reserveData -> notes   = $_POST['reser_notes'];
-        $reserveData -> token = $_POST['token'];
         
         $reserJson = json_encode($reserveData);
-        $customer = json_decode($reserJson, true);
         $tabelCustomer = $table_customer;
         $tabelMeja = $table_info;
         # Check Data
         try {
-            $query = "SELECT * FROM  $tabelCustomer WHERE customer_name = '{$customer['name']}'";
-            $result = mysqli_query($conn, $query);
+            $result = mysqli_query($conn, "SELECT * FROM  $tabelCustomer WHERE customer_name = '{$reserveData['name']}'");
             $check = (mysqli_num_rows($result)) > 0 ? "reserved" : "not reserved";
             if($check === "reserved"){
                 ?>
@@ -49,12 +46,16 @@
                 <?php
             }else{
                 try {
-                    $queryTable = "SELECT * FROM $table_info WHERE availability='true' AND capacity<={$customer['people']}";
-                    $resultTable = mysqli_query($conn, $queryTable);
+                    $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity = {$reserveData['people']}");
+                    if($resultTable === false){
+                        $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity > {$reserveData['people']}");
+                    }
                     $checkTable = (mysqli_num_rows($resultTable)) > 0 ? "Table Available" : "Table Not Available" ;
                     if($checkTable === "Table Available"){
-                        var_dump($resultTable);
-                        header("Location: ./insert.php");
+                        while($row = mysqli_fetch_assoc($resultTable)){
+                            echo($row['id']);
+                        }
+                        // header("Location: ./insert.php");
                     }else{
                         ?>
                         <script>tableCheck()</script>
