@@ -45,8 +45,8 @@
 					<select name="people" id="peole" class="form-select" required>
 						<option value="">Choose People Number</option>
 						<option value="2">2</option>
-						<option value="4">4</option>
-						<option value="6">6</option>
+						<option value="4">3 - 4</option>
+						<option value="6">5 - 6</option>
 						<option value="10">7 - 10</option>
 					</select>
 				</td>
