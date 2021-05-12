@@ -24,7 +24,7 @@
         $reserveData -> people  = $_POST['people'];
         $reserveData -> datetime = date_format(date_create($_POST['reser_date']." ".$_POST['reser_time'].":00:00"), "Y-m-d H:i:s");
         $reserveData -> notes   = $_POST['reser_notes'];
-        $reserveData -> token = bin2hex($_POST['email']);
+        $reserveData -> token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
         
         $reserJson = json_encode($reserveData);
         echo $reserJson;
