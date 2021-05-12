@@ -49,7 +49,12 @@
                         var_dump($customerData);
                         echo("<br/>");
                         var_dump($table);
-                        
+                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $tabelCustomer () VALUES (); UPDATE $tabelMeja SET ... WHERE ...");
+                        if(!$resultQuery){
+                            die("Something went wrong   : ".mysqli_error($conn));
+                        }else{
+                            mail("","Reservation Information", "Please go to this link to view your reservation details");
+                        }
                         // header("Location: ./insert.php");
                     }else{
                         ?>
