@@ -1,4 +1,5 @@
 <?php
+    include('./dbconfig.php');
 /*
     TODO
 
@@ -27,7 +28,17 @@
         $reserveData -> token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
         
         $reserJson = json_encode($reserveData);
-        echo $reserJson;
+        $customer = json_decode($reserJson, true);
+        # Check Data
+        try {
+            $query = "SELECT * FROM  {$GLOBALS['table_customer']} WHERE customer_name = '{$customer['name']}'";
+            $result = mysqli_query($conn, $query);
+            $check = (mysqli_num_rows($result)) > 0 ? "reserved" : "not reserved";
+        } catch (\Throwable $th) {
+            throw $th;
+            die("Something went wrong   : ".mysqli_error($conn));
+        }
+
     }else{
         ?>
         <script>
