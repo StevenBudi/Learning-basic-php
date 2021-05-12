@@ -48,7 +48,8 @@
                 try {
                     $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity = {$reserveData['people']}");
                     if($resultTable === false){
-                        $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity > {$reserveData['people']}");
+                        $limit = $reserveData['people']*2;
+                        $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity <= '$limit'");
                     }
                     $checkTable = (mysqli_num_rows($resultTable)) > 0 ? "Table Available" : "Table Not Available" ;
                     if($checkTable === "Table Available"){
