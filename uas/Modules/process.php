@@ -1,30 +1,8 @@
 <?php
     session_start();
     include('./dbconfig.php');
-    ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
-            // Need Fixing ?
-            const reserveCheck = () => {
-                Swal.fire({
-                    icon:"error",
-                    title:"Oops...",
-                    text:"It Looks like you already reserved with us"
-                });
-                window.history.back();
-            }
-
-            const tableCheck = () =>{
-                Swal.fire({
-                    icon:"error",
-                    title:"Sorry",
-                    text:"It seems that there aren't any table available for you"
-                });
-                window.history.back();
-            }
-            
-        </script>
-    <?php
     if(isset($_POST['submit']) && ($_SESSION['token'] === $_POST['token'])){
+        unset($_SESSION['token']);
         $reserveData = new stdClass();
         $reserveData -> name    = $_POST['first_name']." {$_POST['last_name']}";
         $reserveData -> email   = $_POST['email'];
@@ -34,32 +12,59 @@
         $reserveData -> notes   = $_POST['reser_notes'];
         
         $reserJson = json_encode($reserveData);
+        $customerData = json_decode($reserJson, true);
         $tabelCustomer = $table_customer;
         $tabelMeja = $table_info;
         # Check Data
         try {
-            $result = mysqli_query($conn, "SELECT * FROM  $tabelCustomer WHERE customer_name = '{$reserveData['name']}'");
-            $check = (mysqli_num_rows($result)) > 0 ? "reserved" : "not reserved";
+            $resultCustomer = mysqli_query($conn, "SELECT * FROM  $tabelCustomer WHERE customer_name = '{$customerData['name']}'");
+            $check = ($resultCustomer === false) ? "reserved" : "not reserved";
             if($check === "reserved"){
                 ?>
-                <script>reserveCheck()</script>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
+                        // Need Fixing ?
+                        const reserveCheck = () => {
+                            Swal.fire({
+                                icon:"error",
+                                title:"Oops...",
+                                text:"It Looks like you already reserved with us"
+                            });
+                            window.history.back();
+                        }
+                        
+                        reserveCheck();
+                        alert("You Already Reserved with us");
+                    </script>
                 <?php
             }else{
                 try {
-                    $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity = {$reserveData['people']}");
+                    $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity = {$customerData['people']}");
                     if($resultTable === false){
-                        $limit = $reserveData['people']*2;
+                        $limit = $customerData['people']*2;
                         $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity <= '$limit'");
                     }
-                    $checkTable = (mysqli_num_rows($resultTable)) > 0 ? "Table Available" : "Table Not Available" ;
+                    $checkTable = ($resultTable != false)  ? "Table Available" : "Table Not Available" ;
                     if($checkTable === "Table Available"){
-                        while($row = mysqli_fetch_assoc($resultTable)){
-                            echo($row['id']);
-                        }
+                        $table = mysqli_fetch_assoc($resultTable);
+                        var_dump($customerData);
+                        echo("<br/>");
+                        var_dump($table);
+                        
                         // header("Location: ./insert.php");
                     }else{
                         ?>
-                        <script>tableCheck()</script>
+                            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
+                                const tableCheck = () =>{
+                                    Swal.fire({
+                                        icon:"error",
+                                        title:"Sorry",
+                                        text:"It seems that there aren't any table available for you"
+                                    });
+                                    window.history.back();
+                                }
+                                tableCheck();
+                                alert("There aren't any table available for you");  
+                            </script>
                         <?php
                     }
                 } catch (\Throwable $th) {
