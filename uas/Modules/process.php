@@ -24,7 +24,7 @@
             
         </script>
     <?php
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit']) && ($_SESSION['token'] === $_POST['token'])){
         $reserveData = new stdClass();
         $reserveData -> name    = $_POST['first_name']." {$_POST['last_name']}";
         $reserveData -> email   = $_POST['email'];
