@@ -21,8 +21,8 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Fullname</label></td>
-				<td><input type="text" required name="first_name" id="first_name" class="form-control" placeholder="John"><label for="first_name" class="text-muted form-label">First Name</label></td>
-				<td><input type="text" required name="last_name" id="last_name" class="form-control" placeholder="Doe"><label for="last_name" class="text-muted form-label">Last Name</label></td>
+				<td><input type="text" required name="first_name" id="first_name" class="form-control" placeholder="John" maxlength="16"><label for="first_name" class="text-muted form-label">First Name</label></td>
+				<td><input type="text" required name="last_name" id="last_name" class="form-control" placeholder="Doe" maxlength="16"><label for="last_name" class="text-muted form-label">Last Name</label></td>
 			</tr>
 
 			<tr>
@@ -32,7 +32,7 @@
 
 			<tr>
 				<td>Phone Number</td>
-				<td class="expand"><input type="text" name="phone" id="phone" class="form-control"></td>
+				<td class="expand"><input type="text" name="phone" id="phone" class="form-control" maxlength="15"></td>
 			</tr>
 
 			<tr>
@@ -72,7 +72,7 @@
 				<td></td>
 				<td>
 					<div class="lunch-block block" id="lunch-block" style="display: none;">
-						<input type="radio" name="reser_time" class="reser_time form-check-input" value="10" required>
+						<input type="radio" name="reser_time" class="reser_time form-check-input" value="10" required checked>
 						<label for="radio_10" class="radio_label form-check-label">10:00</label>
 
 						<input type="radio" name="reser_time" class="reser_time form-check-input" value="11">
