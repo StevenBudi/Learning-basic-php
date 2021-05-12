@@ -98,6 +98,12 @@
     alter table availability and input reservation information if success
     
 
+    Part 3 :
+    decide reservation option 
+    - same day reservation
+    - 2 weeks notice reservation
+    if 2 weeks notice find way to save reservation without alter restaurant_tabel table
+    both same day and 2 weeks require availability to be reset at 15:00 and 24:00
 */
 
 ?>  
