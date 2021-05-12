@@ -36,14 +36,21 @@
             $check = (mysqli_num_rows($result)) > 0 ? "reserved" : "not reserved";
             if($check === "reserved"){
                 ?>
-                <script>
-                    // Need Fixing
-                    alert("It Seems That You Already Reserved With Us");
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
+                    // Need Fixing ?
+                    const failed = () => {
+                        Swal.fire({
+                            icon:"error",
+                            title:"Oops...",
+                            text:"It Looks like you already reserved with us"
+                        })
+                    }
+                    failed();
                     window.history.back();
                 </script>
                 <?php
             }else{
-                header("Location: ./insert.php");
+                header("Location: ../insert.php");
             }
         } catch (\Throwable $th) {
             throw $th;
