@@ -34,6 +34,17 @@
             $query = "SELECT * FROM  {$GLOBALS['table_customer']} WHERE customer_name = '{$customer['name']}'";
             $result = mysqli_query($conn, $query);
             $check = (mysqli_num_rows($result)) > 0 ? "reserved" : "not reserved";
+            if($check === "reserved"){
+                ?>
+                <script>
+                    // Need Fixing
+                    alert("It Seems That You Already Reserved With Us");
+                    window.history.back();
+                </script>
+                <?php
+            }else{
+                header("Location: ./insert.php");
+            }
         } catch (\Throwable $th) {
             throw $th;
             die("Something went wrong   : ".mysqli_error($conn));
