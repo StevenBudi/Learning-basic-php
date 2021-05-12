@@ -1,3 +1,7 @@
+<?php
+	session_start();
+	$_SESSION['token'] = bin2hex(random_bytes(32));
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,7 +118,7 @@
 			-->
 
 			<tr>
-				<td></td>
+				<td><input type="hidden" name="token" value=<?php echo($_SESSION['token'])?>></td>
 				<td>
 					<button type="submit" class="btn btn-primary" name="submit">Submit</button>
 				</td>

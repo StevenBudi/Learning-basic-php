@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include('./dbconfig.php');
     ?>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
@@ -31,7 +32,7 @@
         $reserveData -> people  = $_POST['people'];
         $reserveData -> datetime = date_format(date_create($_POST['reser_date']." ".$_POST['reser_time'].":00:00"), "Y-m-d H:i:s");
         $reserveData -> notes   = $_POST['reser_notes'];
-        $reserveData -> token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
+        $reserveData -> token = $_POST['token'];
         
         $reserJson = json_encode($reserveData);
         $customer = json_decode($reserJson, true);
@@ -50,7 +51,7 @@
                 try {
                     $queryTable = "SELECT * FROM $table_info WHERE availability='true' AND capacity<={$customer['people']}";
                     $resultTable = mysqli_query($conn, $queryTable);
-                    $checkTable = (mysqli_num_rows($resultTable) > 0) ? "Table Available" : "Table Not Available" ;
+                    $checkTable = (mysqli_num_rows($resultTable)) > 0 ? "Table Available" : "Table Not Available" ;
                     if($checkTable === "Table Available"){
                         var_dump($resultTable);
                         header("Location: ./insert.php");
