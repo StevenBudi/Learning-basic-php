@@ -1,0 +1,1 @@
+tsc -p c:\\xampp\\htdocs\\praktikum\\uas\\asset\\js\\tsconfig.json --watch
