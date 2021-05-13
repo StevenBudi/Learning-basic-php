@@ -4,6 +4,16 @@
     $table1 = $table_customer;
     $table2 = $table_info;
     $table3 = $reservation_detail;
+    ?>
+    <head>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" type="text/javascript">
+            alert("Test");
+        </script>
+    </head>
+    <body>
+        
+    </body>
+    <?php
     if(isset($_POST['submit']) && ($_SESSION['token'] === $_POST['token'])){
         $reserveData = new stdClass();
         $reserveData -> name    = $_POST['first_name']." {$_POST['last_name']}";
@@ -15,26 +25,20 @@
         
         $reserJson = json_encode($reserveData);
         $customerData = json_decode($reserJson, true);
-
         # Check Data
         try {
             $resultCustomer = mysqli_query($conn, "SELECT * FROM  $table1 WHERE customer_name = '{$customerData['name']}'");
-            $check = ($resultCustomer === false) ? "reserved" : "not reserved";
+            $check = (mysqli_num_rows($resultCustomer) > 0) ? "reserved" : "not reserved";
             if($check === "reserved"){
                 ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
-                        // Need Fixing ?
-                        const reserveCheck = () => {
-                            Swal.fire({
-                                icon:"error",
-                                title:"Oops...",
-                                text:"It Looks like you already reserved with us"
-                            });
-                            window.history.back();
-                        }
-                        
-                        reserveCheck();
-                        alert("You Already Reserved with us");
+                    <script type="text/javascript">
+                        Swal.fire({
+                            icon:"error",
+                            title: "Oops...",
+                            text:"It looks like you already reserved with us"
+                        }).then(() => {
+                                        window.history.back();
+                                    });
                     </script>
                 <?php
             }else{
@@ -44,12 +48,12 @@
                         $limit = $customerData['people']*2;
                         $resultTable = mysqli_query($conn, "SELECT * FROM $table2 WHERE availability='true' AND capacity <= '$limit'");
                     }
-                    $checkTable = ($resultTable != false)  ? "Table Available" : "Table Not Available" ;
+                    $checkTable = (mysqli_num_rows($resultTable) > 0)  ? "Table Available" : "Table Not Available" ;
                     if($checkTable === "Table Available"){
                         $table = mysqli_fetch_assoc($resultTable);
-                        var_dump($customerData);
-                        echo("<br/>");
-                        var_dump($table);
+                        // var_dump($customerData);
+                        // echo("<br/>");
+                        // var_dump($table);
                         $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table1 (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note) 
                         VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}'); 
                         UPDATE $table2 SET availability='false' WHERE id='{$table['id']}'; 
@@ -58,40 +62,36 @@
                         if(!$resultQuery){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
+                            $_SESSION['token'] = bin2hex(random_bytes(32));
                             echo("This is a point to mail the customer or notif the customer");
                         }
                     }else{
                         ?>
-                            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
-                                const tableCheck = () =>{
-                                    Swal.fire({
+                            <script type="text/javascript">
+                                Swal.fire({
                                         icon:"error",
                                         title:"Sorry",
                                         text:"It seems that there aren't any table available for you"
-                                    });
-                                    window.history.back();
-                                }
-                                tableCheck();
-                                alert("There aren't any table available for you");  
+                                    }).then(() => {
+                                        window.history.back();
+                                    })
                             </script>
                         <?php
                     }
                 } catch (\Throwable $th) {
                     throw $th;
-                    die("Something went wrong : ".mysqli_error($conn));
+                    die("Something went wrong : ".mysqli_error($conn).mysqli_errno($conn));
                 }
-                
             }
         } catch (\Throwable $th) {
             throw $th;
-            die("Something went wrong   : ".mysqli_error($conn));
+            die("Something went wrong   : ".mysqli_errno($conn));
         }
 
     }else{
         ?>
         <script>
-            alert("Please Fill out reservation form first !");
-            window.location.href ="../reserve.php";
+            alert("Please Fill out reservation form first !").then(() => {window.location.href="../reserve.php"});
         </script>
         <?php
     }
