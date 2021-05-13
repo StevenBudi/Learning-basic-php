@@ -12,8 +12,7 @@
         
         $reserJson = json_encode($reserveData);
         $customerData = json_decode($reserJson, true);
-        // $tabelCustomer = $table_customer;
-        // $tabelMeja = $table_info;
+
         # Check Data
         try {
             $resultCustomer = mysqli_query($conn, "SELECT * FROM  $table_customer WHERE customer_name = '{$customerData['name']}'");
@@ -50,15 +49,13 @@
                         var_dump($table);
                         $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table_customer (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note) 
                         VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}'); 
-                        UPDATE $table_info SET availability='false' WHERE id='{$table['id']}'");
+                        UPDATE $table_info SET availability='false' WHERE id='{$table['id']}'; 
+                        INSERT INTO $reservation_detail (table_id, customer_name) VALUES ('{$customerData['name']}', '{$table['id']}')");
                         if(!$resultQuery){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
-                            // mail($customerData['email'],"Reservation Information", "Please go to this link to view your reservation details");
-                            echo("This is a point to mail the customer");
-                            // unset($_SESSION['token']);
+                            echo("This is a point to mail the customer or notif the customer");
                         }
-                        // header("Location: ./insert.php");
                     }else{
                         ?>
                             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10">
