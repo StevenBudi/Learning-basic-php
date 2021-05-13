@@ -2,7 +2,6 @@
     session_start();
     include('./dbconfig.php');
     if(isset($_POST['submit']) && ($_SESSION['token'] === $_POST['token'])){
-        unset($_SESSION['token']);
         $reserveData = new stdClass();
         $reserveData -> name    = $_POST['first_name']." {$_POST['last_name']}";
         $reserveData -> email   = $_POST['email'];
@@ -49,11 +48,14 @@
                         var_dump($customerData);
                         echo("<br/>");
                         var_dump($table);
-                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $tabelCustomer () VALUES (); UPDATE $tabelMeja SET ... WHERE ...");
+                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $tabelCustomer (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note) 
+                        VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}'); 
+                        UPDATE $tabelMeja SET capacity='false' WHERE id='{$table['id']}'");
                         if(!$resultQuery){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
-                            mail("","Reservation Information", "Please go to this link to view your reservation details");
+                            mail($customerData['email'],"Reservation Information", "Please go to this link to view your reservation details");
+                            // unset($_SESSION['token']);
                         }
                         // header("Location: ./insert.php");
                     }else{
