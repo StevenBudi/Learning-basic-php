@@ -1,6 +1,9 @@
 <?php
     session_start();
     include('./dbconfig.php');
+    $table1 = $table_customer;
+    $table2 = $table_info;
+    $table3 = $reservation_detail;
     if(isset($_POST['submit']) && ($_SESSION['token'] === $_POST['token'])){
         $reserveData = new stdClass();
         $reserveData -> name    = $_POST['first_name']." {$_POST['last_name']}";
@@ -15,7 +18,7 @@
 
         # Check Data
         try {
-            $resultCustomer = mysqli_query($conn, "SELECT * FROM  $table_customer WHERE customer_name = '{$customerData['name']}'");
+            $resultCustomer = mysqli_query($conn, "SELECT * FROM  $table1 WHERE customer_name = '{$customerData['name']}'");
             $check = ($resultCustomer === false) ? "reserved" : "not reserved";
             if($check === "reserved"){
                 ?>
@@ -36,10 +39,10 @@
                 <?php
             }else{
                 try {
-                    $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity = {$customerData['people']}");
+                    $resultTable = mysqli_query($conn, "SELECT * FROM $table2 WHERE availability='true' AND capacity = {$customerData['people']}");
                     if($resultTable === false){
                         $limit = $customerData['people']*2;
-                        $resultTable = mysqli_query($conn, "SELECT * FROM $table_info WHERE availability='true' AND capacity <= '$limit'");
+                        $resultTable = mysqli_query($conn, "SELECT * FROM $table2 WHERE availability='true' AND capacity <= '$limit'");
                     }
                     $checkTable = ($resultTable != false)  ? "Table Available" : "Table Not Available" ;
                     if($checkTable === "Table Available"){
@@ -47,10 +50,11 @@
                         var_dump($customerData);
                         echo("<br/>");
                         var_dump($table);
-                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table_customer (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note) 
+                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table1 (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note) 
                         VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}'); 
-                        UPDATE $table_info SET availability='false' WHERE id='{$table['id']}'; 
-                        INSERT INTO $reservation_detail (table_id, customer_name) VALUES ('{$customerData['name']}', '{$table['id']}')");
+                        UPDATE $table2 SET availability='false' WHERE id='{$table['id']}'; 
+                        INSERT INTO $table3 (table_id, customer_name) 
+                        VALUES ('{$customerData['name']}', '{$table['id']}')");
                         if(!$resultQuery){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
