@@ -54,7 +54,7 @@
                         VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}'); 
                         UPDATE $table2 SET availability='false' WHERE id='{$table['id']}'; 
                         INSERT INTO $table3 (table_id, customer_name) 
-                        VALUES ('{$customerData['name']}', '{$table['id']}')");
+                        VALUES ('{$table['id']}', '{$customerData['name']}')");
                         if(!$resultQuery){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
