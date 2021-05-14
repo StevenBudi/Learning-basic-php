@@ -22,6 +22,7 @@
         $reserveData -> people  = $_POST['people'];
         $reserveData -> datetime = date_format(date_create($_POST['reser_date']." ".$_POST['reser_time'].":00:00"), "Y-m-d H:i:s");
         $reserveData -> notes   = $_POST['reser_notes'];
+        $reserveToken -> auth_token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
         
         $reserJson = json_encode($reserveData);
         $customerData = json_decode($reserJson, true);
@@ -55,8 +56,8 @@
                         // var_dump($customerData);
                         // echo("<br/>");
                         // var_dump($table);
-                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table1 (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note) 
-                        VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}'); 
+                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table1 (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note, customer_token) 
+                        VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}', '{$customerData['auth_token']}'); 
                         UPDATE $table2 SET availability='false' WHERE id='{$table['id']}'; 
                         INSERT INTO $table3 (table_id, customer_name) 
                         VALUES ('{$table['id']}', '{$customerData['name']}')");
