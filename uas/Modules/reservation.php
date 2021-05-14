@@ -93,9 +93,9 @@
     
     /*
     TODO
-    1. check reservation dates if passed dont allow update just view
-    2. using token to cancel and update
-    3. Probably use token as well to view reservation information
+    1. check reservation dates if passed dont allow update just view (not yet)
+    2. using token to cancel and update (not yet)
+    3. Probably use token as well to view reservation information (done)
 
     */
 

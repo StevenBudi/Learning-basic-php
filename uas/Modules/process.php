@@ -113,23 +113,23 @@
 
     Part 1 : 
     process user form
-        - check if user already reserved or not
-        - check date and reservation time
+        - check if user already reserved or not (done)
+        - check date and reservation time (change to same day reservation)
 
-    redirect/sent user email for confirmation/cancellation (using crsf token) if success
-    sent back user to reserve page if fail but kept user input intact with input field
+    redirect/sent user email for confirmation/cancellation (using crsf token) if success (unsuccesful :( )
+    sent back user to reserve page if fail but kept user input intact with input field (not yet probably using cookie)
 
     Part 2 :
-    assign reservation to table based on people
-    alter table availability and input reservation information if success
+    assign reservation to table based on people (done)
+    alter table availability and input reservation information if success (done)
     
 
     Part 3 :
     decide reservation option 
-    - same day reservation
+    - same day reservation (this one)
     - 2 weeks notice reservation
     if 2 weeks notice find way to save reservation without alter restaurant_tabel table
-    both same day and 2 weeks require availability to be reset at 15:00 and 24:00
+    both same day and 2 weeks require availability to be reset at 15:00 and 24:00 (manual job)
 */
 
 ?>  
