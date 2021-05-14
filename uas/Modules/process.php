@@ -30,6 +30,7 @@
             $resultCustomer = mysqli_query($conn, "SELECT * FROM  $table1 WHERE customer_name = '{$customerData['name']}'");
             $check = (mysqli_num_rows($resultCustomer) > 0) ? "reserved" : "not reserved";
             if($check === "reserved"){
+                mysqli_close($conn);
                 ?>
                     <script type="text/javascript">
                         Swal.fire({
@@ -63,9 +64,12 @@
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
                             $_SESSION['token'] = bin2hex(random_bytes(32));
-                            echo("This is a point to mail the customer or notif the customer");
+                            // echo("This is a point to mail the customer or notif the customer");
+                            $id = bin2hex(mysqli_insert_id($conn));
+                            header("Location: ./reservation.php?id={$id}");
                         }
                     }else{
+                        mysqli_close($conn);
                         ?>
                             <script type="text/javascript">
                                 Swal.fire({
@@ -79,16 +83,19 @@
                         <?php
                     }
                 } catch (\Throwable $th) {
+                    mysqli_close($conn);
                     throw $th;
                     die("Something went wrong : ".mysqli_error($conn).mysqli_errno($conn));
                 }
             }
         } catch (\Throwable $th) {
+            mysqli_close($conn);
             throw $th;
             die("Something went wrong   : ".mysqli_errno($conn));
         }
 
     }else{
+        mysqli_close($conn);
         ?>
         <script>
             alert("Please Fill out reservation form first !").then(() => {window.location.href="../reserve.php"});
