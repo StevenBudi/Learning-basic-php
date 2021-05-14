@@ -22,7 +22,7 @@
         $reserveData -> people  = $_POST['people'];
         $reserveData -> datetime = date_format(date_create($_POST['reser_date']." ".$_POST['reser_time'].":00:00"), "Y-m-d H:i:s");
         $reserveData -> notes   = $_POST['reser_notes'];
-        $reserveToken -> auth_token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
+        $reserveData -> auth_token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
         
         $reserJson = json_encode($reserveData);
         $customerData = json_decode($reserJson, true);
@@ -56,18 +56,22 @@
                         // var_dump($customerData);
                         // echo("<br/>");
                         // var_dump($table);
-                        $resultQuery = mysqli_multi_query($conn, "INSERT INTO $table1 (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note, customer_token) 
-                        VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}', '{$customerData['auth_token']}'); 
-                        UPDATE $table2 SET availability='false' WHERE id='{$table['id']}'; 
-                        INSERT INTO $table3 (table_id, customer_name) 
-                        VALUES ('{$table['id']}', '{$customerData['name']}')");
+                        $query1 = "INSERT INTO $table1 (customer_name, customer_email, customer_phone, reservation_people, reservation_time, reservation_note, customer_token) 
+                        VALUES ('{$customerData['name']}', '{$customerData['email']}', '{$customerData['phone']}', '{$customerData['people']}', '{$customerData['datetime']}', '{$customerData['notes']}', '{$customerData['auth_token']}'); ";
+                        $query2 = "UPDATE $table2 SET availability='false' WHERE id='{$table['id']}';";
+                        $query3 = "INSERT INTO $table3 (table_id, customer_name) 
+                        VALUES ('{$table['id']}', '{$customerData['name']}')";
+                        $result1 = mysqli_query($conn, $query1);
+                        $result2 = mysqli_query($conn, $query2);
+                        $result3 = mysqli_query($conn, $query3);
+                        $id = bin2hex(mysqli_insert_id($conn)); // using LAST_INSERT_ID
                         if(!$resultQuery){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
-                            $_SESSION['token'] = bin2hex(random_bytes(32));
+                            $token = $customerData['auth_token']; // using customer_token
                             // echo("This is a point to mail the customer or notif the customer");
-                            $id = bin2hex(mysqli_insert_id($conn));
-                            header("Location: ./reservation.php?id={$id}&tk={$_SESSION['token']}");
+                            
+                            header("Location: ./reservation.php?id={$id}&tk={$token}");
                         }
                     }else{
                         mysqli_close($conn);
