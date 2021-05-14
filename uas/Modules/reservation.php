@@ -30,7 +30,7 @@
             <div class="container container-fluid">
                 <form action="reservation.php" method="post" class="form-control">
                     <center><h1>Reservation Information</h1></center>
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-striped" style="table-layout:auto;">
                         <tr>
                             <td>Reservation Id</td>
                             <td><?php echo($res['reservation_id'])?></td>
@@ -49,7 +49,7 @@
                         </tr>
                         <tr>
                             <td>Phone Number</td>
-                            <td><?php echo($res2['customer_phone'])?></td>
+                            <td><input type="text" name="phone" value=<?php echo($res2['customer_phone'])?> class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Number Of People</td>
@@ -61,11 +61,11 @@
                         </tr>
                         <tr>
                             <td>Notes</td>
-                            <td><?php echo($res2['reservation_note'])?></td>
+                            <td><textarea name="notes" cols="75" rows="3" class="form-control"><?php echo($res2['reservation_note'])?></textarea></td>
                         </tr>
                         <tr>
                             <td><button type="submit" class="btn btn-primary" name="update">Update</button></td>
-                            <td><a href="./cancel_reservation.php" class="btn btn-danger">Cancel</a></td>
+                            <td><a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>" class="btn btn-danger" style="float: right;">Cancel</a></td>
                         </tr>
                     </table>
                 </form>
