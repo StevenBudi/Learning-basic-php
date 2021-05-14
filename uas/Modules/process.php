@@ -61,11 +61,11 @@
                         $query2 = "UPDATE $table2 SET availability='false' WHERE id='{$table['id']}';";
                         $query3 = "INSERT INTO $table3 (table_id, customer_name) 
                         VALUES ('{$table['id']}', '{$customerData['name']}')";
-                        $result1 = mysqli_query($conn, $query1);
-                        $result2 = mysqli_query($conn, $query2);
-                        $result3 = mysqli_query($conn, $query3);
+                        $resultQuery1 = mysqli_query($conn, $query1);
+                        $resultQuery2 = mysqli_query($conn, $query2);
+                        $resultQuery3 = mysqli_query($conn, $query3);
                         $id = bin2hex(mysqli_insert_id($conn)); // using LAST_INSERT_ID
-                        if(!$resultQuery){
+                        if(!$resultQuery1 && !$resultQuery2 && !$resultQuery3){
                             die("Something went wrong   : ".mysqli_error($conn));
                         }else{
                             $token = $customerData['auth_token']; // using customer_token

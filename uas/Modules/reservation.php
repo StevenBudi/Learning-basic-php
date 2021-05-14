@@ -12,7 +12,7 @@
     $table1 = $table_customer;
     $table2 = $table_info;
     $table3 = $reservation_detail;
-    $validation = intval(hex2bin($_GET['id'])) + 1;
+    $validation = intval(hex2bin($_GET['id']));
     $authQuery = mysqli_query($conn, "SELECT $table1.customer_token FROM $table1, $table3 WHERE $table3.reservation_id = $validation AND $table1.customer_name = $table3.customer_name");
     if(!$authQuery){
         die("Something went wrong   : ".mysqli_error($conn));
