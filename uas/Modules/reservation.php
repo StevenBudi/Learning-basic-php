@@ -37,7 +37,7 @@
                 // var_dump($res2);
                 ?>
                 <div class="container container-fluid">
-                    <form action="reservation.php" method="post" class="form-control">
+                    <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control">
                         <center><h1>Reservation Information</h1></center>
                         <table class="table table-striped" style="table-layout:auto;">
                             <tr>
@@ -74,7 +74,7 @@
                             </tr>
                             <tr>
                                 <td><button type="submit" class="btn btn-primary" name="update">Update</button></td>
-                                <td><a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_SESSION['token'])?>" class="btn btn-danger" style="float: right;">Cancel</a></td>
+                                <td><a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" class="btn btn-danger" style="float: right;">Cancel</a></td>
                             </tr>
                         </table>
                     </form>
