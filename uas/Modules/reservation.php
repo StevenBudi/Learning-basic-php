@@ -18,23 +18,17 @@
         die("Something went wrong   : ".mysqli_error($conn));
     }
     $auth = mysqli_fetch_assoc($authQuery);
-    var_dump($auth);
-    echo($validation);
-    // echo($validation."<br/>");
     if($auth['customer_token'] === $_GET['tk']){
         $reservation_result = mysqli_query($conn, "SELECT * FROM $table3 WHERE reservation_id='$validation'");
         if(!$reservation_result){
             die("Something went wrong   : ".mysqli_error($conn));
         }else{
             $res = mysqli_fetch_assoc($reservation_result);
-            // var_dump($res);
             $customer_result = mysqli_query($conn, "SELECT * FROM $table1 WHERE customer_name = '{$res['customer_name']}'");
             if(!$customer_result){
                 die("Something went wrong   : ".mysqli_error($conn));
             }else{
                 $res2 = mysqli_fetch_assoc($customer_result);
-                // echo("<br/>");
-                // var_dump($res2);
                 ?>
                 <div class="container container-fluid">
                     <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control">
@@ -90,7 +84,7 @@
                 title:"Error",
                 text:"You are not authorized to view this page"
             }).then(() =>{
-                window.location.href="../../index.php"
+                window.history.back();
             });
         </script>
         <?php
