@@ -66,7 +66,7 @@
                             $_SESSION['token'] = bin2hex(random_bytes(32));
                             // echo("This is a point to mail the customer or notif the customer");
                             $id = bin2hex(mysqli_insert_id($conn));
-                            header("Location: ./reservation.php?id={$id}");
+                            header("Location: ./reservation.php?id={$id}&tk={$_SESSION['token']}");
                         }
                     }else{
                         mysqli_close($conn);

@@ -6,6 +6,7 @@
     
 </body>
 <?php
+    session_start();
     include('./dbconfig.php');
     $table1 = $table_customer;
     $table2 = $table_info;
@@ -65,7 +66,7 @@
                         </tr>
                         <tr>
                             <td><button type="submit" class="btn btn-primary" name="update">Update</button></td>
-                            <td><a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>" class="btn btn-danger" style="float: right;">Cancel</a></td>
+                            <td><a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_SESSION['token'])?>" class="btn btn-danger" style="float: right;">Cancel</a></td>
                         </tr>
                     </table>
                 </form>
@@ -74,7 +75,13 @@
         }
     }
     
+    /*
+    TODO
+    1. check reservation dates if passed dont allow update just view
+    2. using token to cancel and update
+    3. Probably use token as well to view reservation information
 
+    */
 
     mysqli_close($conn);
 ?>
