@@ -1,0 +1,2 @@
+<?php
+// Alter reservation information
