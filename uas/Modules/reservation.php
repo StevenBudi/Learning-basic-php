@@ -7,6 +7,43 @@
     
 </body>
 <?php
+    function fetchReserDetails($connection, $table, $id){
+        $reservation_result = mysqli_query($connection, "SELECT * FROM $table WHERE reservation_id='$id'");
+        if(!$reservation_result){
+            die("Something went wrong   : ".mysqli_error($connection));
+        }else{
+            return mysqli_fetch_assoc($reservation_result);
+        }
+    }
+
+    function fetchCustomerInfo($connection, $table, $data){
+        $customer_result = mysqli_query($connection, "SELECT * FROM $table WHERE customer_name = '{$data['customer_name']}'");
+        if(!$customer_result){
+            die("Something went wrong   : ".mysqli_error($connection));
+        }else{
+            return mysqli_fetch_assoc($customer_result);
+        }
+    }
+
+    function updateCustomerInfo($connection, $table, $data){
+        $updateQuery = "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$data['customer_name']}'";
+        $res3 = mysqli_query($connection, $updateQuery);
+        if(!$res3){
+            die("Something went wrong : ".mysqli_error($connection));
+        }else{
+            ?>
+                <script>
+                    Swal.fire({
+                        icon:"success",
+                        title: "Success!",
+                        text:"Your data has been succesfully updated"
+                    })
+                </script>
+            <?php
+            fetchCustomerInfo($connection, $table, $data);
+        }
+    }
+
     error_reporting(E_ERROR | E_PARSE);
     include('./dbconfig.php');
     $table1 = $table_customer;
@@ -19,34 +56,12 @@
     }
     $auth = mysqli_fetch_assoc($authQuery);
     if($auth['customer_token'] === $_GET['tk']){
-        $reservation_result = mysqli_query($conn, "SELECT * FROM $table3 WHERE reservation_id='$validation'");
-        if(!$reservation_result){
-            die("Something went wrong   : ".mysqli_error($conn));
-        }else{
-            $res = mysqli_fetch_assoc($reservation_result);
-            $customer_result = mysqli_query($conn, "SELECT * FROM $table1 WHERE customer_name = '{$res['customer_name']}'");
-            if(!$customer_result){
-                die("Something went wrong   : ".mysqli_error($conn));
-            }else{
-                $res2 = mysqli_fetch_assoc($customer_result);
-                if(isset($_POST['update'])){
-                    $updateQuery = "UPDATE $table1 SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$res2['customer_name']}'";
-                    $res3 = mysqli_query($conn, $updateQuery);
-                    if(!$res3){
-                        die("Something went wrong : ".mysqli_error($conn));
-                    }else{
-                        ?>
-                        <script>
-                            Swal.fire({
-                                icon:"success",
-                                title: "Success!",
-                                text:"Your data has been succesfully updated"
-                            })
-                        </script>
-                        <?php
-                    }
-                }
-                ?>
+            $res = fetchReserDetails($conn, $table3, $validation);
+            $res2 = fetchCustomerInfo($conn, $table1, $res);
+            if(isset($_POST['update'])){
+                $res2 = updateCustomerInfo($conn, $table1, $res);
+            }
+            ?>
                 <div class="container container-fluid">
                     <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control">
                         <center><h1>Reservation Information</h1></center>
@@ -90,9 +105,7 @@
                         </table>
                     </form>
                 </div>
-                <?php
-            }
-        }
+            <?php
     }else{
         ?>
         <script>
