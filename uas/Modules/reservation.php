@@ -25,8 +25,8 @@
         }
     }
 
-    function updateCustomerInfo($connection, $table, $data){
-        $updateQuery = "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$data['customer_name']}'";
+    function updateCustomerInfo($connection, $table, $data1, $data2){
+        $updateQuery = "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$data1['customer_name']}'";
         $res3 = mysqli_query($connection, $updateQuery);
         if(!$res3){
             die("Something went wrong : ".mysqli_error($connection));
@@ -40,7 +40,17 @@
                     })
                 </script>
             <?php
-            fetchCustomerInfo($connection, $table, $data);
+            $temp = fetchCustomerInfo($connection, $table, $data2);
+            return $temp;
+        }
+    }
+
+    function getOAuth($connection, $table1, $table3, $id){
+        $authQuery = mysqli_query($connection, "SELECT $table1.customer_token FROM $table1, $table3 WHERE $table3.reservation_id = $id AND $table1.customer_name = $table3.customer_name");
+        if(!$authQuery){
+            return false;
+        }else{
+            return mysqli_fetch_assoc($authQuery)['customer_token'];
         }
     }
 
@@ -50,16 +60,12 @@
     $table2 = $table_info;
     $table3 = $reservation_detail;
     $validation = intval(hex2bin($_GET['id']));
-    $authQuery = mysqli_query($conn, "SELECT $table1.customer_token FROM $table1, $table3 WHERE $table3.reservation_id = $validation AND $table1.customer_name = $table3.customer_name");
-    if(!$authQuery){
-        die("Something went wrong   : ".mysqli_error($conn));
-    }
-    $auth = mysqli_fetch_assoc($authQuery);
-    if($auth['customer_token'] === $_GET['tk']){
+    $auth = getOAuth($conn, $table1, $table3, $validation);
+    if($auth === $_GET['tk']){
             $res = fetchReserDetails($conn, $table3, $validation);
             $res2 = fetchCustomerInfo($conn, $table1, $res);
             if(isset($_POST['update'])){
-                $res2 = updateCustomerInfo($conn, $table1, $res);
+                $res2 = updateCustomerInfo($conn, $table1, $res2, $res);
             }
             ?>
                 <div class="container container-fluid">
