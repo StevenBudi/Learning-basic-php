@@ -90,7 +90,7 @@
                             </tr>
                             <tr>
                                 <td>Phone Number</td>
-                                <td><input type="text" name="phone" class="form-control" value=<?php echo($res2['customer_phone'])?>></td>
+                                <td><input type="text" name="phone" class="form-control" maxlength="15" value=<?php echo($res2['customer_phone'])?>></td>
                             </tr>
                             <tr>
                                 <td>Number Of People</td>
