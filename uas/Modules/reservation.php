@@ -29,6 +29,23 @@
                 die("Something went wrong   : ".mysqli_error($conn));
             }else{
                 $res2 = mysqli_fetch_assoc($customer_result);
+                if(isset($_POST['update'])){
+                    $updateQuery = "UPDATE $table1 SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$res2['customer_name']}'";
+                    $res3 = mysqli_query($conn, $updateQuery);
+                    if(!$res3){
+                        die("Something went wrong : ".mysqli_error($conn));
+                    }else{
+                        ?>
+                        <script>
+                            Swal.fire({
+                                icon:"success",
+                                title: "Success!",
+                                text:"Your data has been succesfully updated"
+                            })
+                        </script>
+                        <?php
+                    }
+                }
                 ?>
                 <div class="container container-fluid">
                     <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control">
