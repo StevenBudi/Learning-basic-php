@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Information</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" type="text/javascript"></script>
@@ -20,10 +26,14 @@
                 })
         }
     </script>
+    <style>
+        <?php include('../asset/style/style.css')?>
+    </style>
 </head>
 <body>
     
 </body>
+</html>
 <?php
     error_reporting(E_ERROR | E_PARSE);
     include('./functionality.php');
@@ -40,7 +50,7 @@
                 $res2 = updateCustomerInfo($conn, $table1, $res2, $res);
             }
             ?>
-                <div class="container container-fluid">
+                <div class="container container-fluid reservation-information">
                     <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control">
                         <center><h1>Reservation Information</h1></center>
                         <table class="table table-striped" style="table-layout:auto;">
