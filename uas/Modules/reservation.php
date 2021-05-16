@@ -43,7 +43,7 @@
     $table3 = $reservation_detail;
     $validation = intval(hex2bin($_GET['id']));
     $auth = getOAuth($conn, $table1, $table3, $validation);
-    if($auth === $_GET['tk']){
+    if($auth === $_GET['tk'] && $auth){
             $res = fetchReserDetails($conn, $table3, $validation);
             $res2 = fetchCustomerInfo($conn, $table1, $res);
             if(isset($_POST['update'])){

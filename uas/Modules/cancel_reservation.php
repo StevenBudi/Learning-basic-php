@@ -7,6 +7,7 @@
     
 </body>
 <?php
+    error_reporting(E_ERROR | E_PARSE);
     include('./dbconfig.php');
     include('./functionality.php');
     $table1 = $table_customer;
@@ -16,7 +17,7 @@
     $validation = intval(hex2bin($_GET['id']));
     $authToken = getOAuth($conn, $table1, $table3, $validation);
 
-    if($_GET['tk'] === $authToken){
+    if($_GET['tk'] === $authToken && $authToken){
         // Delete reservation
     }else{
         ?>
