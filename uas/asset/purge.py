@@ -23,10 +23,6 @@ try:
             DELETE FROM `reservation_detail`;
             ALTER TABLE `reservation_detail` AUTO_INCREMENT=0;
             '''
-        # cursor.execute("DELETE FROM `reservation_customer`;")
-        # cursor.execute("UPDATE `restaurant_table` SET availability='true' WHERE availability='false';")
-        # cursor.execute("DELETE FROM `reservation_detail`;")
-        # cursor.execute("ALTER TABLE `reservation_detail` AUTO_INCREMENT=0;")
         for result in cursor.execute(SQL, multi=True):
             print(result)
 except Error as e:
