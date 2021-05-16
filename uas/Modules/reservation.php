@@ -151,8 +151,8 @@
     
     /*
     TODO
-    1. check reservation dates if passed dont allow update just view (not yet)
-    2. using token to cancel and update (not yet)
+    1. check reservation dates if passed dont allow update just view (done using status)
+    2. using token to cancel and update (done)
     3. Probably use token as well to view reservation information (done)
 
     */
