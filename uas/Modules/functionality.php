@@ -45,3 +45,9 @@
                 return mysqli_fetch_assoc($authQuery)['customer_token'];
             }
     }
+
+    function delReserDetails(){
+        // Using id get customer name and table id
+        // Delete reservation details using id and customer using name
+        // Alter table information using table id
+    }
