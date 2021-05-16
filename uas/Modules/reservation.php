@@ -63,7 +63,9 @@
     $auth = getOAuth($conn, $table1, $table3, $validation);
     if($auth === $_GET['tk']){
             $res = fetchReserDetails($conn, $table3, $validation);
+            var_dump($res);
             $res2 = fetchCustomerInfo($conn, $table1, $res);
+            var_dump($res2);
             if(isset($_POST['update'])){
                 $res2 = updateCustomerInfo($conn, $table1, $res2, $res);
             }
@@ -90,7 +92,17 @@
                             </tr>
                             <tr>
                                 <td>Phone Number</td>
-                                <td><input type="text" name="phone" class="form-control" maxlength="15" value=<?php echo($res2['customer_phone'])?>></td>
+                                <td>
+                                    <?php
+                                    if($res['status'] === 'reserved'){
+                                        ?>
+                                        <input type="text" name="phone" class="form-control" maxlength="15" value=<?php echo($res2['customer_phone'])?>>
+                                        <?php
+                                    }else{
+                                        echo($res2['customer_phone']);
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Number Of People</td>
@@ -102,7 +114,17 @@
                             </tr>
                             <tr>
                                 <td>Notes</td>
-                                <td><textarea name="notes" cols="75" rows="3" class="form-control"><?php echo($res2['reservation_note'])?></textarea></td>
+                                <td>
+                                    <?php
+                                    if($res['status'] === 'reserved'){
+                                        ?>
+                                        <textarea name="notes" cols="75" rows="3" class="form-control"><?php echo($res2['reservation_note'])?></textarea>
+                                        <?php
+                                    }else{
+                                        echo($res2['reservation_note']);
+                                    }
+                                    ?>
+                                </td>
                             </tr>
                             <tr>
                                 <td><button type="submit" class="btn btn-primary" name="update">Update</button></td>
