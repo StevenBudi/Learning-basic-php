@@ -15,9 +15,9 @@
     $table3 = $reservation_detail;
 
     $validation = intval(hex2bin($_GET['id']));
-    $authToken = getOAuth($conn, $table1, $table3, $validation);
+    $data_details = getOAuth($conn, $table1, $table3, $validation);
 
-    if($_GET['tk'] === $authToken && $authToken){
+    if($data_details['customer_token'] === $_GET['tk'] && $data_details['customer_token'] && $data_details['status'] === "reserved"){
         // Delete reservation
     }else{
         ?>

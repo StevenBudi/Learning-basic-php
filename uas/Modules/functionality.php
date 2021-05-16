@@ -38,11 +38,11 @@
     }
 
     function getOAuth($connection, $table1, $table3, $id){
-            $authQuery = mysqli_query($connection, "SELECT $table1.customer_token FROM $table1, $table3 WHERE $table3.reservation_id = $id AND $table1.customer_name = $table3.customer_name");
+            $authQuery = mysqli_query($connection, "SELECT customer_token, status FROM $table1, $table3 WHERE $table3.reservation_id = $id AND $table1.customer_name = $table3.customer_name");
             if(!$authQuery){
                 return false;
             }else{
-                return mysqli_fetch_assoc($authQuery)['customer_token'];
+                return mysqli_fetch_assoc($authQuery);
             }
     }
 

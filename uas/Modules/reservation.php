@@ -42,8 +42,8 @@
     $table2 = $table_info;
     $table3 = $reservation_detail;
     $validation = intval(hex2bin($_GET['id']));
-    $auth = getOAuth($conn, $table1, $table3, $validation);
-    if($auth === $_GET['tk'] && $auth){
+    $data_details = getOAuth($conn, $table1, $table3, $validation);
+    if($data_details['customer_token'] === $_GET['tk'] && $data_details['customer_token'] && $data_details['status'] === "reserved"){
             $res = fetchReserDetails($conn, $table3, $validation);
             $res2 = fetchCustomerInfo($conn, $table1, $res);
             if(isset($_POST['update'])){
