@@ -26,14 +26,16 @@
             
         <?php
         while($row = mysqli_fetch_assoc($all_data)){
-            ?>
-            <tr>
-                <td><?php echo($row['reservation_id'])?></td>
-                <td><?php echo($row['customer_name'])?></td>
-                <td><?php echo($row['table_id'])?></td>
-                <td><?php echo($row['status'])?></td>
-            </tr>
-            <?php
+            if($row['status'] != 'check-out' || $row['status'] !='cancelled'){
+                ?>
+                <tr>
+                    <td><?php echo($row['reservation_id'])?></td>
+                    <td><?php echo($row['customer_name'])?></td>
+                    <td><?php echo($row['table_id'])?></td>
+                    <td><?php echo($row['status'])?></td>
+                </tr>
+                <?php
+            }
         }
         ?>
             </table>
