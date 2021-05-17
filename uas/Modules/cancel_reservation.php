@@ -16,9 +16,27 @@
 
     $validation = intval(hex2bin($_GET['id']));
     $data_details = getOAuth($conn, $table1, $table3, $validation);
-
     if($data_details['customer_token'] === $_GET['tk'] && $data_details['customer_token'] && $data_details['status'] === "reserved"){
         // Delete reservation
+        $data = fetchReserDetails($conn, $table3, $validation);
+        try {
+            updateTable($conn, $table2, $data['table_id']);
+            deleteCustomer($conn, $table1, $data['customer_name']);
+            updateReserDetails($conn, $table3, $validation, 'cancelled');
+            ?>
+            <script>
+                Swal.fire({
+                    icon:"info",
+                    title:"Your Reservation has been canceled",
+                    text:"Please visit us again"
+                }).then(() => {
+                    window.location.href="../../index.php";
+                });
+            </script>
+            <?php
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }else{
         ?>
         <script>
