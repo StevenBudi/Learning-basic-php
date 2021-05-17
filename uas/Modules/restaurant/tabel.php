@@ -1,4 +1,0 @@
-<?php
-// For altering tabel
-
-
