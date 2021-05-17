@@ -18,9 +18,8 @@
     }
 
     function updateCustomerInfo($connection, $table, $data1, $data2){
-            $updateQuery = "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$data1['customer_name']}'";
-            $res3 = mysqli_query($connection, $updateQuery);
-            if(!$res3){
+            $info_result = mysqli_query($connection, "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '{$data1['customer_name']}'");
+            if(!$info_result){
                 die("Something went wrong : ".mysqli_error($connection));
             }else{
                 ?>
@@ -32,17 +31,17 @@
                         })
                     </script>
                 <?php
-                $temp = fetchCustomerInfo($connection, $table, $data2);
-                return $temp;
+                $data = fetchCustomerInfo($connection, $table, $data2);
+                return $data;
             }
     }
 
-    function getOAuth($connection, $table1, $table3, $id){
-            $authQuery = mysqli_query($connection, "SELECT customer_token, status FROM $table1, $table3 WHERE $table3.reservation_id = $id AND $table1.customer_name = $table3.customer_name");
-            if(!$authQuery){
+    function getOAuth($connection, $table1, $table2, $id){
+            $authResult = mysqli_query($connection, "SELECT customer_token, status FROM $table1, $table2 WHERE $table2.reservation_id = $id AND $table1.customer_name = $table2.customer_name");
+            if(!$authResult){
                 return false;
             }else{
-                return mysqli_fetch_assoc($authQuery);
+                return mysqli_fetch_assoc($authResult);
             }
     }
 
@@ -50,23 +49,23 @@
         // Using id get customer name and table id
         // Delete reservation details using id and customer using name
         // Alter table information using table id
-        $result = mysqli_query($connection, "UPDATE $table SET status='$state' WHERE reservation_id= '$id'");
-        if(!$result){
+        $updateResult = mysqli_query($connection, "UPDATE $table SET status='$state' WHERE reservation_id= '$id'");
+        if(!$updateResult){
             die("Something went wrong   : ".mysqli_error($connection));
         }
         
     }
 
     function deleteCustomer($connection, $table, $name){
-        $result = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
-        if(!$result){
+        $deleteResult = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
+        if(!$deleteResult){
             die("Something went wrong : ".mysqli_error($connection));
         }
     }
 
     function updateTable($connection, $table, $id){
-        $result = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
-        if(!$result){
+        $tableResult = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
+        if(!$tableResult){
             die("Something went wrong   : ".mysqli_error($connection));
         }
     }
