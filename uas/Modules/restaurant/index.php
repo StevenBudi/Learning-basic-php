@@ -41,6 +41,11 @@
     }
 // Alter reservation information
 
-// TODO -> Limit fetch using date ?
+/*
+TODO
+- limit display using date
+- button to change status
+- detail page
+*/
 
 ?>
