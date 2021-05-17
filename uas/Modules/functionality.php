@@ -46,8 +46,27 @@
             }
     }
 
-    function delReserDetails(){
+    function updateReserDetails($connection, $table, $id, $state){
         // Using id get customer name and table id
         // Delete reservation details using id and customer using name
         // Alter table information using table id
+        $result = mysqli_query($connection, "UPDATE $table SET status='$state' WHERE reservation_id= '$id'");
+        if(!$result){
+            die("Something went wrong   : ".mysqli_error($connection));
+        }
+        
+    }
+
+    function deleteCustomer($connection, $table, $name){
+        $result = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
+        if(!$result){
+            die("Something went wrong : ".mysqli_error($connection));
+        }
+    }
+
+    function updateTable($connection, $table, $id){
+        $result = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
+        if(!$result){
+            die("Something went wrong   : ".mysqli_error($connection));
+        }
     }
