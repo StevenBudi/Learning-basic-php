@@ -107,7 +107,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><button type="submit" class="btn btn-primary" name="update">Update</button></td>
+                                <td><button type="submit" class="btn btn-primary" name="update">Confirm</button></td>
                                 <td>
                                     <!-- <a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" class="btn btn-danger" style="float: right;">Cancel</a> -->
                                     <button type="button" class="btn btn-danger" style="float: right;" onclick=cancelClick()>Cancel</button>

@@ -27,8 +27,10 @@
                         Swal.fire({
                             icon:"success",
                             title: "Success!",
-                            text:"Your data has been succesfully updated"
-                        })
+                            text:"Your reservation has been confirmed !"
+                        }).then(() => {
+                            window.location.href="../../index.php";
+                        });
                     </script>
                 <?php
                 $data = fetchCustomerInfo($connection, $table, $data2);
