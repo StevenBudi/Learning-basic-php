@@ -32,7 +32,15 @@
                     <td><?php echo($row['reservation_id'])?></td>
                     <td><?php echo($row['customer_name'])?></td>
                     <td><?php echo($row['table_id'])?></td>
-                    <td><?php echo($row['status'])?></td>
+                    <td>
+                        <!--<?php echo($row['status'])?> -->
+                        <select name="reser_status" id="reser_status">
+                            <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>></option>
+                            <option value="cancelled"></option>
+                            <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>></option>
+                            <option value="check-out"></option>
+                        </select>
+                    </td>
                 </tr>
                 <?php
             }
