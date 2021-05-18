@@ -25,7 +25,11 @@
         $reserveData -> auth_token = bin2hex($_POST['first_name']." {$_POST['last_name']}");
         
         $reserJson = json_encode($reserveData);
+
         $customerData = json_decode($reserJson, true);
+        foreach ($customerData as $key => $value) {
+            setcookie($key, $value, time() + 60*3, "/");
+        }
         # Check Data
         try {
             $resultCustomer = mysqli_query($conn, "SELECT * FROM  $table1 WHERE customer_name = '{$customerData['name']}'");

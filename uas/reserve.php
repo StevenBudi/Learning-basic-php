@@ -25,18 +25,18 @@
 
 			<tr>
 				<td><label for="required_field" class="required_field">Fullname</label></td>
-				<td><input type="text" required name="first_name" id="first_name" class="form-control" placeholder="John" maxlength="16"><label for="first_name" class="text-muted form-label">First Name</label></td>
-				<td><input type="text" required name="last_name" id="last_name" class="form-control" placeholder="Doe" maxlength="16"><label for="last_name" class="text-muted form-label">Last Name</label></td>
+				<td><input type="text" required name="first_name" id="first_name" class="form-control" placeholder="John" maxlength="16" value=<?php if(isset($_COOKIE['name'])) {$name = preg_split("/\\s/", $_COOKIE['name']); echo($name[0]);}?>><label for="first_name" class="text-muted form-label">First Name</label></td>
+				<td><input type="text" required name="last_name" id="last_name" class="form-control" placeholder="Doe" maxlength="16" value=<?php if(isset($_COOKIE['name'])) {$name = preg_split("/\\s/", $_COOKIE['name']); echo($name[1]);}?>><label for="last_name" class="text-muted form-label">Last Name</label></td>
 			</tr>
 
 			<tr>
 				<td><label for="required_field" class="required_field">Email</label></td>
-				<td class="expand"><input required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com"></td>
+				<td class="expand"><input required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,4}$" type="email" name="email" id="email" class="form-control" placeholder="john.doe@email.com" value=<?php if(isset($_COOKIE['email'])) echo($_COOKIE['email'])?>></td>
 			</tr>
 
 			<tr>
 				<td>Phone Number</td>
-				<td class="expand"><input type="text" name="phone" id="phone" class="form-control" maxlength="15"></td>
+				<td class="expand"><input type="text" pattern="[0-9]{10,15}" name="phone" id="phone" class="form-control" maxlength="15" value=<?php if(isset($_COOKIE['phone'])) echo($_COOKIE['phone'])?>></td>
 			</tr>
 
 			<tr>
@@ -106,7 +106,7 @@
 
 			<tr>
 				<td>Notes</td>
-				<td colspan="2"><textarea name="reser_notes" id="reser_notes" cols="130" rows="3" class="form-control"></textarea></td>
+				<td colspan="2"><textarea name="reser_notes" id="reser_notes" cols="130" rows="3" class="form-control"><?php if(isset($_COOKIE['notes'])) echo($_COOKIE['notes'])?></textarea></td>
 			</tr>
 			<!-- Todo 
 			- Generate Radio Button with css button class for time reservation (Kinda Failed)
