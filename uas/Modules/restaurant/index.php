@@ -13,7 +13,8 @@
 <?php
     include('../dbconfig.php');
     $table = $reservation_detail;
-    $all_data = mysqli_query($conn, "SELECT * FROM $table ORDER BY reservation_id");
+    $table2 = $table_customer;
+    $all_data = mysqli_query($conn, "SELECT * FROM $table, $table2 WHERE DATE(`$table2.reservation_time`) = CURDATE() ORDER BY `$table.reservation_id`");
     if($all_data){
         ?>
             <table>

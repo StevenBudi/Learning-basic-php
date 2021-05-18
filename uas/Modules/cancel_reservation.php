@@ -21,7 +21,6 @@
         $data = fetchReserDetails($conn, $table3, $validation);
         try {
             updateTable($conn, $table2, $data['table_id']);
-            deleteCustomer($conn, $table1, $data['customer_name']);
             updateReserDetails($conn, $table3, $validation, 'cancelled');
             ?>
             <script>
