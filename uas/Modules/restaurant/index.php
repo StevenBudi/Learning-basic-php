@@ -26,7 +26,7 @@
             
         <?php
         while($row = mysqli_fetch_assoc($all_data)){
-            if($row['status'] != 'check-out' || $row['status'] !='cancelled'){
+            if($row['status'] != 'check-out' || $row['status'] != 'cancelled'){
                 ?>
                 <tr>
                     <td><?php echo($row['reservation_id'])?></td>
@@ -35,14 +35,16 @@
                     <td>
                         <!--<?php echo($row['status'])?> -->
                         <select name="reser_status" id="reser_status">
-                            <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>></option>
-                            <option value="cancelled"></option>
-                            <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>></option>
-                            <option value="check-out"></option>
+                            <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
+                            <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
+                            <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>>Check-In</option>
+                            <option value="check-out"<?php if($row['status'] === 'check-out') echo("selected")?>>Check-Out</option>
                         </select>
                     </td>
                 </tr>
                 <?php
+            }else{
+                ;
             }
         }
         ?>
