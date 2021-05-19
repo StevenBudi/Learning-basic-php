@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
+    <script src="../../asset/js/restaurant.js"></script>
 </head>
 <body>
     <h1>Admin Page</h1>
@@ -38,7 +39,7 @@
                         1. Change Status on database
                         2. Change display using ajax
                     -->
-                    <select name="reser_status" id="reser_status">
+                    <select name="reser_status" id="reser_status" onchange="statusChange()">
                         <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
                         <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
                         <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>>Check-In</option>
