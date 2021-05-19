@@ -15,7 +15,8 @@
     include('../dbconfig.php');
     $table = $reservation_detail;
     $table2 = $table_customer;
-    $all_data = mysqli_query($conn, "SELECT * FROM $table, $table2 WHERE DATE(`$table2.reservation_time`) = CURDATE() ORDER BY `$table.reservation_id`");
+    //SELECT * FROM reservation_detail JOIN reservation_customer WHERE reservation_customer.customer_name = reservation_detail.customer_name AND DATE(reservation_customer.reservation_time) = CURDATE() ORDER BY reservation_detail.reservation_id 
+    $all_data = mysqli_query($conn, "SELECT * FROM $table JOIN $table2 WHERE DATE($table2.reservation_time) = CURDATE() AND $table.customer_name = $table2.customer_name ORDER BY $table.reservation_id");
     if($all_data){
         ?>
             <table>
