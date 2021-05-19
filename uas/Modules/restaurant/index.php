@@ -34,6 +34,10 @@
                 <td><?php echo($row['table_id'])?></td>
                 <td>
                     <!--<?php echo($row['status'])?> -->
+                    <!-- 
+                        1. Change Status on database
+                        2. Change display using ajax
+                    -->
                     <select name="reser_status" id="reser_status">
                         <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
                         <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
