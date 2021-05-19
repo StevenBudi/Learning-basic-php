@@ -40,7 +40,10 @@
                         1. Change Status on database
                         2. Change display using ajax
                     -->
-                    <select name="reser_status" id="reser_status" onchange="statusChange()">
+                    <?php
+                        $id = 'reser_status'.$row['reservation_id']
+                    ?>
+                    <select name="reser_status" id=<?php echo($id)?> onchange="statusChange('<?php echo($id)?>')">
                         <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
                         <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
                         <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>>Check-In</option>
