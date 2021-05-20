@@ -14,6 +14,7 @@
         global $conn;
         $respon = array();
         $respon['Kode'] = 200;
+        http_response_code(200);
         $respon['Status'] = 'Sukses';
         $respon['Data'] = array();
         if($id === "0"){
@@ -32,6 +33,7 @@
         }else{
             $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE nim = $id");
             if(!$result){
+                http_response_code(404);
                 $respon['Kode'] = 404;
                 $respon['Status'] = 'Gagal, Data Tidak Ditemukan';
                 $respon['Message'] = mysqli_error($conn);
@@ -67,9 +69,11 @@
 
         $result = mysqli_query($conn, "INSERT INTO mahasiswa (nim, nama, angkatan, semester, ipk) VALUES ('$nim', '$nama', '$angkatan', '$semester', '$ipk')");
         if($result){
+            http_response_code(200);
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Memasukkan Data";
         }else{
+            http_response_code(400);
             $respon['Kode'] = 400;
             $respon['Status'] = "Gagal, Memasukkan Data";
             $respon['Message'] = mysqli_error($conn);
@@ -85,6 +89,7 @@
         global $conn;
         $respon = array();
         if(empty($id)){
+            http_response_code(404);
             $respon['Kode'] = 404;
             $respon['Status'] = "Gagal, Data Tidak Ditemukan";
         }else{
@@ -96,9 +101,11 @@
             $ipk = $data['ipk']; 
             $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='{$nim}', nama='{$nama}', angkatan='{$angkatan}', semester='{$semester}', ipk='{$ipk}' WHERE nim = '{$id}'");
             if($result){
+                http_response_code(200);
                 $respon['Kode'] = 200;
                 $respon['Status'] = "Sukses, Data Telah Diupdate";
             }else{
+                http_response_code(400);
                 $respon['Kode'] = 400;
                 $respon['Status'] = "Gagal, Data Gagal Diupdate";
                 $respon['Message'] = mysqli_error($conn);
