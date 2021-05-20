@@ -4,10 +4,9 @@
     $uri_url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $uri_segment = explode("/", $uri_url);
     // var_dump($uri_segment);
-
     switch($request){
         case 'GET':
-            if(!isset($_GET['nim'])){
+            if(empty($_GET['nim'])){
                 getMahasiswa();
             }else{
                 $nim = $_GET['nim'];
