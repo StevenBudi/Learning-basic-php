@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <script src="../../asset/js/restaurant.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" type="text/javascript"></script>
 </head>
 <body>
     <h1>Admin Page</h1>
@@ -43,7 +46,20 @@
                     <?php
                         $id = 'reser_status'.$row['reservation_id']
                     ?>
-                    <select name="reser_status" id=<?php echo($id)?> onchange="statusChange('<?php echo($id)?>')">
+                    <select name="reser_status" id=<?php echo($id)?> onchange="Swal.fire({
+                        title: 'Cancel Reservation?',
+                        text: 'You won\'t be able to revert this!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes!',
+                        cancelButtonText:'Nope!'
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            statusChange('<?php echo($id)?>');
+                        };
+                    });">
                         <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
                         <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
                         <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>>Check-In</option>
