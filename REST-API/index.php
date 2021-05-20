@@ -17,7 +17,8 @@
             insertMahasiswa();
             break;
         case 'PUT':
-            updateMahasiswa($_GET['nim']);
+            $nim = $_GET['nim'];
+            updateMahasiswa($nim);
             break;
         case 'DELETE':
             $nim = $_GET['nim'];

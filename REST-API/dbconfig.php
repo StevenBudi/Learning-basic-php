@@ -99,7 +99,7 @@
             $angkatan = $data['angkatan'];
             $semester = $data['semester'];
             $ipk = $data['ipk']; 
-            $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='$nim', nama='$nama', angkatan='$angkatan', semester='$semester', ipk='$ipk' WHERE mahasiswa.nim = $id");
+            $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='{$nim}', nama='{$nama}', angkatan='{$angkatan}', semester='{$semester}', ipk='{$ipk}' WHERE mahasiswa.nim = $id");
             if($result){
                 http_response_code(200);
                 $respon['Kode'] = 200;
