@@ -92,16 +92,26 @@
             $angkatan = $data['angkatan'];
             $semester = $data['semester'];
             $ipk = $data['ipk']; 
-            $result = mysqli_query($conn, "UPDATE mahasiswa SET nim={$nim}, nama={$nama}, angkatan={$angkatan}, semester={$semester}, ipk={$ipk} WHERE nim = $id");
+            $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='{$nim}', nama='{$nama}', angkatan='{$angkatan}', semester='{$semester}', ipk='{$ipk}' WHERE nim = '{$id}'");
             if($result){
                 $respon['Kode'] = 200;
                 $respon['Status'] = "Sukses, Data Telah Diupdate";
             }else{
                 $respon['Kode'] = 400;
                 $respon['Status'] = "Gagal, Data Gagal Diupdate";
+                $respon['Text'] = mysqli_error($conn);
             }
         }
         header("Accept: application/json");
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($respon);
+    }
+
+    function deleteMahasiswa($id){
+        global $conn;
+        $respon = array();
+
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($respon);

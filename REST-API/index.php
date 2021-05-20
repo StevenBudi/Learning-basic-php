@@ -16,6 +16,12 @@
         case 'POST':
             insertMahasiswa();
             break;
+        case 'PUT':
+            updateMahasiswa($_GET['nim']);
+            break;
+        case 'DELETE':
+            deleteMahasiswa($_GET['nim']);
+            break;
         default:
             break;
     }
