@@ -17,7 +17,7 @@
         $respon['Status'] = 'Sukses';
         $respon['Data'] = array();
         if($id === "0"){
-            $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE 0");
+            $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE 1");
             while($data = mysqli_fetch_array($result)){
                 $mhs_data = array(
                     'NIM' => $data['nim'],
@@ -36,18 +36,20 @@
                 $respon['Status'] = 'Gagal, Data Tidak Ditemukan';
             }else{
                 $data = mysqli_fetch_assoc($result);
-                $respon['Data'] = array(
+                $mhs_data = array(
                     'NIM' => $data['nim'],
                     'Nama' => $data['nama'],
                     'Angkatan' => $data['angkatan'],
                     'Semester' => $data['semester'],
                     'IPK' => $data['ipk']
                 );
+
+                array_push($respon['Data'], $mhs_data);
             }
 
         }
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
-        return json_encode($respon);
+        echo json_encode($respon);
     }
 ?>
