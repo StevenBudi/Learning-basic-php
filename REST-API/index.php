@@ -13,6 +13,9 @@
                 getMahasiswa($nim);
             }
             break;
+        case 'POST':
+            insertMahasiswa();
+            break;
         default:
             break;
     }

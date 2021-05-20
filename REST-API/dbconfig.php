@@ -52,4 +52,31 @@
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($respon);
     }
+
+
+    function insertMahasiswa(){
+        $respon = array();
+        global $conn;
+        $data = json_decode(file_get_contents("php://input"), true);
+        $nim = $data['nim'];
+        $nama = $data['nama'];
+        $angkatan = $data['angkatan'];
+        $semester = $data['semester'];
+        $ipk = $data['ipk']; 
+
+        $result = mysqli_query($conn, "INSERT INTO mahasiswa (nim, nama, angkatan, semester, ipk) VALUES ('$nim', '$nama', '$angkatan', '$semester', '$ipk')");
+        if($result){
+            $respon['Kode'] = 200;
+            $respon['Status'] = "Sukses, memasukkan data";
+        }else{
+            $respon['Kode'] = 400;
+            $respon['Status'] = "Gagal, memasukkan data";
+        }
+
+        header("Accept: application/json");
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($respon);
+        echo(mysqli_error($conn));
+    }
 ?>
