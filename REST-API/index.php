@@ -20,7 +20,8 @@
             updateMahasiswa($_GET['nim']);
             break;
         case 'DELETE':
-            deleteMahasiswa($_GET['nim']);
+            $nim = $_GET['nim'];
+            deleteMahasiswa($nim);
             break;
         default:
             break;

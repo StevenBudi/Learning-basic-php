@@ -114,7 +114,7 @@
         global $conn;
         $respon = array();
 
-        $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = '{$id}'");
+        $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = $id");
         if($result){
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Data Telah Dihapus";
