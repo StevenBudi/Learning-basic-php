@@ -34,6 +34,7 @@
             if(!$result){
                 $respon['Kode'] = 404;
                 $respon['Status'] = 'Gagal, Data Tidak Ditemukan';
+                $respon['Message'] = mysqli_error($conn);
             }else{
                 $data = mysqli_fetch_assoc($result);
                 $mhs_data = array(
@@ -71,6 +72,7 @@
         }else{
             $respon['Kode'] = 400;
             $respon['Status'] = "Gagal, Memasukkan Data";
+            $respon['Message'] = mysqli_error($conn);
         }
 
         header("Accept: application/json");
@@ -99,7 +101,7 @@
             }else{
                 $respon['Kode'] = 400;
                 $respon['Status'] = "Gagal, Data Gagal Diupdate";
-                $respon['Text'] = mysqli_error($conn);
+                $respon['Message'] = mysqli_error($conn);
             }
         }
         header("Accept: application/json");
@@ -111,6 +113,16 @@
     function deleteMahasiswa($id){
         global $conn;
         $respon = array();
+
+        $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = '{$id}'");
+        if($result){
+            $respon['Kode'] = 200;
+            $respon['Status'] = "Sukses, Data Telah Dihapus";
+        }else{
+            $respon['Kode'] = 400;
+            $respon['Status'] = "Gagal, Data Gagal Diupdate";
+            $respon['Message'] = mysqli_error($conn);
+        }
 
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
