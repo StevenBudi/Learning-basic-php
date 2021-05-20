@@ -67,16 +67,43 @@
         $result = mysqli_query($conn, "INSERT INTO mahasiswa (nim, nama, angkatan, semester, ipk) VALUES ('$nim', '$nama', '$angkatan', '$semester', '$ipk')");
         if($result){
             $respon['Kode'] = 200;
-            $respon['Status'] = "Sukses, memasukkan data";
+            $respon['Status'] = "Sukses, Memasukkan Data";
         }else{
             $respon['Kode'] = 400;
-            $respon['Status'] = "Gagal, memasukkan data";
+            $respon['Status'] = "Gagal, Memasukkan Data";
         }
 
         header("Accept: application/json");
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($respon);
-        echo(mysqli_error($conn));
+    }
+
+    function updateMahasiswa($id){
+        global $conn;
+        $respon = array();
+        if(empty($id)){
+            $respon['Kode'] = 404;
+            $respon['Status'] = "Gagal, Data Tidak Ditemukan";
+        }else{
+            $data = json_decode(file_get_contents("php://input"), true);
+            $nim = $data['nim'];
+            $nama = $data['nama'];
+            $angkatan = $data['angkatan'];
+            $semester = $data['semester'];
+            $ipk = $data['ipk']; 
+            $result = mysqli_query($conn, "UPDATE mahasiswa SET nim={$nim}, nama={$nama}, angkatan={$angkatan}, semester={$semester}, ipk={$ipk} WHERE nim = $id");
+            if($result){
+                $respon['Kode'] = 200;
+                $respon['Status'] = "Sukses, Data Telah Diupdate";
+            }else{
+                $respon['Kode'] = 400;
+                $respon['Status'] = "Gagal, Data Gagal Diupdate";
+            }
+        }
+        header("Accept: application/json");
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+        echo json_encode($respon);
     }
 ?>
