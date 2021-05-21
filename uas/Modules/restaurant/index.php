@@ -47,9 +47,9 @@
                         $id = 'reser_status'.$row['reservation_id']
                     ?>
                     <select name="reser_status" id=<?php echo($id)?> onchange="Swal.fire({
-                        title: 'Cancel Reservation?',
+                        title: 'Change Reservation Status ?',
                         text: 'You won\'t be able to revert this!',
-                        icon: 'warning',
+                        icon: 'info',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
