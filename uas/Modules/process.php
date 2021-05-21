@@ -107,7 +107,14 @@
         mysqli_close($conn);
         ?>
         <script>
-            alert("Please Fill out reservation form first !").then(() => {window.location.href="../reserve.php"});
+            Swal.fire({
+                icon:"info",
+                title:"Information",
+                text:"Please Fill Out Reservation Form First !"
+            }).then(() => {
+                window.location.href="../reserve.php";
+            });
+            // alert("Please Fill out reservation form first !").then(() => {window.location.href="../reserve.php"});
         </script>
         <?php
     }
