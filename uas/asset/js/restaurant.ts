@@ -1,6 +1,12 @@
 const statusChange = (id) => {
-    console.log(id)
-    const element  = document.getElementById(id) as HTMLSelectElement
-    const opt = element.options[element.selectedIndex]
-    alert(opt.value)
+    let opt
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () =>{
+        if(xmlhttp.status === 200 && xmlhttp.readyState === 4){
+            const element  = document.getElementById(id) as HTMLSelectElement
+            opt = element.options[element.selectedIndex]
+        }
+        xmlhttp.open("POST", `handling.php?id=${id}&state=${opt.value}`, true)
+        xmlhttp.send()
+    }
 }
