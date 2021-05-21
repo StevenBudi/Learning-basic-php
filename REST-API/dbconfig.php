@@ -123,9 +123,11 @@
 
         $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = $id");
         if($result){
+            http_response_code(200);
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Data Telah Dihapus";
         }else{
+            http_response_code(400);
             $respon['Kode'] = 400;
             $respon['Status'] = "Gagal, Data Gagal Diupdate";
             $respon['Message'] = mysqli_error($conn);
