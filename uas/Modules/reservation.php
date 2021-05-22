@@ -26,7 +26,7 @@
                 })
         }
     </script>
-    <link rel="stylesheet" href="../../asset/style/style.css">
+    <link rel="stylesheet" href="../asset/style/style.css">
 </head>
 <body>
     
@@ -106,7 +106,7 @@
                                 <td><button type="submit" class="btn btn-primary" name="update">Confirm</button></td>
                                 <td>
                                     <!-- <a href="./cancel_reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" class="btn btn-danger" style="float: right;">Cancel</a> -->
-                                    <button type="button" class="btn btn-danger" style="float: right;" onclick=cancelClick()>Cancel</button>
+                                    <button type="button" class="btn btn-danger" style="float: right;" onclick="cancelClick();">Cancel</button>
                                 </td>
                             </tr>
                         </table>
@@ -114,17 +114,7 @@
                 </div>
             <?php
     }else{
-        ?>
-        <script>
-            Swal.fire({
-                icon:"error",
-                title:"Error",
-                text:"You are not authorized to view this page"
-            }).then(() =>{
-                window.history.back();
-            });
-        </script>
-        <?php
+        notAuthorize();
     }
     
     

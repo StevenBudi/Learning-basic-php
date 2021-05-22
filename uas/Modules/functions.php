@@ -75,3 +75,17 @@
             die("Something went wrong   : ".mysqli_error($connection));
         }
     }
+
+    function notAuthorize(){
+        ?>
+        <script>
+            Swal.fire({
+                icon:"error",
+                title:"Error",
+                text:"You are not authorized to view this page"
+            }).then(() =>{
+                window.history.back();
+            });
+        </script>
+        <?php
+    }
