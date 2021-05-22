@@ -102,29 +102,33 @@
             $respon['Kode'] = 404;
             $respon['Status'] = "Gagal, Data Tidak Ditemukan";
         }else{
-            $data = json_decode(file_get_contents("php://input"), true);
-            $nim = $data['nim'];
-            $nama = $data['nama'];
-            $angkatan = $data['angkatan'];
-            $semester = $data['semester'];
-            $ipk = $data['ipk']; 
-            $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='{$nim}', nama='{$nama}', angkatan='{$angkatan}', semester='{$semester}', ipk='{$ipk}' WHERE mahasiswa.nim = $id");
-            if($result){
-                http_response_code(200);
-                $respon['Kode'] = 200;
-                $respon['Status'] = "Sukses, Data Telah Diupdate";
-                $respon['Data'] = [
-                    "Nim" => $nim,
-                    "Nama" => $nama,
-                    "Angkatan" => $angkatan,
-                    "Semester" => $semester,
-                    "Ipk" => $ipk
-                ];
+            if(checkMahasiswa($id) === true){
+                $data = json_decode(file_get_contents("php://input"), true);
+                $nim = $data['nim'];
+                $nama = $data['nama'];
+                $angkatan = $data['angkatan'];
+                $semester = $data['semester'];
+                $ipk = $data['ipk']; 
+                $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='{$nim}', nama='{$nama}', angkatan='{$angkatan}', semester='{$semester}', ipk='{$ipk}' WHERE mahasiswa.nim = $id");
+                if($result){
+                    http_response_code(200);
+                    $respon['Kode'] = 200;
+                    $respon['Status'] = "Sukses, Data Telah Diupdate";
+                    $respon['Data'] = [
+                        "Nim" => $nim,
+                        "Nama" => $nama,
+                        "Angkatan" => $angkatan,
+                        "Semester" => $semester,
+                        "Ipk" => $ipk
+                    ];
+                }else{
+                    http_response_code(400);
+                    $respon['Kode'] = 400;
+                    $respon['Status'] = "Gagal, Data Gagal Diupdate";
+                    $respon['Message'] = mysqli_error($conn) === "" ? "Data tidak ditemukan di database" : mysqli_error($conn);
+                }
             }else{
-                http_response_code(400);
-                $respon['Kode'] = 400;
-                $respon['Status'] = "Gagal, Data Gagal Diupdate";
-                $respon['Message'] = mysqli_error($conn) === "" ? "Data tidak ditemukan di database" : mysqli_error($conn);
+                $respon = checkMahasiswa($id);
             }
         }
         header("Accept: application/json");
@@ -136,21 +140,40 @@
     function deleteMahasiswa($id){
         global $conn;
         $respon = array();
-
-        $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = $id");
-        if($result){
-            http_response_code(200);
-            $respon['Kode'] = 200;
-            $respon['Status'] = "Sukses, Data Telah Dihapus";
+        if(checkMahasiswa($id) === true){
+            $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = $id");
+            if($result){
+                http_response_code(200);
+                $respon['Kode'] = 200;
+                $respon['Status'] = "Sukses, Data Telah Dihapus";
+            }else{
+                http_response_code(400);
+                $respon['Kode'] = 400;
+                $respon['Status'] = "Gagal, Data Gagal Dihapus";
+                $respon['Message'] = mysqli_error($conn) === "" ? "Data tidak ditemukan di database" : mysqli_error($conn);
+            }
         }else{
-            http_response_code(400);
-            $respon['Kode'] = 400;
-            $respon['Status'] = "Gagal, Data Gagal Dihapus";
-            $respon['Message'] = mysqli_error($conn) === "" ? "Data tidak ditemukan di database" : mysqli_error($conn);
+            $respon = checkMahasiswa($id);
         }
 
         header("Access-Control-Allow-Origin: *");
         header("Content-Type: application/json; charset=UTF-8");
         echo json_encode($respon);
+    }
+
+    function checkMahasiswa($id){
+        global $conn;
+        $respon = array();
+
+        $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE mahasiswa.nim = $id");
+        if(!$result || mysqli_num_rows($result) === 0){
+            http_response_code(404);
+            $respon['Kode'] = 404;
+            $respon['Status'] = "Not Found";
+            $respon['Message'] = "Data tidak ditemukan";
+            return $respon;
+        }else{
+            return true;
+        }
     }
 ?>
