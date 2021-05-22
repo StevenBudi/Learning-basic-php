@@ -1,3 +1,4 @@
+const Swal = require('sweetalert2');
 const statusChange = (id) => {
     let opt
     const xmlhttp = new XMLHttpRequest();
