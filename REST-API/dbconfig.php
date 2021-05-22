@@ -138,7 +138,7 @@
         $respon = array();
 
         $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = $id");
-        if($result && mysqli_num_rows($result) != 0){
+        if($result){
             http_response_code(200);
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Data Telah Dihapus";
