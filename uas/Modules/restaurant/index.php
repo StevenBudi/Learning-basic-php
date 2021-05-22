@@ -15,7 +15,8 @@
 </body>
 </html>
 <?php
-    if(isset($_COOKIE['admin'])){
+    session_start();
+    if(isset($_SESSION['login'])){
         include('../dbconfig.php');
         $table = $reservation_detail;
         $table2 = $table_customer;
@@ -98,7 +99,8 @@
         <?php
         if(isset($_POST['login'])){
             if($_POST['user'] === $user && hash("sha256", $_POST['password']) === $pass){
-                setcookie('admin', true, time() + 24*60*60);
+                $_SESSION['login'] = true;
+                header("Location: index.php");
             }else{
                 ?>
                 <script>
