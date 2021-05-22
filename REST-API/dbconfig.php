@@ -70,15 +70,22 @@
         $ipk = $data['ipk']; 
 
         $result = mysqli_query($conn, "INSERT INTO mahasiswa (nim, nama, angkatan, semester, ipk) VALUES ('$nim', '$nama', '$angkatan', '$semester', '$ipk')");
-        if($result){
+        if($result && mysqli_num_rows($result) != 0){
             http_response_code(200);
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Memasukkan Data";
+            $respon['Data'] = [
+                "Nim" => $nim,
+                "Nama" => $nama,
+                "Angkatan" => $angkatan,
+                "Semester" => $semester,
+                "Ipk" => $ipk
+            ];
         }else{
             http_response_code(400);
             $respon['Kode'] = 400;
             $respon['Status'] = "Gagal, Memasukkan Data";
-            $respon['Message'] = mysqli_error($conn);
+            $respon['Message'] = (mysqli_error($conn)  === "")? "Data tidak ada dalam database" : mysqli_error($conn);
         }
 
         header("Accept: application/json");
@@ -102,15 +109,22 @@
             $semester = $data['semester'];
             $ipk = $data['ipk']; 
             $result = mysqli_query($conn, "UPDATE mahasiswa SET nim='{$nim}', nama='{$nama}', angkatan='{$angkatan}', semester='{$semester}', ipk='{$ipk}' WHERE mahasiswa.nim = $id");
-            if($result){
+            if($result && mysqli_num_rows($result) != 0){
                 http_response_code(200);
                 $respon['Kode'] = 200;
                 $respon['Status'] = "Sukses, Data Telah Diupdate";
+                $respon['Data'] = [
+                    "Nim" => $nim,
+                    "Nama" => $nama,
+                    "Angkatan" => $angkatan,
+                    "Semester" => $semester,
+                    "Ipk" => $ipk
+                ];
             }else{
                 http_response_code(400);
                 $respon['Kode'] = 400;
                 $respon['Status'] = "Gagal, Data Gagal Diupdate";
-                $respon['Message'] = mysqli_error($conn);
+                $respon['Message'] = mysqli_error($conn) === "" ? "Data tidak ditemukan di database" : mysqli_error($conn);
             }
         }
         header("Accept: application/json");
@@ -124,15 +138,15 @@
         $respon = array();
 
         $result = mysqli_query($conn, "DELETE FROM mahasiswa WHERE mahasiswa.nim = $id");
-        if($result){
+        if($result && mysqli_num_rows($result) != 0){
             http_response_code(200);
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Data Telah Dihapus";
         }else{
             http_response_code(400);
             $respon['Kode'] = 400;
-            $respon['Status'] = "Gagal, Data Gagal Diupdate";
-            $respon['Message'] = mysqli_error($conn);
+            $respon['Status'] = "Gagal, Data Gagal Dihapus";
+            $respon['Message'] = mysqli_error($conn) === "" ? "Data tidak ditemukan di database" : mysqli_error($conn);
         }
 
         header("Access-Control-Allow-Origin: *");
