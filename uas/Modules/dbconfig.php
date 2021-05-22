@@ -4,7 +4,7 @@
     $dbpass = '';
     $dbname = "restaurant";
     $port   = 3306;
-    $table_customer  = "reservation_customer";
+    $customer_info  = "reservation_customer";
     $table_info = "restaurant_table";
     $reservation_detail = "reservation_detail";
 

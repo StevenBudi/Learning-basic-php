@@ -36,18 +36,16 @@
 </html>
 <?php
     error_reporting(E_ERROR | E_PARSE);
-    include('./functionality.php');
+    require('./functions.php');
     include('./dbconfig.php');
-    $table1 = $table_customer;
-    $table2 = $table_info;
-    $table3 = $reservation_detail;
+    global $customer_info, $table_info, $reservation_detail;
     $validation = intval(hex2bin($_GET['id']));
-    $data_details = getOAuth($conn, $table1, $table3, $validation);
+    $data_details = getOAuth($conn, $customer_info, $reservation_detail, $validation);
     if($data_details['customer_token'] === $_GET['tk'] && $data_details['customer_token'] && $data_details['status'] === "reserved"){
-            $res = fetchReserDetails($conn, $table3, $validation);
-            $res2 = fetchCustomerInfo($conn, $table1, $res);
+            $res = fetchReserDetails($conn, $reservation_detail, $validation);
+            $res2 = fetchCustomerInfo($conn, $customer_info, $res['customer_name']);
             if(isset($_POST['update'])){
-                $res2 = updateCustomerInfo($conn, $table1, $res2, $res);
+                $res2 = updateCustomerInfo($conn, $customer_info, $res2, $res['customer_name']);
             }
             ?>
                 <div class="container container-fluid reservation-information">

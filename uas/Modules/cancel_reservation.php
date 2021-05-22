@@ -9,33 +9,27 @@
 <?php
     error_reporting(E_ERROR | E_PARSE);
     include('./dbconfig.php');
-    include('./functionality.php');
-    $table1 = $table_customer;
-    $table2 = $table_info;
-    $table3 = $reservation_detail;
+    require('./functions.php');
+    global $customer_info, $table_info, $reservation_detail;
 
     $validation = intval(hex2bin($_GET['id']));
-    $data_details = getOAuth($conn, $table1, $table3, $validation);
+    $data_details = getOAuth($conn, $customer_info, $reservation_detail, $validation);
     if($data_details['customer_token'] === $_GET['tk'] && $data_details['customer_token'] && $data_details['status'] === "reserved"){
         // Delete reservation
-        $data = fetchReserDetails($conn, $table3, $validation);
-        try {
-            updateTable($conn, $table2, $data['table_id']);
-            updateReserDetails($conn, $table3, $validation, 'cancelled');
-            ?>
-            <script>
-                Swal.fire({
-                    icon:"info",
-                    title:"Your Reservation has been canceled",
-                    text:"Please visit us again"
-                }).then(() => {
-                    window.location.href="../../index.php";
-                });
-            </script>
-            <?php
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        $data = fetchReserDetails($conn, $reservation_detail, $validation);
+        updateTable($conn, $table_info, $data['table_id']);
+        updateReserDetails($conn, $reservation_detail, $validation, 'cancelled');
+        ?>
+        <script>
+            Swal.fire({
+                icon:"info",
+                title:"Your Reservation has been canceled",
+                text:"Please visit us again"
+            }).then(() => {
+                window.location.href="../../index.php";
+            });
+        </script>
+        <?php
     }else{
         ?>
         <script>
