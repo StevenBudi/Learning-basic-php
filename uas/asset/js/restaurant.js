@@ -10,12 +10,10 @@ const statusChange = (id) => {
         xmlhttp.send();
     };
 };
-const cacheValue = () => {
-    const selectedValue = this.value;
-    return selectedValue;
-};
+let prevValue;
 const revertValue = ($id) => {
+    console.log(prevValue);
     const element = document.getElementById($id);
-    element.value = cacheValue();
+    element.value = prevValue;
 };
 //# sourceMappingURL=restaurant.js.map

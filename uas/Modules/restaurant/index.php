@@ -46,7 +46,8 @@
                     <?php
                         $id = 'reser_status'.$row['reservation_id']
                     ?>
-                    <select name="reser_status" id=<?php echo($id)?> onclick="cacheValue()" onchange="Swal.fire({
+                    <select name="reser_status" id=<?php echo($id)?> onclick="prevValue = this.value; this.onclick=null;" onchange="
+                    Swal.fire({
                         title: 'Change Reservation Status ?',
                         text: 'You won\'t be able to revert this!',
                         icon: 'info',
@@ -58,10 +59,10 @@
                     }).then((result) => {
                         if(result.isConfirmed){
                             statusChange('<?php echo($id)?>');
-                        }else{
+                        }else if (result.dismiss === Swal.DismissReason.cancel){
                             revertValue('<?php echo($id)?>');
                         }
-                    });">
+                    }).then(() => {location.reload()});">
                         <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
                         <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
                         <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>>Check-In</option>
