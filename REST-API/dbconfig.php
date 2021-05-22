@@ -34,11 +34,11 @@
             }
         }else{
             $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE nim = $id");
-            if(!$result){
+            if(!$result || mysqli_num_rows($result) === 0){
                 http_response_code(404);
                 $respon['Kode'] = 404;
                 $respon['Status'] = 'Gagal, Data Tidak Ditemukan';
-                $respon['Message'] = mysqli_error($conn);
+                $respon['Message'] = (mysqli_error($conn)  === "")? "Data tidak ada dalam database" : mysqli_error($conn);
             }else{
                 $data = mysqli_fetch_assoc($result);
                 $mhs_data = array(
