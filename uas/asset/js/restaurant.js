@@ -16,4 +16,3 @@ const revertValue = ($id) => {
     const element = document.getElementById($id);
     element.value = prevValue;
 };
-//# sourceMappingURL=restaurant.js.map

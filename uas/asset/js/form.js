@@ -80,4 +80,3 @@ window.onload = () => {
     expandCol();
 };
 window.addEventListener("resize", expandCol);
-//# sourceMappingURL=form.js.map
