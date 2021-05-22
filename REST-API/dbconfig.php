@@ -19,6 +19,7 @@
         $respon['Data'] = array();
         if($id === "0"){
             $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE 1");
+            $index = 0;
             while($data = mysqli_fetch_array($result)){
                 $mhs_data = array(
                     'NIM' => $data['nim'],
@@ -27,8 +28,9 @@
                     'Semester' => $data['semester'],
                     'IPK' => $data['ipk']
                 );
-
-                array_push($respon['Data'], $mhs_data);
+                $respon['Data'][$index] = $mhs_data;
+                $index++;
+                // array_push($respon['Data'], $mhs_data);
             }
         }else{
             $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE nim = $id");
