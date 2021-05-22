@@ -18,7 +18,7 @@
         $respon['Status'] = 'Sukses';
         $respon['Data'] = array();
         if($id === "0"){
-            $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE 1");
+            $result = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE 1 ORDER BY nim");
             $index = 0;
             while($data = mysqli_fetch_array($result)){
                 $mhs_data = array(
@@ -70,7 +70,7 @@
         $ipk = $data['ipk']; 
 
         $result = mysqli_query($conn, "INSERT INTO mahasiswa (nim, nama, angkatan, semester, ipk) VALUES ('$nim', '$nama', '$angkatan', '$semester', '$ipk')");
-        if($result && mysqli_num_rows($result) != 0){
+        if($result){
             http_response_code(200);
             $respon['Kode'] = 200;
             $respon['Status'] = "Sukses, Memasukkan Data";
