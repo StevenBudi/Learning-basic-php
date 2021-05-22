@@ -21,7 +21,7 @@
 
     // Update Customer Information
     function updateCustomerInfo($connection, $table, $data, $name){
-            $info_result = mysqli_query($connection, "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '$name");
+            $info_result = mysqli_query($connection, "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '$name'");
             if(!$info_result){
                 die("Something went wrong : ".mysqli_error($connection));
             }else{

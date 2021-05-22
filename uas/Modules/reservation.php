@@ -26,9 +26,7 @@
                 })
         }
     </script>
-    <style>
-        <?php include('../asset/style/style.css')?>
-    </style>
+    <link rel="stylesheet" href="../../asset/style/style.css">
 </head>
 <body>
     
