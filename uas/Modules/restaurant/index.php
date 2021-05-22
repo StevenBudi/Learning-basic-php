@@ -15,23 +15,24 @@
 </body>
 </html>
 <?php
-    include('../dbconfig.php');
-    $table = $reservation_detail;
-    $table2 = $table_customer;
-    //SELECT * FROM reservation_detail JOIN reservation_customer WHERE reservation_customer.customer_name = reservation_detail.customer_name AND DATE(reservation_customer.reservation_time) = CURDATE() ORDER BY reservation_detail.reservation_id 
-    $all_data = mysqli_query($conn, "SELECT * FROM $table JOIN $table2 WHERE DATE($table2.reservation_time) = CURDATE() AND $table.customer_name = $table2.customer_name ORDER BY $table.reservation_id");
-    if($all_data){
-        ?>
-            <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Table</th>
-                    <th>Status</th>
-                </tr>
-            
-        <?php
-        while($row = mysqli_fetch_assoc($all_data)){
+    if(isset($_COOKIE['admin'])){
+        include('../dbconfig.php');
+        $table = $reservation_detail;
+        $table2 = $table_customer;
+        //SELECT * FROM reservation_detail JOIN reservation_customer WHERE reservation_customer.customer_name = reservation_detail.customer_name AND DATE(reservation_customer.reservation_time) = CURDATE() ORDER BY reservation_detail.reservation_id 
+        $all_data = mysqli_query($conn, "SELECT * FROM $table JOIN $table2 WHERE DATE($table2.reservation_time) = CURDATE() AND $table.customer_name = $table2.customer_name ORDER BY $table.reservation_id");
+        if($all_data){
+            ?>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Table</th>
+                        <th>Status</th>
+                    </tr>
+
+            <?php
+            while($row = mysqli_fetch_assoc($all_data)){
             ?>
             <tr>
                 <td><?php echo($row['reservation_id'])?></td>
@@ -71,11 +72,47 @@
                 </td>
             </tr>
             <?php
+            }
+            ?>
+                </table>
+            <?php
         }
+    }else{
+        $user = 'admin';
+        $pass ="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
         ?>
+        <form action="index.php" method="post">
+            <h1>Login</h1>
+            <table>
+                <tr>
+                    <td>User</td>
+                    <td><input type="text" name="user"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
             </table>
+            <button type="submit" name="login">Login</button>
+        </form>
         <?php
+        if(isset($_POST['login'])){
+            if($_POST['user'] === $user && hash("sha256", $_POST['password']) === $pass){
+                setcookie('admin', true, time() + 24*60*60);
+            }else{
+                ?>
+                <script>
+                    Swal.fire({
+                        icon:"error",
+                        title:"Login Failed",
+                        text:"Check Your User and Password !"
+                    })
+                </script>
+                <?php
+            }
+        }
     }
+    
 // Alter reservation information
 
 /*
