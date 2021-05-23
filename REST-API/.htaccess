@@ -1,3 +1,7 @@
+Options +FollowSymLinks
 RewriteEngine On
-RewriteRule ^REST-API/?$ index.php [NC, L]
-RewriteRule ^REST-API/([A-Z0-9]+)/?$ index.php?id=$1 [L, NC]
+ 
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^REST-API/([a-zA-Z0-9]+)*$  ./index.php?nim=$1
