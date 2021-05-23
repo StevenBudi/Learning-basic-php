@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contoh</title>
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="../bootstrap/js/bootstrap.js" type="script">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" type="text/css">
     </link>
 </head>
 
