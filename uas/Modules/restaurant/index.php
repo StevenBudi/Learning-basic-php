@@ -43,10 +43,9 @@
     session_start();
     if(isset($_SESSION['login'])){
         include('../dbconfig.php');
-        $table = $reservation_detail;
-        $table2 = $table_customer;
+        global $reservation_detail, $customer_info;
         // Get data where reservation is today
-        $all_data = mysqli_query($conn, "SELECT * FROM $table JOIN $table2 WHERE DATE($table2.reservation_time) = CURDATE() AND $table.customer_name = $table2.customer_name ORDER BY $table.reservation_id");
+        $all_data = mysqli_query($conn, "SELECT * FROM $reservation_detail JOIN $customer_info WHERE DATE($customer_info.reservation_time) = CURDATE() AND $reservation_detail.customer_name = $customer_info.customer_name ORDER BY $reservation_detail.reservation_id");
         if($all_data){
             ?>
                 <table>
