@@ -7,7 +7,7 @@ const statusChange = (id) => {
             opt = element.options[element.selectedIndex];
             element.value = opt.value;
         }
-        xmlhttp.open("POST", `handling.php?id=${id}&state=${opt.value}`, true);
+        xmlhttp.open("PUT", `handling.php?id=${id}&state=${opt.value}`, true);
         xmlhttp.send();
     };
 };

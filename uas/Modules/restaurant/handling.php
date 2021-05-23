@@ -4,7 +4,7 @@
     require('../functions.php');
     
     switch ($request){
-        case 'POST':
+        case 'PUT':
             updateReserDetails($conn, $table_info, $_GET['id'], $_GET['state']);
             break;
         default:
