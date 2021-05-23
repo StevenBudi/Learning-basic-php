@@ -5,6 +5,7 @@ const statusChange = (id) => {
         if (xmlhttp.status === 200 && xmlhttp.readyState === 4) {
             const element = document.getElementById(id);
             opt = element.options[element.selectedIndex];
+            element.value = opt.value;
         }
         xmlhttp.open("POST", `handling.php?id=${id}&state=${opt.value}`, true);
         xmlhttp.send();

@@ -26,7 +26,8 @@
                         }else if (result.dismiss === Swal.DismissReason.cancel){
                             revertValue(id);
                         }
-                    }).then(() => {location.reload()});
+                        location.reload();
+                    });
         }
 
         const clickHandler = () => {
