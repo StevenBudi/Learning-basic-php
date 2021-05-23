@@ -19,4 +19,5 @@ const revertValue = ($id) => {
     console.log(prevValue)
     const element = document.getElementById($id) as HTMLSelectElement
     element.value = prevValue
+    location.reload()
 }

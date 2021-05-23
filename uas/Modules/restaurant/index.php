@@ -26,7 +26,6 @@
                         }else if (result.dismiss === Swal.DismissReason.cancel){
                             revertValue(id);
                         }
-                        location.reload();
                     });
         }
 
