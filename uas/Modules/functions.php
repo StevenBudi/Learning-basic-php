@@ -1,5 +1,5 @@
 <?php
-    // Get Reservation Details
+    // Get Reservation Details using Reservation ID
     function fetchReserDetails($connection, $table, $id){
             $reservation_result = mysqli_query($connection, "SELECT * FROM $table WHERE reservation_id='$id'");
             if(!$reservation_result){
@@ -19,7 +19,7 @@
             }
     }
 
-    // Update Customer Information
+    // Update Customer Information using Customer Name
     function updateCustomerInfo($connection, $table, $data, $name){
             $info_result = mysqli_query($connection, "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '$name'");
             if(!$info_result){
@@ -41,7 +41,7 @@
             }
     }
 
-    // Get Authentication ID
+    // Get Authentication ID using Reservation ID
     function getOAuth($connection, $table1, $table2, $id){
             $authResult = mysqli_query($connection, "SELECT customer_token, status FROM $table1, $table2 WHERE $table2.reservation_id = $id AND $table1.customer_name = $table2.customer_name");
             if(!$authResult){
@@ -68,7 +68,7 @@
         }
     }
 
-    // Update Table Status
+    // Update Table Status using Table ID
     function updateTable($connection, $table, $id){
         $tableResult = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
         if(!$tableResult){
