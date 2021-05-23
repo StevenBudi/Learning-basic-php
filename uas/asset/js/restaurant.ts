@@ -7,8 +7,10 @@ const statusChange = (id) => {
             opt = element.options[element.selectedIndex] as HTMLOptionElement
             element.value = opt.value
         }
-        xmlhttp.open("PUT", `handling.php?id=${id}&state=${opt.value}`, true)
-        xmlhttp.send()
+        const data = {"ID" : id, "State" : opt.value}
+        xmlhttp.open("PUT", `handling.php`, true)
+        xmlhttp.setRequestHeader('Content-type','application/json; charset=utf-8');
+        xmlhttp.send(JSON.stringify(data))
     }
 }
 
