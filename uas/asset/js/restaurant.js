@@ -18,4 +18,5 @@ const revertValue = ($id) => {
     console.log(prevValue);
     const element = document.getElementById($id);
     element.value = prevValue;
+    location.reload();
 };

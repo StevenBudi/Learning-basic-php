@@ -26,7 +26,7 @@
                 })
         }
     </script>
-    <link rel="stylesheet" href="../asset/style/style.css">
+    <link rel="stylesheet" href="../../asset/style/style.css">
 </head>
 <body>
     
