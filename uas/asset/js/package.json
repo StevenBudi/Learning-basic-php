@@ -2,12 +2,5 @@
   "name": "js",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
-  "type": "module",
-  "dependencies": {
-    "sweetalert2": "^11.0.9"
-  },
-  "devDependencies": {
-    "@types/node": "^15.6.0"
-  }
+  "license": "MIT"
 }
