@@ -1,0 +1,27 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar .container-navbar .navbar-collapse {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar .container-navbar .navbar-collapse .navbar-nav .nav-item {
+  padding: 0px 0.5rem;
+}
+
+.navbar .container-navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
+  font-size: 1.5rem;
+  -webkit-transition: ease-in-out 0.25s;
+  transition: ease-in-out 0.25s;
+  font-weight: bold;
+}
+
+.navbar .container-navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
+  font-size: 1.75rem;
+}
+/*# sourceMappingURL=style.css.map */
