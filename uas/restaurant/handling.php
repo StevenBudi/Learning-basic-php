@@ -1,7 +1,7 @@
 <?php
-    include('../dbconfig.php');
+    include('../Modules/dbconfig.php');
     $request = $_SERVER['REQUEST_METHOD'];
-    require('../functions.php');
+    require('../Modules/functions.php');
     switch ($request){
         case 'PUT':
             $data = json_decode(file_get_contents("php://input"), true);

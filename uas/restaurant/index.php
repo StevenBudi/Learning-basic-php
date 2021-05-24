@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <script src="../../asset/js/restaurant.js"></script>
+    <script src="../asset/js/restaurant.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" type="text/javascript"></script>
@@ -42,7 +42,7 @@
 <?php
     session_start();
     if(isset($_SESSION['login'])){
-        include('../dbconfig.php');
+        include("../Modules/dbconfig.php");
         global $reservation_detail, $customer_info;
         // Get data where reservation is today
         $all_data = mysqli_query($conn, "SELECT * FROM $reservation_detail JOIN $customer_info WHERE DATE($customer_info.reservation_time) = CURDATE() AND $reservation_detail.customer_name = $customer_info.customer_name ORDER BY $reservation_detail.reservation_id");
