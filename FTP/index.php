@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h1 class="card-title">Tulis Artikel Anda</h1>
                     <hr>
-                    <form action="simpan.php" method="post" class="mt-2">
+                    <form action="simpan.php" method="post" class="mt-2" onsubmit="return confirm('Simpan Data ? ')">
                         <div class="mb-3">
                             <label for="judul" class="form-label">Judul Artikel Anda</label>
                             <input type="text" name="judul" class="form-control">
