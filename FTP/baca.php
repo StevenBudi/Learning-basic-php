@@ -4,7 +4,7 @@
 
 <head>
     <?php include('./header.php'); ?>
-    <title>FTP - Home</title>
+    <title>FTP - Show</title>
 </head>
 
 <body>

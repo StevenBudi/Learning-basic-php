@@ -21,7 +21,7 @@
         Swal.fire({
             icon:"error",
             title:"Error !",
-            text:"Data Anda Gagal DDisimpan"
+            text:"Data Anda Gagal Disimpan"
         }).then(() => {
             window.location.href="./index.php"
         })

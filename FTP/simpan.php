@@ -18,7 +18,7 @@
     }else{
         $author = trim($_POST['author']);
         $article = trim($_POST['artikel']);
-        $file = fopen("$judul.txt", "w");
+        $file = fopen("files/$judul.txt", "w");
         fwrite($file, strtoupper($judul));
         fwrite($file, "\n\nAuthor : {$author}\n\n");
         fwrite($file, $article);
