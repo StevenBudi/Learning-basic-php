@@ -26,7 +26,7 @@
                             <input type="text" name="author" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label for="judul" class="form-label">Artikel Anda</label>
+                            <label for="artikel" class="form-label">Artikel Anda</label>
                             <textarea name="artikel" cols="30" rows="5" class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>

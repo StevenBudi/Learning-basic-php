@@ -11,6 +11,8 @@
             icon:"success",
             title:"Success !",
             text:"Data Anda Berhasil Disimpan"
+        }).then(() => {
+            window.location.href="./index.php"
         })
 
     }
@@ -20,6 +22,8 @@
             icon:"error",
             title:"Error !",
             text:"Data Anda Gagal DDisimpan"
+        }).then(() => {
+            window.location.href="./index.php"
         })
     }
 </script>
