@@ -1,17 +1,11 @@
 const statusChange = (id) => {
-    let opt;
+    const element = document.getElementById(id);
+    const opt = element.options[element.selectedIndex];
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = () => {
-        if (xmlhttp.status === 200 && xmlhttp.readyState === 4) {
-            const element = document.getElementById(id);
-            opt = element.options[element.selectedIndex];
-            element.value = opt.value;
-        }
-        const data = { "ID": id, "State": opt.value };
-        xmlhttp.open("PUT", `handling.php`, true);
-        xmlhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        xmlhttp.send(JSON.stringify(data));
-    };
+    const data = { "ID": id, "State": element.value };
+    xmlhttp.open("PUT", "./handling.php", true);
+    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xmlhttp.send(JSON.stringify(data));
 };
 let prevValue;
 const revertValue = ($id) => {

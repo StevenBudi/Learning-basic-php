@@ -1,17 +1,12 @@
 const statusChange = (id) => {
-    let opt
+    const element = document.getElementById(id) as HTMLSelectElement
+    const opt = element.options[element.selectedIndex] as HTMLOptionElement
     const xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = () =>{
-        if(xmlhttp.status === 200 && xmlhttp.readyState === 4){
-            const element  = document.getElementById(id) as HTMLSelectElement
-            opt = element.options[element.selectedIndex] as HTMLOptionElement
-            element.value = opt.value
-        }
-        const data = {"ID" : id, "State" : opt.value}
-        xmlhttp.open("PUT", `handling.php`, true)
-        xmlhttp.setRequestHeader('Content-type','application/json; charset=utf-8');
-        xmlhttp.send(JSON.stringify(data))
-    }
+    const data = {"ID" : id, "State" : element.value}
+    xmlhttp.open("PUT", "./handling.php", true)
+    xmlhttp.setRequestHeader('Content-type','application/json; charset=utf-8');
+    xmlhttp.send(JSON.stringify(data))
+
 }
 
 let prevValue;
