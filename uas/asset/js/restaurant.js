@@ -14,3 +14,9 @@ const revertValue = ($id) => {
     element.value = prevValue;
     location.reload();
 };
+const flushData = () => {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("DELETE", "./handling.php", true);
+    xmlhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xmlhttp.send();
+};
