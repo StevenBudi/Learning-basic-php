@@ -33,6 +33,23 @@
             prevValue = this.value; 
             this.onclick=null;
         }
+
+        const flushHandler = () => {
+            Swal.fire({
+                        title: 'Delete All Reservation Data ?',
+                        text: 'You won\'t be able to revert this!',
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes!',
+                        cancelButtonText:'Nope!'
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            flushData();
+                        }
+                    });
+        }
     </script>
 </head>
 <body>
@@ -79,6 +96,7 @@
             }
             ?>
                 </table>
+                <button onclick="flushHandler()">Flush</button>
             <?php
         }
     }else{
