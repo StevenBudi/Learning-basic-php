@@ -19,6 +19,16 @@
             }
     }
 
+    // Get Authentication ID using Reservation ID
+    function getOAuth($connection, $table1, $table2, $id){
+        $authResult = mysqli_query($connection, "SELECT customer_token, status FROM $table1, $table2 WHERE $table2.reservation_id = $id AND $table1.customer_name = $table2.customer_name");
+        if(!$authResult){
+            return false;
+        }else{
+            return mysqli_fetch_assoc($authResult);
+        }
+    }
+
     // Update Customer Information using Customer Name
     function updateCustomerInfo($connection, $table, $data, $name){
             $info_result = mysqli_query($connection, "UPDATE $table SET reservation_note = '{$_POST['notes']}', customer_phone= '{$_POST['phone']}' WHERE customer_name = '$name'");
@@ -41,16 +51,6 @@
             }
     }
 
-    // Get Authentication ID using Reservation ID
-    function getOAuth($connection, $table1, $table2, $id){
-            $authResult = mysqli_query($connection, "SELECT customer_token, status FROM $table1, $table2 WHERE $table2.reservation_id = $id AND $table1.customer_name = $table2.customer_name");
-            if(!$authResult){
-                return false;
-            }else{
-                return mysqli_fetch_assoc($authResult);
-            }
-    }
-
     // Update Reservation Detail's Status
     function updateReserDetails($connection, $table, $id, $state){
         $updateResult = mysqli_query($connection, "UPDATE $table SET status='$state' WHERE reservation_id= '$id'");
@@ -60,19 +60,19 @@
         
     }
 
-    // Delete Customer
-    function deleteCustomer($connection, $table, $name){
-        $deleteResult = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
-        if(!$deleteResult){
-            die("Something went wrong : ".mysqli_error($connection));
-        }
-    }
-
     // Update Table Status using Table ID
     function updateTable($connection, $table, $id){
         $tableResult = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
         if(!$tableResult){
             die("Something went wrong   : ".mysqli_error($connection));
+        }
+    }
+
+    // Delete Customer
+    function deleteCustomer($connection, $table, $name){
+        $deleteResult = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
+        if(!$deleteResult){
+            die("Something went wrong : ".mysqli_error($connection));
         }
     }
 
