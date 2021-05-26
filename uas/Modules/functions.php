@@ -68,6 +68,14 @@
         }
     }
 
+    // Flush Today Reservation and Customer Info
+    function flushToday($connection, $table1, $table2){
+        $flushResult = mysqli_query($connection, "DELETE FROM $table1, $table2 WHERE $table1.reservation_time = CURDATE() AND $table2.customer_name = $table1.customer_name");
+        if(!$flushResult){
+            die("Something went wrong :".mysqli_error($connection));
+        }
+    }
+
     // Update Table Status using Table ID
     function updateTable($connection, $table, $id){
         $tableResult = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
