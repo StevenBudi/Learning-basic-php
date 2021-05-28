@@ -7,7 +7,8 @@
             $data = json_decode(file_get_contents("php://input"), true);
             $reser_details = fetchReserDetails($conn, $table_info, $data['ID']);
             updateReserDetails($conn, $reservation_detail, $data['ID'], $data['State']);
-            if($data['State'] === 'cancelled' || $data['State'] === 'check-out'){
+            if($data['State'] === 'check-out'){
+                deleteCustomer($conn, $customer_info, $reser_details['customer_name']);
                 updateTable($conn, $table_info, $reser_details['table_id']);                    
             }
             break;

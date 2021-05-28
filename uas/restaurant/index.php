@@ -86,7 +86,6 @@
                     ?>
                     <select name="reser_status" id=<?php echo($id)?> onclick="clickHandler();" onchange="changeHandler(<?php echo($id)?>);">
                         <option value="reserved" <?php if($row['status'] === 'reserved') echo("selected")?>>Reserved</option>
-                        <option value="cancelled"<?php if($row['status'] === 'cancelled') echo("selected")?>>Cancelled</option>
                         <option value="check-in" <?php if($row['status'] === 'check-in') echo("selected")?>>Check-In</option>
                         <option value="check-out"<?php if($row['status'] === 'check-out') echo("selected")?>>Check-Out</option>
                     </select>
