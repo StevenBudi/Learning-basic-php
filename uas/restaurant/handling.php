@@ -12,6 +12,7 @@
             }
             break;
         case 'DELETE':
+            flushToday($conn, $customer_info, $reservation_detail);
             // Delete All Reservation Detail and Customer Today
             break;
         default:

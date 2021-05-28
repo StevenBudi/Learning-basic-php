@@ -1,7 +1,7 @@
+const xmlhttp = new XMLHttpRequest();
 const statusChange = (id) => {
     const element = document.getElementById(id);
     const opt = element.options[element.selectedIndex];
-    const xmlhttp = new XMLHttpRequest();
     const data = { "ID": id, "State": element.value };
     xmlhttp.open("PUT", "./handling.php", true);
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -15,7 +15,6 @@ const revertValue = ($id) => {
     location.reload();
 };
 const flushData = () => {
-    const xmlhttp = new XMLHttpRequest();
     xmlhttp.open("DELETE", "./handling.php", true);
     xmlhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xmlhttp.send();
