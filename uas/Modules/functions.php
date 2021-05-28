@@ -70,7 +70,7 @@
 
     // Flush Today Reservation and Customer Info
     function flushToday($connection, $table1){
-        $flushResult = mysqli_query($connection, "DELETE FROM $table1 WHERE $table1.reservation_time = CURDATE()");
+        $flushResult = mysqli_query($connection, "DELETE FROM $table1 WHERE DATE(reservation_time) = CURDATE()");
         if(!$flushResult){
             die("Something went wrong :".mysqli_error($connection));
         }
