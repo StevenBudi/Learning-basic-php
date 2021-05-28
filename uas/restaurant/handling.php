@@ -12,9 +12,11 @@
             }else{
                 updateReserDetails($conn, $reservation_detail, $data['ID'], $data['State']);
             }
-            break;
+            echo("OK");
+            break; 
         case 'DELETE':
             flushToday($conn, $customer_info);
+            echo("OK");
             // Delete All Reservation Detail and Customer Today
             break;
         default:

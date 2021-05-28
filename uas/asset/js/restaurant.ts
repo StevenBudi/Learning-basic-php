@@ -1,11 +1,20 @@
 const xmlhttp = new XMLHttpRequest()
 const statusChange = (id) => {
     const element = document.getElementById(id) as HTMLSelectElement
-    const opt = element.options[element.selectedIndex] as HTMLOptionElement
+    xmlhttp.onreadystatechange = () => {
+        if(xmlhttp.readyState === xmlhttp.DONE){
+            if(xmlhttp.response === "OK"){
+                window.location.reload()
+            }
+        }
+    }
     const data = {"ID" : id, "State" : element.value}
     xmlhttp.open("PUT", "./handling.php", true)
     xmlhttp.setRequestHeader('Content-type','application/json; charset=utf-8');
     xmlhttp.send(JSON.stringify(data))
+    
+    
+    
 
 }
 
@@ -18,6 +27,13 @@ const revertValue = ($id) => {
 }
 
 const flushData = () => {
+    xmlhttp.onreadystatechange = () => {
+        if(xmlhttp.readyState === xmlhttp.DONE){
+            if(xmlhttp.response === "OK"){
+                window.location.reload()
+            }
+        }
+    }
     xmlhttp.open("DELETE", "./handling.php", true)
     xmlhttp.setRequestHeader('Content-type','application/json; charset=utf-8');
     xmlhttp.send()

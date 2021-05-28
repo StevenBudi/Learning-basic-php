@@ -48,7 +48,7 @@
                         if(result.isConfirmed){
                             flushData();
                         }
-                    }).then(() => {window.location.reload()});
+                    });
         }
     </script>
 </head>
