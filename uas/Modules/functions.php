@@ -60,8 +60,6 @@
         
     }
 
-<<<<<<< HEAD
-=======
     // Delete Customer
     function deleteCustomer($connection, $table, $name){
         $deleteResult = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
@@ -78,20 +76,11 @@
         }
     }
 
->>>>>>> 003ef61a6499b00305af7215d2d9df5033352826
     // Update Table Status using Table ID
     function updateTable($connection, $table, $id){
         $tableResult = mysqli_query($connection, "UPDATE $table SET availability='true' WHERE id = '$id'");
         if(!$tableResult){
             die("Something went wrong   : ".mysqli_error($connection));
-        }
-    }
-
-    // Delete Customer
-    function deleteCustomer($connection, $table, $name){
-        $deleteResult = mysqli_query($connection, "DELETE FROM $table WHERE customer_name='$name'");
-        if(!$deleteResult){
-            die("Something went wrong : ".mysqli_error($connection));
         }
     }
 

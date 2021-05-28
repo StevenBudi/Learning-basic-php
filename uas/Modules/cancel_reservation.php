@@ -18,7 +18,7 @@
         // Delete reservation
         $data = fetchReserDetails($conn, $reservation_detail, $validation);
         updateTable($conn, $table_info, $data['table_id']);
-        updateReserDetails($conn, $reservation_detail, $validation, 'cancelled');
+        deleteCustomer($conn, $customer_info, $data['customer_name']);
         ?>
         <script>
             Swal.fire({
