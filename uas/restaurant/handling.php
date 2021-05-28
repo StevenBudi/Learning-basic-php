@@ -5,7 +5,7 @@
     switch ($request){
         case 'PUT':
             $data = json_decode(file_get_contents("php://input"), true);
-            $reser_details = fetchReserDetails($conn, $table_info, $data['ID']);
+            $reser_details = fetchReserDetails($conn, $reservation_detail, $data['ID']);
             if($data['State'] === 'check-out'){
                 deleteCustomer($conn, $customer_info, $reser_details['customer_name']);
                 updateTable($conn, $table_info, $reser_details['table_id']);                    
