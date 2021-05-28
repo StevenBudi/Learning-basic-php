@@ -149,6 +149,22 @@
 .reservation-information{
     top: 5%;
     position: absolute;
+    .form-control{
+        .table-striped{
+            tbody{
+                tr{
+                    td{
+                        .phone-info{
+                            &:invalid{
+                                border: 0.5px red solid;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 // Ipad

@@ -47,9 +47,9 @@
             }
             ?>
                 <div class="container container-fluid reservation-information">
-                    <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control">
+                    <form action="reservation.php?id=<?php echo($_GET['id'])?>&tk=<?php echo($_GET['tk'])?>" method="post" class="form-control form-info">
                         <center><h1>Reservation Information</h1></center>
-                        <table class="table table-striped" style="table-layout:auto;">
+                        <table class="table table-striped " style="table-layout:auto;">
                             <tr>
                                 <td>Reservation Id</td>
                                 <td><?php echo($res['reservation_id'])?></td>
@@ -72,7 +72,7 @@
                                     <?php
                                     if($res['status'] === 'reserved'){
                                         ?>
-                                        <input type="text" name="phone" class="form-control" maxlength="15" pattern="[0-9]{10,15}" value=<?php echo($res2['customer_phone'])?>>
+                                        <input type="text" name="phone" class="form-control phone-info" maxlength="15" pattern="[0-9]{10,15}" value=<?php echo($res2['customer_phone'])?>>
                                         <?php
                                     }else{
                                         echo($res2['customer_phone']);
