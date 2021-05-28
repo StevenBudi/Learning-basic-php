@@ -72,7 +72,7 @@
                                     <?php
                                     if($res['status'] === 'reserved'){
                                         ?>
-                                        <input type="text" name="phone" class="form-control" maxlength="15" value=<?php echo($res2['customer_phone'])?>>
+                                        <input type="text" name="phone" class="form-control" maxlength="15" pattern="[0-9]{10,15}" value=<?php echo($res2['customer_phone'])?>>
                                         <?php
                                     }else{
                                         echo($res2['customer_phone']);
