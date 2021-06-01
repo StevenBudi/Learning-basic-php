@@ -81,17 +81,26 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
     <script>
         const table = new simpleDatatables.DataTable("#tabel-data", {
+            // Change False to disable search
             searchable: true,
+            // Labels
             labels: {
                 placeholder: "Search Something...",
                 perPage: "{select} entries per page",
                 noRows: "No entries to found",
                 info: "Showing {start} to {end} of {rows} entries",
             },
+            // Layout position
             layout: {
                 top: "{select}{search}",
                 bottom: "{info}{pager}"
             },
+            // Sort Date
+            columns: [{
+                select: 2,
+                type: "date",
+                format: "MYSQL"
+            }]
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
