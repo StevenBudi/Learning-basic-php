@@ -19,10 +19,10 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="justify-content: center;">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5 py-1">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-warning mx-2" href="#">Server Side</a>
+                        <a class="nav-link btn btn-warning mx-2" href="./serverside.php">Server Side</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-info mx-2" href="#">Client Side</a>
+                        <a class="nav-link btn btn-info mx-2" href="./index.php">Client Side</a>
                     </li>
                 </ul>
             </div>
