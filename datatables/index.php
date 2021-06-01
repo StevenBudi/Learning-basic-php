@@ -17,7 +17,7 @@
                 <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="bootstrap-logo" width="60" height="48">
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="justify-content: center;">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5 py-1" >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5 py-1">
                     <li class="nav-item">
                         <a class="nav-link btn btn-warning mx-2" href="#">Server Side</a>
                     </li>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </nav>
-    
+
     <main>
         <div class="container mt-3">
             <div class="row d-flex justify-content-center">
@@ -51,22 +51,22 @@
                                     <?php
                                     include('./koneksi.php');
                                     $tma = mysqli_query($conn, "SELECT * FROM tma");
-                                    if(mysqli_num_rows($tma) == 0){
-                                        die("Fetching Data Error    : ".mysqli_error($conn));
-                                    }else{
-                                        while($data=mysqli_fetch_assoc($tma)){
-                                            ?>
+                                    if (mysqli_num_rows($tma) == 0) {
+                                        die("Fetching Data Error    : " . mysqli_error($conn));
+                                    } else {
+                                        while ($data = mysqli_fetch_assoc($tma)) {
+                                    ?>
                                             <tr>
-                                                <td><?= $data['id_tma'];?></td>
-                                                <td><?= $data['id_pos'];?></td>
-                                                <td><?= $data['nilai'];?></td>
-                                                <td><?= $data['waktu'];?></td>
+                                                <td><?= $data['id_tma']; ?></td>
+                                                <td><?= $data['id_pos']; ?></td>
+                                                <td><?= $data['nilai']; ?></td>
+                                                <td><?= $data['waktu']; ?></td>
                                                 <td style="display:flex; align-items:center; justify-content: center;">
                                                     <button class="btn btn-primary mx-2">Edit</button>
                                                     <button class="btn btn-danger mx-2">Delete</button>
                                                 </td>
                                             </tr>
-                                            <?php
+                                    <?php
                                         }
                                     }
                                     ?>
@@ -80,7 +80,19 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
     <script>
-        const table = new simpleDatatables.DataTable("table")
+        const table = new simpleDatatables.DataTable("#tabel-data", {
+            searchable: true,
+            labels: {
+                placeholder: "Search Something...",
+                perPage: "{select} entries per page",
+                noRows: "No entries to found",
+                info: "Showing {start} to {end} of {rows} entries",
+            },
+            layout: {
+                top: "{select}{search}",
+                bottom: "{info}{pager}"
+            },
+        })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
