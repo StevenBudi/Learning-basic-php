@@ -24,6 +24,7 @@ $dbdetails = array(
 
     $dataCollection =  json_encode(SSP::simple( $_GET, $dbdetails, $table, $primary_key, $columns ));
     echo($dataCollection)
+    // Display tbody then tr and td
 
 
 ?>
