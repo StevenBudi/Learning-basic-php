@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin TMA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -59,6 +60,7 @@
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
         $(document).ready(function() {
             $('#tabel-data').DataTable({
@@ -67,6 +69,30 @@
                 "ajax": "./data.php"
             });
         });
+    </script>
+    <script>
+        const table = new simpleDatatables.DataTable("#tabel-data", {
+            // Change False to disable search
+            searchable: true,
+            // Labels
+            labels: {
+                placeholder: "Search Something...",
+                perPage: "{select} entries per page",
+                noRows: "No entries to found",
+                info: "Showing {start} to {end} of {rows} entries",
+            },
+            // Layout position
+            layout: {
+                top: "{select}{search}",
+                bottom: "{info}{pager}"
+            },
+            // Sort Date
+            columns: [{
+                select: 2,
+                type: "date",
+                format: "MYSQL"
+            }]
+        })
     </script>
 </body>
 
