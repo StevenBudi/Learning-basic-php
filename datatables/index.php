@@ -88,7 +88,7 @@
                 placeholder: "Search Something...",
                 perPage: "{select} entries per page",
                 noRows: "No entries to found",
-                info: "Showing {start} to {end} of {rows} entries",
+                info: "Showing {start} to {end} of {rows} entries", // Delete Label Text to make it not display anything
             },
             // Layout position
             layout: {
