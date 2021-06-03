@@ -23,7 +23,22 @@ $dbdetails = array(
     require('./ssp.class.php');
 
     $dataCollection =  json_encode(SSP::simple( $_GET, $dbdetails, $table, $primary_key, $columns ));
-    echo($dataCollection)
+    // file_put_contents("data.json", $dataCollection);
+    $dataSet = json_decode($dataCollection, true)["data"];
+    foreach ($dataSet as $data) {
+        ?>
+        <tr>
+            <td><?= $data[0]?></td>
+            <td><?= $data[1]?></td>
+            <td><?= $data[2]?></td>
+            <td><?= $data[3]?></td>
+            <td style="display:flex; align-items:center; justify-content: center;">
+                <button class="btn btn-info mx-2">Edit</button>
+                <button class="btn btn-danger mx-2">Delete</button>
+            </td>
+        </tr>
+        <?php
+    }
     // Display tbody then tr and td
 
 

@@ -47,9 +47,9 @@
                                         <th>Aksi</th>
                                     </tr>
                                     <tbody>
-                                        <!-- <?php
-                                        include_once('./data.php');
-                                        ?> -->
+                                        <?php
+                                            include("./data.php");
+                                        ?>
                                     </tbody>
                                 </thead>
                             </table>
