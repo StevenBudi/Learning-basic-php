@@ -7,54 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
-    <script src="../asset/js/restaurant.js"></script>
-    <script>
-        const changeHandler = (id) => {
-            Swal.fire({
-                title: 'Change Reservation Status ?',
-                text: 'You won\'t be able to revert this!',
-                icon: 'info',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!',
-                cancelButtonText: 'Nope!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    statusChange(id);
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    revertValue(id);
-                }
-            });
-        }
-
-        const clickHandler = () => {
-            prevValue = this.value;
-            this.onclick = null;
-        }
-
-        const flushHandler = () => {
-            Swal.fire({
-                title: 'Delete All Reservation Data ?',
-                text: 'You won\'t be able to revert this!',
-                icon: 'info',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!',
-                cancelButtonText: 'Nope!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    flushData();
-                }
-            });
-        }
-    </script>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
-    
+
 
 </head>
 
@@ -141,7 +95,52 @@
             }
         }
         ?>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+        <script src="../asset/js/restaurant.js"></script>
         <script>
+            const changeHandler = (id) => {
+                Swal.fire({
+                    title: 'Change Reservation Status ?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes!',
+                    cancelButtonText: 'Nope!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        statusChange(id);
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        revertValue(id);
+                    }
+                });
+            }
+
+            const clickHandler = () => {
+                prevValue = this.value;
+                this.onclick = null;
+            }
+
+            const flushHandler = () => {
+                Swal.fire({
+                    title: 'Delete All Reservation Data ?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes!',
+                    cancelButtonText: 'Nope!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        flushData();
+                    }
+                });
+            }
+
             const dataTable = new simpleDatatables.DataTable("#tabel-data", {
                 searchable: true,
                 labels: {
@@ -150,7 +149,7 @@
                     noRows: "No entries to found",
                     info: "Showing {start} to {end} of {rows} entries", // Delete Label Text to make it not display anything
                 },
-            })
+            });
         </script>
         <?php
 
