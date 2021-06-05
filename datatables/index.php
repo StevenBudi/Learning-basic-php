@@ -50,7 +50,7 @@
                                 <tbody>
                                     <?php
                                     include('./koneksi.php');
-                                    $tma = mysqli_query($conn, "SELECT * FROM tma");
+                                    $tma = mysqli_query($conn, "SELECT * FROM tma ORDER BY waktu DESC");
                                     if (mysqli_num_rows($tma) == 0) {
                                         die("Fetching Data Error    : " . mysqli_error($conn));
                                     } else {
@@ -93,11 +93,11 @@
             // Layout position
             layout: {
                 top: "{select}{search}",
-                bottom: "{info}{pager}"
+                bottom: "{info}{page}"
             },
             // Sort Date
             columns: [{
-                select: 2,
+                select: 0,
                 type: "date",
                 format: "MYSQL"
             }]
