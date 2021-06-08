@@ -39,7 +39,7 @@
             $tma = mysqli_query($conn, "SELECT * FROM tma");
             $data = array();
             while ($row = mysqli_fetch_assoc($tma)) {
-                array_push($data, "[{$row['waktu']}, {$row['nilai']}]");
+                array_push($data, "['{$row['waktu']}', {$row['nilai']}]");
             }
             ?>
             <div class="row d-flex justify-content-center">
@@ -96,7 +96,7 @@
             series: [{
                 name: 'Tinggi Muka Air',
                 lineWidth: 2,
-                data: [<? join(",", $data)?>]
+                data: [<?= join(", ", $data)?>]
             }],
             responsive: {
                 rules: [{
