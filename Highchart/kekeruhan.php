@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./kekeruhan.php">Kekeruhan Air</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./status.php">Status</a>
+                    </li>
                 </ul>
             </div>
         </div>
