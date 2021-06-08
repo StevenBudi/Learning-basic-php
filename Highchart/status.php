@@ -36,17 +36,27 @@
         <div class="container container-fluid mt-3">
             <?php
             include("./connection.php");
+            $tma = mysqli_query($conn, "SELECT * FROM tma");
+            $ch = mysqli_query($conn, "SELECT * FROM ch");
             $kekeruhan = mysqli_query($conn, "SELECT * FROM kekeruhan");
-            $data = array();
+            $data0 = array();
+            $data1 = array();
+            $data2 = array();
+            while ($row = mysqli_fetch_assoc($tma)) {
+                array_push($data0, "['{$row['waktu']}', {$row['nilai']}]");
+            }
+            while ($row = mysqli_fetch_assoc($ch)) {
+                array_push($data1, "['{$row['waktu']}', {$row['nilai']}]");
+            }
             while ($row = mysqli_fetch_assoc($kekeruhan)) {
-                array_push($data, "['{$row['waktu']}', {$row['nilai']}]");
+                array_push($data2, "['{$row['waktu']}', {$row['nilai']}]");
             }
             ?>
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-9">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Grafik Kekeruhan Air</h4>
+                            <h4 class="card-title">Grafik Tinggi Permukaan Air</h4>
                             <hr>
                             <div id="grafik">
 
@@ -62,21 +72,42 @@
     <script type="text/javascript">
         Highcharts.chart('grafik', {
             chart: {
-                type: 'areaspline',
                 zoomType: "xy",
                 panKey: "alt"
             },
             title: {
-                text: 'Curah Hujan'
+                text: 'Status Data'
             },
             subtitle: {
                 text: 'Latihan Highcharts'
             },
-            yAxis: {
+            yAxis: [{
+                gridLineWidth: 0,
+                labels : {
+                    format: '{value} m'
+                },
                 title: {
-                    text: 'Curah hujan per menit'
-                }
-            },
+                    text: 'Nilai Ketinggian'
+                },
+            }, {
+                gridLineWidth: 0,
+                labels : {
+                    format: '{value} mm'
+                },
+                title: {
+                    text: 'Curah Hujan'
+                },
+                reversed: true,
+                opposite: true
+            }, {
+                gridLineWidth: 0,
+                labels : {
+                    format: '{value} m'
+                },
+                title: {
+                    text: 'Kekeruhan'
+                },
+            }],
             xAxis: {
                 type: 'category',
                 accessibility: {
@@ -84,7 +115,7 @@
                 }
             },
             tooltip: {
-                pointFormat: '{point.y} mm'
+                shared: true
             },
             legend: {
                 layout: 'vertical',
@@ -92,20 +123,50 @@
                 verticalAlign: 'middle'
             },
             plotOptions: {
-                column: {
-                    pointPadding: 0.1
-                },
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    }
+                }
             },
             series: [{
-                name: 'Curah Hujan',
-                data: [<?= join(",", $data) ?>],
-                color : {
-                    linearGradient : {x1:0, x2:0, y1:0, y2:1},
-                    stops : [
+                type: "line",
+                yAxis: 0,
+                name: 'Tinggi Muka Air',
+                data: [<?= join(", ", $data0) ?>],
+                tooltip: {
+                    valueSuffix: ' m'
+                }
+            }, {
+                type: "column",
+                name: "Curah Hujan",
+                yAxis: 1,
+                data: [<?= join(", ", $data1) ?>],
+                color: "#42f554",
+                tooltip: {
+                    valueSuffix: ' mm'
+                }
+            }, {
+                type: "areaspline",
+                name: "Kekeruhan",
+                yAxis: 2,
+                data: [<?= join(", ", $data2) ?>],
+                color: {
+                    linearGradient: {
+                        x1: 0,
+                        x2: 0,
+                        y1: 0,
+                        y2: 1
+                    },
+                    stops: [
                         [0, "#f59542"],
                         [1, "#ffffff"]
                     ]
-                }
+                },
+                tooltip: {
+                    valueSuffix: ' mm'
+                },
+                zIndex : -1
             }],
             responsive: {
                 rules: [{

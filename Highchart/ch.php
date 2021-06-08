@@ -36,9 +36,9 @@
         <div class="container container-fluid mt-3">
             <?php
             include("./connection.php");
-            $tma = mysqli_query($conn, "SELECT * FROM ch");
+            $ch = mysqli_query($conn, "SELECT * FROM ch");
             $data = array();
-            while ($row = mysqli_fetch_assoc($tma)) {
+            while ($row = mysqli_fetch_assoc($ch)) {
                 array_push($data, "['{$row['waktu']}', {$row['nilai']}]");
             }
             ?>
@@ -76,7 +76,8 @@
             yAxis: {
                 title: {
                     text: 'Curah hujan per menit'
-                }
+                },
+                reversed : true
             },
             xAxis: {
                 type: 'category',
@@ -95,11 +96,12 @@
             plotOptions: {
                 column: {
                     pointPadding: 0.1
-                },
+                }
             },
             series: [{
                 name: 'Curah Hujan',
-                data: [<?= join(",", $data) ?>]
+                data: [<?= join(",", $data) ?>],
+                color : "#42f554"
             }],
             responsive: {
                 rules: [{
