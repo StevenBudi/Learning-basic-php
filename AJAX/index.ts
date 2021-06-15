@@ -1,8 +1,16 @@
 const xhttp = new XMLHttpRequest()
-
+let input, elements, params
 
 const getCity = () => {
     console.log("City")
+    input = document.getElementById("province") as HTMLInputElement
+    elements = document.getElementById("provinceData") as HTMLDataListElement // ID of selected value / selected value
+    for (let index = 0; index < elements.options.length; index++) {
+        if(elements.options[index].value === input.value){
+            params = elements.options[index].getAttribute("id")
+        }
+        
+    }
     xhttp.onreadystatechange = () => {
         if(xhttp.readyState === xhttp.DONE){
             if(xhttp.response === "OK")
@@ -11,7 +19,6 @@ const getCity = () => {
         }
 
     }
-    const param = "" // ID of selected value / selected value
     xhttp.open("CITY", "./server.php")
     xhttp.setRequestHeader('Content-type','application/json; charset=utf-8')
     xhttp.send()
