@@ -15,7 +15,7 @@
                 $res[$index][$name] = $row["name"];
                 $index++;
             }
-            return json_decode($res, true);
+            echo json_decode($res, true);
             break;
         default:
             # code...
