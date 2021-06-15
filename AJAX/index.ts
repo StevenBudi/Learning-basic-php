@@ -1,16 +1,19 @@
 const xhttp = new XMLHttpRequest()
-let input, elements, params
+let params
 
-const getCity = () => {
-    console.log("City")
-    input = document.getElementById("province") as HTMLInputElement
-    elements = document.getElementById("provinceData") as HTMLDataListElement // ID of selected value / selected value
+const getOptSelectedID = (inputID : string, datalistID : string) => {
+    const input = document.getElementById(inputID) as HTMLInputElement
+    const elements = document.getElementById(datalistID) as HTMLDataListElement
     for (let index = 0; index < elements.options.length; index++) {
         if(elements.options[index].value === input.value){
-            params = elements.options[index].getAttribute("id")
+            return elements.options[index].getAttribute("id")
         }
-        
     }
+    return ""
+}
+
+const getCity = () => {
+    params = getOptSelectedID("province", "provinceData");
     xhttp.onreadystatechange = () => {
         if(xhttp.readyState === xhttp.DONE){
             if(xhttp.response === "OK")

@@ -1,15 +1,18 @@
 "use strict";
 const xhttp = new XMLHttpRequest();
-let input, elements, params;
-const getCity = () => {
-    console.log("City");
-    input = document.getElementById("province");
-    elements = document.getElementById("provinceData"); // ID of selected value / selected value
+let params;
+const getOptSelectedID = (inputID, datalistID) => {
+    const input = document.getElementById(inputID);
+    const elements = document.getElementById(datalistID);
     for (let index = 0; index < elements.options.length; index++) {
         if (elements.options[index].value === input.value) {
-            params = elements.options[index].getAttribute("id");
+            return elements.options[index].getAttribute("id");
         }
     }
+    return "";
+};
+const getCity = () => {
+    params = getOptSelectedID("province", "provinceData");
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState === xhttp.DONE) {
             if (xhttp.response === "OK")
