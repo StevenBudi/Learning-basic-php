@@ -19,7 +19,7 @@ var getCity = function () {
                 console.log(xhttp.response);
         }
     };
-    xhttp.open("CITY", "server.php?city=" + params);
+    xhttp.open("GET", "server.php?city=" + params);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.send();
 };
@@ -32,7 +32,7 @@ var getDistrict = function () {
                 console.log(xhttp.response);
         }
     };
-    xhttp.open("DISTRICT", "server.php?district=" + params);
+    xhttp.open("GET", "server.php?district=" + params);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.send();
 };
@@ -45,7 +45,7 @@ var getResident = function () {
                 console.log(xhttp.response);
         }
     };
-    xhttp.open("RESIDENT", "server.php?resident=" + params);
+    xhttp.open("GET", "server.php?resident=" + params);
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhttp.send();
 };

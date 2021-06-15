@@ -22,7 +22,7 @@ const getCity = () => {
         }
 
     }
-    xhttp.open("CITY", `server.php?city=${params}`)
+    xhttp.open("GET", `server.php?city=${params}`)
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
     xhttp.send()
 }
@@ -38,7 +38,7 @@ const getDistrict = () => {
         }
 
     }
-    xhttp.open("DISTRICT", `server.php?district=${params}`)
+    xhttp.open("GET", `server.php?district=${params}`)
     xhttp.setRequestHeader('Content-type', 'application/json; charset=utf-8')
     xhttp.send()
 }
@@ -53,7 +53,7 @@ const getResident = () => {
         }
 
     }
-    xhttp.open("RESIDENT", `server.php?resident=${params}`)
+    xhttp.open("GET", `server.php?resident=${params}`)
     xhttp.setRequestHeader('Content-type','application/json; charset=utf-8')
     xhttp.send()
 }
