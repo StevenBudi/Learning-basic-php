@@ -31,7 +31,7 @@
     <main>
         <div class="container-fluid mt-3">
             <div class="row d-flex justify-content-center">
-                <div class="spinner-grow text-primary" role="status" style="display: none; position:absolute; top:50%">
+                <div class="spinner-grow text-primary" role="status" style="display: none; position:absolute; top:50%" id="spinner">
                     <span class="sr-only">Loading...</span>
                 </div>
                 <div class="col-sm-9">
