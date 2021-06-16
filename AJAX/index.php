@@ -62,7 +62,7 @@
                                 <div class="form-group">
                                     <label for="city" class="control-label col-sm-3">Kota/Kabupaten :</label>
                                     <div class="col-sm-12">
-                                        <input type="text" name="city" id="city" onclick="getDistrict()" class="form-control mt-1 mb-1" placeholder="Type Your City..." list="cityData">
+                                        <input type="text" name="city" id="city" onchange="getDistrict()" class="form-control mt-1 mb-1" placeholder="Type Your City..." list="cityData">
                                         <datalist name="cityData" id="cityData">
                                         </datalist>
                                     </div>
@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <label for="district" class="control-label col-sm-3">Kecamatan : </label>
                                     <div class="col-sm-12">
-                                        <input type="text" name="district" id="district" onclick="getResident()" class="form-control mt-1 mb-1" placeholder="Type Your District..." list="districtData">
+                                        <input type="text" name="district" id="district" onchange="getResident()" class="form-control mt-1 mb-1" placeholder="Type Your District..." list="districtData">
                                         <datalist name="districtData" id="districtData">
                                         </datalist>
                                     </div>
