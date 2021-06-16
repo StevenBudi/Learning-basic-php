@@ -1,6 +1,5 @@
 var xhttp = new XMLHttpRequest();
 var params;
-var spinner = document.getElementById("spinner");
 var getOptSelectedID = function (inputID, datalistID) {
     var input = document.getElementById(inputID);
     var elements = document.getElementById(datalistID);
@@ -13,7 +12,6 @@ var getOptSelectedID = function (inputID, datalistID) {
 };
 var getCity = function () {
     params = getOptSelectedID("province", "provinceData");
-    spinner.style.display = "inline";
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === xhttp.DONE) {
             var element = document.getElementById("cityData");
@@ -25,13 +23,11 @@ var getCity = function () {
     xhttp.send();
 };
 var getDistrict = function () {
-    params = getOptSelectedID("district", "districtData");
-    spinner.style.display = "inline";
+    params = getOptSelectedID("city", "cityData");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === xhttp.DONE) {
             var element = document.getElementById("districtData");
             element.innerHTML = xhttp.responseText;
-            spinner.style.display = "none";
         }
     };
     xhttp.open("GET", "server.php?district=" + params);
@@ -39,13 +35,12 @@ var getDistrict = function () {
     xhttp.send();
 };
 var getResident = function () {
-    params = getOptSelectedID("resident", "residentData");
-    spinner.style.display = "inline";
+    params = getOptSelectedID("district", "districtData");
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === xhttp.DONE) {
             var element = document.getElementById("residentData");
             element.innerHTML = xhttp.responseText;
-            spinner.style.display = "none";
+            console.log(xhttp.responseText);
         }
     };
     xhttp.open("GET", "server.php?resident=" + params);

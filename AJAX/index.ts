@@ -1,6 +1,6 @@
 const xhttp = new XMLHttpRequest()
 let params : string | null
-const spinner  = document.getElementById("spinner") as HTMLElement
+
 
 const getOptSelectedID = (inputID: string, datalistID: string) => {
     const input = document.getElementById(inputID) as HTMLInputElement
@@ -15,12 +15,10 @@ const getOptSelectedID = (inputID: string, datalistID: string) => {
 
 const getCity = () => {
     params = getOptSelectedID("province", "provinceData");
-    spinner.style.display = "inline"
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState === xhttp.DONE) {
             const element = document.getElementById("cityData") as HTMLDataListElement
             element.innerHTML = xhttp.responseText
-            
         }
     }
     xhttp.open("GET", `server.php?city=${params}`)
@@ -30,13 +28,11 @@ const getCity = () => {
 
 
 const getDistrict = () => {
-    params = getOptSelectedID("district", "districtData");
-    spinner.style.display = "inline"
+    params = getOptSelectedID("city", "cityData");
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState === xhttp.DONE) {
             const element = document.getElementById("districtData") as HTMLDataListElement
             element.innerHTML = xhttp.responseText
-            spinner.style.display = "none"
         }
     }
     xhttp.open("GET", `server.php?district=${params}`)
@@ -45,13 +41,12 @@ const getDistrict = () => {
 }
 
 const getResident = () => {
-    params = getOptSelectedID("resident", "residentData");
-    spinner.style.display = "inline"
+    params = getOptSelectedID("district", "districtData");
     xhttp.onreadystatechange = () => {
         if(xhttp.readyState === xhttp.DONE){
             const element = document.getElementById("residentData") as HTMLDataListElement
             element.innerHTML = xhttp.responseText
-            spinner.style.display = "none"
+            console.log(xhttp.responseText)
         }
     }
     xhttp.open("GET", `server.php?resident=${params}`)
