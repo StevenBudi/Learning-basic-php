@@ -46,7 +46,6 @@ const getResident = () => {
         if(xhttp.readyState === xhttp.DONE){
             const element = document.getElementById("residentData") as HTMLDataListElement
             element.innerHTML = xhttp.responseText
-            console.log(xhttp.responseText)
         }
     }
     xhttp.open("GET", `server.php?resident=${params}`)

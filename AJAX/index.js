@@ -40,7 +40,6 @@ var getResident = function () {
         if (xhttp.readyState === xhttp.DONE) {
             var element = document.getElementById("residentData");
             element.innerHTML = xhttp.responseText;
-            console.log(xhttp.responseText);
         }
     };
     xhttp.open("GET", "server.php?resident=" + params);
