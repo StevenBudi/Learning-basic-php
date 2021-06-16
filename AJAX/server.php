@@ -11,11 +11,10 @@
             $res = mysqli_query($conn, $query);
             
             while($row = mysqli_fetch_assoc($res)){
-                $res[$index][$id] = $row["id"];
-                $res[$index][$name] = $row["name"];
-                $index++;
+                ?>
+                <option id="<?= $row['id'] ?>" value="<?= $row['name'] ?>">
+                <?
             }
-            echo json_decode($res, true);
             break;
         default:
             # code...
