@@ -47,7 +47,7 @@
                                         include('koneksi.php');
                                         $province = mysqli_query($conn, "SELECT * FROM provinces ORDER BY name ASC");
                                         ?>
-                                        <input type="text" name="province" id="province" onclick="getCity()"  class="form-control mt-1 mb-1" list="provinceData" placeholder="Type Your Province...">
+                                        <input type="text" name="province" id="province" onchange="getCity()"  class="form-control mt-1 mb-1" list="provinceData" placeholder="Type Your Province...">
                                         <datalist name="provinceData" id="provinceData">
                                             <?php
                                             while ($data = mysqli_fetch_assoc($province)) {
